@@ -26,7 +26,7 @@
  
 * This design is partly responsible for Solana's high throughput. The runtime can look at all the incoming transactions of a program and can check whether the memory regions in the first argument of the transactions overlap. If the runtime sees two transactions access overlapping memory regions but only read and don't write, it can also parallelize those transactions.
 
-* 
+
 <br>
 
 ----
