@@ -19,10 +19,6 @@
     - You can read data without a transaction.
     - A transaction contains an array of digital signatures and the message (the actual instructions that the transaction is issuing to the network, with a header, the account addresses, the recent blockhash, and instructions).
 
-<p align="center">
-<img src="https://github.com/urani-protocol/solana-dev-tutorial/assets/1130416/b8e51ef0-490d-452c-a606-807d02d19c0b" width="80%" align="center" style="padding:1px;border:1px solid black;" />
-</p>
-
 <br>
 
 ---
@@ -78,10 +74,6 @@
     2. Then, anyone can communicate with these programs by writing dApps connecting to a node's JSON RPC API (via HTTP or WebSocket methods). DApps can submit transactions with instructions to these programs via a client SDK.
   
 <br>
-
-<p align="center">
-<img src="https://github.com/urani-protocol/solana-dev-tutorial/assets/1130416/9f6adcb3-e37d-4fae-8896-ae60df075e5c" width="80%" align="center" style="padding:1px;border:1px solid black;" />
-</p>
 
 <br>
 
