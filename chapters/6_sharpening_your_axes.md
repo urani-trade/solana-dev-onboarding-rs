@@ -14,6 +14,7 @@
 * [Rust/Solana Advance Course](https://careerbooster.io/courses/rust-solana-advance-development-course)
 * [freeCodeCamp: Solana Curriculum](https://github.com/freeCodeCamp/solana-curriculum)
 * [Build on Solana by risein](https://www.risein.com/courses/build-on-solana)
+* [Solana Frontend Development Course](https://www.youtube.com/playlist?list=PLMZny7wGLM6w4t7pMGATxFTjjMduTsEiF)
 
 
 <br>
