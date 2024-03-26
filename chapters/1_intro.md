@@ -3,8 +3,7 @@
 
 <br>
 
-#### ➡️ [The Solana network can be thought of as one massive global computer, where anyone can store and execute code for a fee](https://solana.com/docs/intro/dev). 
-#### ➡️ To interact with these programs, you need to send a transaction (tx) from a Solana client.
+#### [The Solana network can be thought of as one massive global computer, where anyone can store and execute code for a fee](https://solana.com/docs/intro/dev) (to interact with these programs, you need to send a transaction (tx) from a Solana client).
 
 <br>
 
