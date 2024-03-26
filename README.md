@@ -15,7 +15,10 @@
 * **[3. Mastering the Anchor Framework](chapters/3_anchor.md)**
 * **[4. Master Solana Frontend](chapters/4_frontend.md)**
 * **[5. In-Depth Solana Programs, SPL, CPI](chapters/5_programs_in_depth.md)**
-* **[6. External Resources to Keep Sharpening Your Axe](chapters/6_sharpening_your_axes.md)**
+* **[6. Transfer Hooks](chapters/6_transfer_hooks.md)**
+* **[7. External Resources to Keep Sharpening Your Axe](chapters/7_sharpening_your_axes.md)**
+
+
 
 <br>
 
@@ -64,6 +67,7 @@
 * **[18. Solana Pay](demos/18_solana_pay)**
 * **[19. Implement a NFT Marketplace](demos/19_nft_marketplace)**
 * **[20. Implement Arbitrage](demos/20_arbitrage)**
+
 
 
 
