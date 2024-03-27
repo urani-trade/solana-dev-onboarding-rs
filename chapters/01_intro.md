@@ -168,6 +168,11 @@ Programs are special types of accounts that are marked as "executable".
 
 <br>
 
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+
 #### Program Derived Address (PDA)
 
 <br>
