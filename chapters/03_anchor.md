@@ -169,7 +169,7 @@ pub enum MyError {
 
 ----
 
-### Initialzing an Anchor Project
+### Initializing an Anchor Project
 
 <br>
 
@@ -183,7 +183,7 @@ anchor init <workspace-name>
 
 <br>
 
-* These creates the following files:
+* The following files will be created:
    * `.anchor`: includes the most recent program logs and a local ledger for testing.
    * `app/`: an empty folder that can be used to hold the front end if you use a mono repo.
    * `programs/`: initially contains a program with the workspace name, and a `lib.rs`.
@@ -203,7 +203,7 @@ anchor init <workspace-name>
 
 <br>
 
-* Learn how Cross-program-instructions work on Anchor through our [demo 2](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/02_anchor_cpi).
+* Learn how cross-program-instructions works on Anchor through our [demo 2](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/02_anchor_cpi).
 
 
 <br>
