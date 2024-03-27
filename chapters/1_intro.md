@@ -48,7 +48,7 @@ Everything else is built around these ideas
 
 <br>
 
-#### What's an instruction
+#### What's an Instruction
 
 <br>
 
