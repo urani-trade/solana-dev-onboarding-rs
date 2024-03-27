@@ -83,6 +83,56 @@ Transaction fees are calculated based on two main parts:
 
 <br>
 
+
+
+---
+
+### Accounts
+
+
+<br>
+
+* Accounts on Solana are storage spaces that can hold data up to 10MB.
+
+* Solana clients use an address (a 256-bit public key) to find an account.
+
+* Accounts can hold arbitrary persistent data and hold ownership metadata for the runtime
+  * The metadata also includes the lifetime info and is expressed by lamports.
+
+* Accounts are referenced by an instruction representing the on-chain state and server as both the inputs and outputs of a program.
+
+* Accounts can be signers if the transaction includes their addresses as a digital signature. 
+
+* Accounts can be treated as read-only by transactions. 
+    - This enables parallel account processing between transactions.
+
+* An account is a program if it's marked as "executable" in its metadata. 
+    - Accounts that store programs are owned by the `BPFLoader`, a program that can be used to deploy and upgrade other programs.
+    - The `BPFLoader` is owned by the **Native Loader**.
+
+* If a program is marked as final (non-upgradeable), the runtime makes the account's data (the program) immutable.
+
+
+<br>
+
+#### Creating an Account
+
+<br>
+
+* To create an account, a client generates a keypair and registers its public key.
+
+* A created account is initialized to be owned by a built-in program (the System program). It includes owner metadata (a `program_id`).
+
+* Accounts are held in validator memory by paying a "rent". Any account that drops to zero lamports is removed. 
+  - Currently, all new accounts are required to be rent-exempt.
+  - An account is considered rent-exempt if it holds at least 2 years' worth of rent (checked every time an account's balance is reduced).
+  - Rent can be estimated via the command `solana rent`.
+
+
+<br>
+
+
+
 ---
 
 ### Programs
@@ -108,51 +158,27 @@ Programs are special types of accounts that are marked as "executable".
 
 <br>
 
----
 
-### Accounts
+
+#### Memory on Solana
+
+<br>
+
+
+* Memory inside a Solana cluster can be thought of as a monolithic heap of data. All state lives in this heap.
+
+* Programs each have access ot their own part of the heap.
+
+* A memory region is "account" (and some programs own thousands of independent account)
+    - Each memory region has a program that manages it (the `owner`).
+    
 
 
 <br>
 
-* Accounts on Solana are storage spaces that can hold data up to 10MB. 
-
-* Accounts can hold arbitrary persistent data and hold ownership metadata for the runtime
-  * The metadata also includes the lifetime info and is expressed by lamports.
-
-* Solana clients use an address (a 256-bit public key) to find an account.
-
-* Accounts can be signers if the transaction includes their addresses as a digital signature. 
-
-* Accounts can be treated as read-only by transactions. This enables parallel account processing between transactions.
-
-* An account is a program if it's marked as "executable" in its metadata. 
-
-* If a program is marked as final (non-upgradeable), the runtime makes the account's data (the program) immutable.
-
-* Accounts are referenced by an instruction representing the on-chain state and server as both the inputs and outputs of a program.
-
-<br>
-
-#### Creating an Account
-
-<br>
-
-* To create an account, a client generates a keypair and registers its public key.
-
-* A created account is initialized to be owned by a built-in program (the System program). It includes owner metadata (a `program_id`).
-
-* Accounts are held in validator memory by paying a "rent". Any account that drops to zero lamports is removed. 
-  - Currently, all new accounts are required to be rent-exempt.
-  - An account is considered rent-exempt if it holds at least 2 years' worth of rent (checked every time an account's balance is reduced).
-  - Rent can be estimated via the command `solana rent`.
 
 
-<br>
-
----
-
-### Cross-Program Invocation (CPI)
+#### Cross-Program Invocation (CPI)
 
 <br>
 
@@ -170,8 +196,9 @@ Programs are special types of accounts that are marked as "executable".
 
 
 > [!IMPORTANT]
-> Key information users need to know to achieve their goal.
+> When writing CPI, it's important to not pull in the dependent program's entrypoint symbols (because they may conflict with the program's own). To avoid this, programs should define an `no-entrypoint` feature in `Cargo.toml`.
 
+<br>
 
 #### Program Derived Address (PDA)
 
@@ -198,8 +225,6 @@ Programs are special types of accounts that are marked as "executable".
 * Program addresses are deterministically derived from a collection of seeds and a `program_id` using a 256-bit pre-image resistant hash function.
 
 * Programs can deterministically derive any number of addresses by using seeds. These seeds can symbolically identify how the addresses are used. 
-
-
 
 
 <br>

@@ -2,29 +2,24 @@
 
 <br>
 
-### General Guidelines
+### tl; dr
 
 <br>
 
 
-* Anchor is Solana's Sealevel runtime framework, providing several convenient developer tools for writing smart contracts.
+* Anchor is Solana's Sealevel runtime framework, providing several convenient developer tools for writing programs.
+
 * Anchor writes various boilerplates, such as (de)serialization of accounts and instruction data.
+
 * Anchor handles security checks and keeps them separated from business logic.
 
 <br>
 
 ----
 
-### Transactions and Accounts
+### Setting up Anchor
 
 <br>
-
-* Your program can read and write data by sending a transaction, as programs provide endpoints that can be called by it.
-* A function signature takes the following arguments:
-  * the accounts that the program may read from and write to during this transaction.
-  * additional data specific to the function.
- 
-* This design is partly responsible for Solana's high throughput. The runtime can look at all the incoming transactions of a program and can check whether the memory regions in the first argument of the transactions overlap. If the runtime sees two transactions access overlapping memory regions but only read and don't write, it can also parallelize those transactions.
 
 
 <br>
@@ -80,11 +75,21 @@ pub struct Initialize {}
 
 <br>
 
----
+----
 
-### Installation
+### Tests
+
 
 <br>
 
-* [Installing Anchor version manager (avm)](https://www.anchor-lang.com/docs/installation), a tool for using multiple versions of the anchor-cli.
-* [The Anchor Book](https://book.anchor-lang.com/).
+---
+
+### Resources
+
+<br>
+
+* [Anchor Docs](https://www.anchor-lang.com/)
+* [The Anchor Book](https://book.anchor-lang.com/)
+* [Developing with Rust, by Solana Labs](https://solana.com/docs/programs/lang-rust)
+* [Debugging Programs, by Solana Labs](https://solana.com/docs/programs/debugging)
+

@@ -26,7 +26,8 @@
 
 2. Create a filesystem wallet and airdrop Solana tokens to it.
 
-3. Write programs.
+3. Write programs. 
+    - Programs export a known `entrypoint` symbol which the Solana runtime looks up and calls when invoking a program.
 
 4. Compile the program (down to [Berkley Packet Filter](https://solana.com/docs/programs/faq#berkeley-packet-filter-bpf) byte-code that will then be deployed to the blockchain).
 
@@ -50,7 +51,7 @@
 
 <br>
 
-* Install [Rust](https://rustup.rs/).
+* Install [Rust](https://rustup.rs/) and [Yarn](https://yarnpkg.com/getting-started/install).
 
 
 <br>
@@ -251,6 +252,6 @@ solana program deploy <PROGRAM_FILEPATH>
 <br>
 
 * [Setup local dev, by Solana Labs](https://solana.com/developers/guides/getstarted/setup-local-development)
-* [Intro to Solana development (using only your browser)](https://solana.com/developers/guides/getstarted/hello-world-in-your-browser)
+* [Intro to Solana development (on your browser)](https://solana.com/developers/guides/getstarted/hello-world-in-your-browser)
 * [Reference for many `solana-cli` commands](https://docs.solanalabs.com/cli/examples/deploy-a-program)
 * [Seahorse: Python's wrapper for Anchor framework](https://seahorse.dev/)

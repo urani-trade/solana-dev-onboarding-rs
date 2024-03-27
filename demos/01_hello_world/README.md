@@ -11,7 +11,7 @@ solana-test-validator
 
 <br>
 
-* Initialize a new Rust library via Cargo:
+* Either use this directory or initialize a new Rust library via Cargo:
 
 ```shell 
 cargo init hello_world --lib
@@ -56,6 +56,8 @@ solana-program = "=1.1x.x"
 * At the top, we import the `solana-program` crate and bring needed items into the local namespace:
 
 ```rust
+extern crate solana_program;
+
 use solana_program::{
     account_info::AccountInfo,
     entrypoint,
