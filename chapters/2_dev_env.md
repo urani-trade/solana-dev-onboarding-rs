@@ -22,14 +22,18 @@
 
 <br>
 
-* Setup the development environment.
+* Setup the development environment with a local blockchain cluster.
+
+* Create a filesystem wallet and airdrop Solana tokens to it.
 
 * Write the program.
 
 * Compile the program (down to [Berkley Packet Filter](https://solana.com/docs/programs/faq#berkeley-packet-filter-bpf) byte-code that will then be deployed to the blockchain).
 
 * Generate the program's public address (a new unique keypair, on which the pubkey is the `programId`).
+
 * Deploy the program to the selected blockchain cluster by creating transactions containing the program's byte-code. 
+
 * Once the entire program is in the blockchain, a final transaction is sent to write all of the buffered byte-code to the program's data account. 
   - This either marks the new program as executable or completes upgrading an existing program.
 
@@ -38,63 +42,73 @@
 ----
 
 
-### The Solana CLI
+### Install Required Packages
 
 <br>
 
-#### Install the CLI
+#### Dependencies
 
 <br>
 
-* Install `solana-cli` using [these instructions](https://solana.com/developers/guides/getstarted/setup-local-development), which will provide commands needed to perform tasks such as:
-  - creating and managing file-system Solana wallets/keypars,
-  - connecting to Solana clusters,
-  - building Solana programs,
-  - and deploying your programs to the blockchain
+* Install [Rust](https://rustup.rs/).
+
+
+<br>
+
+#### Install the `solana-cli`
+
+<br>
+
+* Install `solana-cli` using [these instructions](https://solana.com/developers/guides/getstarted/setup-local-development). This will provide commands for:
+  - creating and managing file-system Solana wallets/keypars
+  - connecting to Solana clusters
+  - building Solana programs
+  - deploying your programs to the blockchain
  
 * Install the Anchor framework using [these instructions](https://solana.com/developers/guides/getstarted/setup-local-development#4-install-anchor-for-solana).
 
 <br>
 
-#### Setting up a Localhost Blockchain Cluster
+#### Setting up a `localhost` Blockchain Cluster
 
 <br>
 
-* The Solana CLI comes with the test validator built-in, so you can run a full blockchain cluster on your machine:
+* You can run a full blockchain cluster on your machine with:
 
-```
-> solana-test-validator
 
-Config File: /Users/<user>/.config/solana/cli/config.yml 
-RPC URL: http://localhost:8899
-WebSocket URL: ws://localhost:8900/ (computed)
-Keypair Path: /Users/<user>/.config/solana/id.json
-Commitment: confirmed
+```shell
+solana-test-validator
+solana config set --url localhost
 ```
 
-* You can configure your Solana CLI to use your localhost validator for all terminal commands:
-
-```
-> solana config set --url localhost
-```
 
 <br>
 
-#### Creating a File System Wallet
+#### Creating a File System Wallet and Airdrop Solana tokens
 
 <br>
 
 * To deploy a program with Solana CLI, you need a Solana wallet with SOL tokens.
+
 * To create a simple file system wallet (at `~/.config/solana/id.json`) to use during local developments, type:
 
-```rust
-> solana-keygen new
+```shell
+solana-keygen new
 ```
+
+<br>
 
 * You can set your new wallet as the default:
 
+```shell
+solana config get -k ~/.config/solana/id.json
 ```
-> solana config get -k ~/.config/solana/id.json
+
+* Aidrop testing Solana tokens:
+
+```shell
+solana airdrop 10
+solana balance
 ```
 
 <br>
@@ -106,129 +120,56 @@ Commitment: confirmed
 <br>
 
 * The Solana blockchain has several different groups of validators, known as Clusters.
+
 * Each serves different purposes within the ecosystem and contains dedicated API nodes to fulfill JSON-RPC requests.
+
 * The individual nodes within a Cluster are owned and operated by third parties, and each has a public endpoint.
+
 * The Solana Labs organization operates a public RPC endpoint for each Cluster. Each of these public endpoints is subject to rate limits.
 
 <br>
 
----
 
-### Devnet
+#### Devnet
 
 <br>
 
 * Devnet serves as a playground for devs.
+
 * Gossip endpoint at `entrypoint.devnet.solana.com:8001`.
+
 * Devnet endpoint: `https://api.devnet.solana.com`.
+
 * From the CLI, one can connect with `solana config set --url https://api.devnet.solana.com`.
 
 <br>
 
----
 
-### Testnet
+#### Testnet
 
+<br>
 
 
 <br>
 
----
-
-### A "Hello World" Program 
+#### Demo 1: Hello World
 
 <br>
 
-* Solana Rust programs follow the typical Rust project layout:
-
-```
-/inc/
-/src/
-/Cargo.toml
-```
+* Test your setup by running [this hello world program](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/1_hello_world).
 
 <br>
 
-* Initialize a new Rust library via Cargo:
+----
 
-```
-> cargo init hello_world --lib
-> cd hello_world
-> cargo add solana-program@"=1.17.25"
-```
-
-<br>
-
-* The Rust code for Solana lives inside `src/lib.rs`. There, you import your Rust crates and define your logic.
-* At the top of `lib.rs`, we import the `solana-program` crate and bring needed items into the local namespace:
-
-```rust
-use solana_program::{
-    account_info::AccountInfo,
-    entrypoint,
-    entrypoint::ProgramResult,
-    pubkey::Pubkey,
-    msg,
-  };
-```
-
-<br>
-
-* Every Solana program must define an `entrypoint` that tells the runtime where to start executing the code on-chain. The entry point should provide a public function named `process_instruction`:
-
-```rust
-entrypoint!(process_instruction);
-
-  pub fn process_instruction(
-   program_id: &Pubkey,
-   accounts: &[AccountInfo],
-   instruction_data: &[u8]
-  ) -> ProgramResult {
-  
-   msg!("Solana Summer 2.0!");
-  
-   Ok(())
-}
-```
-
-
-<br>
-
-* Every on-chain program should return the `Ok` result enum with value `()`. This tells the Solana runtime that the program executed successfully.
-
-<br>
-
-* Build your program:
-
-```
-> cargo build-bpf
-```
-
-<br>
-
-* Deploy your program:
-
-```
-> solana program deploy ./target/deploy/hello_world.so
-```
-
-<br>
-
-* When this program finishes being deployed, the program's public address (`program id`) is displayed.
-* To execute an on-chain program, you must send a transaction with a listing of instructions. Each `instruction` must include all the keys involved in the operation and the program ID we want to execute.
-
-<br>
-
----
-
-### Useful commands
+### Useful Commands
 
 <br>
 
 * Showing a program account:
 
 ```
-> solana program show <ACCOUNT_ADDRESS>
+solana program show <ACCOUNT_ADDRESS>
 ```
 
 <br>
@@ -236,7 +177,7 @@ entrypoint!(process_instruction);
 * Getting information about any transaction:
 
 ```
-> solana confirm -v <TRANSACTION_HASH>
+solana confirm -v <TRANSACTION_HASH>
 ```
 
 <br>
@@ -244,15 +185,15 @@ entrypoint!(process_instruction);
 * Getting the public key:
 
 ```
-> solana-keygen pubkey
+solana-keygen pubkey
 ```
 
 <br>
 
-* Redeploy a Solana Program
+* Redeploy a Solana Program: 
   
 ```
-> solana program deploy <PROGRAM_FILEPATH>
+solana program deploy <PROGRAM_FILEPATH>
 ```
 
 * If a program has been deployed, and redeployment goes beyond the `max_len` of the account, it's possible to extend the program to fit the larger redeployment:
@@ -263,4 +204,13 @@ entrypoint!(process_instruction);
 
 <br>
 
-* [Here is a reference for many more CLI commands](https://docs.solanalabs.com/cli/examples/deploy-a-program).
+---
+
+### References
+
+<br>
+
+* [Setup local dev, by Solana Labs](https://solana.com/developers/guides/getstarted/setup-local-development)
+* [Intro to Solana development (using only your browser)](https://solana.com/developers/guides/getstarted/hello-world-in-your-browser)
+* [Reference for many `solana-cli` commands](https://docs.solanalabs.com/cli/examples/deploy-a-program)
+* [Seahorse: Python's wrapper for Anchor framework](https://seahorse.dev/)
