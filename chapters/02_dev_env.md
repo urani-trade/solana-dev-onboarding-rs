@@ -11,7 +11,7 @@
 * In each environment, you will be using one of three networks:
   * **Mainnet**: the production network where all the action happens. Transactions cost real money.
   * **Testnet**: used for stress testing recent releases. Focused on network performance, stability, and validator behavior.
-  * **Devnet**: the primary network for development (tokens are not real, and you can get them from [faucets](more_resources.md)).
+  * **Devnet**: the primary network for development (these tokens have no financial value, and you can get them from [these faucets](https://github.com/urani-labs/solana-dev-onboarding-rs/blob/main/chapters/07_sharpening_your_axes.md#faucets).
  
 <br>
 
@@ -22,20 +22,21 @@
 
 <br>
 
-* Setup the development environment with a local blockchain cluster.
+1. Setup the development environment with a local blockchain cluster.
 
-* Create a filesystem wallet and airdrop Solana tokens to it.
+2. Create a filesystem wallet and airdrop Solana tokens to it.
 
-* Write the program.
+3. Write programs. 
+    - Programs export a known `entrypoint` symbol which the Solana runtime looks up and calls when invoking a program.
 
-* Compile the program (down to [Berkley Packet Filter](https://solana.com/docs/programs/faq#berkeley-packet-filter-bpf) byte-code that will then be deployed to the blockchain).
+4. Compile the program (down to [Berkley Packet Filter](https://solana.com/docs/programs/faq#berkeley-packet-filter-bpf) byte-code that will then be deployed to the blockchain).
 
-* Generate the program's public address (a new unique keypair, on which the pubkey is the `programId`).
+5. Generate the program's public address (a new unique keypair, on which the pubkey is the `programId`).
 
-* Deploy the program to the selected blockchain cluster by creating transactions containing the program's byte-code. 
+6. Deploy the program to the selected blockchain cluster by creating transactions containing the program's byte-code. 
 
-* Once the entire program is in the blockchain, a final transaction is sent to write all of the buffered byte-code to the program's data account. 
-  - This either marks the new program as executable or completes upgrading an existing program.
+7. Once the entire program is in the blockchain, a final transaction is sent to write all of the buffered byte-code to the program's data account. 
+    - This either marks the new program as executable or completes upgrading an existing program.
 
 <br>
 
@@ -50,7 +51,7 @@
 
 <br>
 
-* Install [Rust](https://rustup.rs/).
+* Install [Rust](https://rustup.rs/) and [Yarn](https://yarnpkg.com/getting-started/install).
 
 
 <br>
@@ -65,7 +66,7 @@
   - building Solana programs
   - deploying your programs to the blockchain
  
-* Install the Anchor framework using [these instructions](https://solana.com/developers/guides/getstarted/setup-local-development#4-install-anchor-for-solana).
+* Install the Anchor framework using [these instructions](https://github.com/urani-labs/solana-dev-onboarding-rs/blob/main/chapters/03_anchor.md).
 
 <br>
 
@@ -140,7 +141,11 @@ solana balance
 
 * Devnet endpoint: `https://api.devnet.solana.com`.
 
-* From the CLI, one can connect with `solana config set --url https://api.devnet.solana.com`.
+* From the CLI, one can connect with:
+
+```shell
+solana config set --url https://api.devnet.solana.com
+```
 
 <br>
 
@@ -149,14 +154,50 @@ solana balance
 
 <br>
 
+* Testnet serves as Solana's core contributors stress test.
+
+
+* Gossip endpoint at `entrypoint.testnet.solana.com:8001`.
+
+* Devnet endpoint: `https://api.testnet.solana.com`.
+
+* From the CLI, one can connect with:
+
+```shell
+solana config set --url https://api.testnet.solana.com
+```
 
 <br>
 
-#### Demo 1: Hello World
+
+#### Mainnet
 
 <br>
 
-* Test your setup by running [this hello world program](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/1_hello_world).
+* Solana's permissionless, persistent cluster.
+
+
+* Gossip endpoint at `entrypoint.mainnet-beta.solana.com:8001`.
+
+* Devnet endpoint: `https://api.mainnet-beta.solana.com`.
+
+* From the CLI, one can connect with:
+
+```shell
+solana config set --url https://api.mainnet-beta.solana.com
+```
+
+<br>
+
+
+
+---
+
+### Demo 1: Hello World
+
+<br>
+
+* Test your setup by running [this hello world program](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/01_hello_world).
 
 <br>
 
@@ -211,6 +252,6 @@ solana program deploy <PROGRAM_FILEPATH>
 <br>
 
 * [Setup local dev, by Solana Labs](https://solana.com/developers/guides/getstarted/setup-local-development)
-* [Intro to Solana development (using only your browser)](https://solana.com/developers/guides/getstarted/hello-world-in-your-browser)
+* [Intro to Solana development (on your browser)](https://solana.com/developers/guides/getstarted/hello-world-in-your-browser)
 * [Reference for many `solana-cli` commands](https://docs.solanalabs.com/cli/examples/deploy-a-program)
 * [Seahorse: Python's wrapper for Anchor framework](https://seahorse.dev/)

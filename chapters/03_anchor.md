@@ -1,47 +1,189 @@
-# 🛹 Mastering the Anchor Framework [IN CONSTRUCTION]
+# 🛹 Mastering the Anchor Framework 
 
 <br>
 
-### General Guidelines
+### tl; dr
 
 <br>
 
 
-* Anchor is Solana's Sealevel runtime framework, providing several convenient developer tools for writing smart contracts.
+* Anchor is Solana's Sealevel runtime framework, providing several convenient developer tools for writing programs.
+
 * Anchor writes various boilerplates, such as (de)serialization of accounts and instruction data.
+
 * Anchor handles security checks and keeps them separated from business logic.
 
-<br>
-
-----
-
-### Transactions and Accounts
-
-<br>
-
-* Your program can read and write data by sending a transaction, as programs provide endpoints that can be called by it.
-* A function signature takes the following arguments:
-  * the accounts that the program may read from and write to during this transaction.
-  * additional data specific to the function.
- 
-* This design is partly responsible for Solana's high throughput. The runtime can look at all the incoming transactions of a program and can check whether the memory regions in the first argument of the transactions overlap. If the runtime sees two transactions access overlapping memory regions but only read and don't write, it can also parallelize those transactions.
-
 
 <br>
 
 ----
 
-### Hello World
+### Setting up Anchor
+
+<br>
+
+* Install Anchor using [these instructions](https://www.anchor-lang.com/docs/installation):
+
+```shell
+cargo install --git https://github.com/coral-xyz/anchor avm --locked --force
+avm install latest
+avm use latest
+```
+
+<br>
+
+* Verify the installation with:
+
+```shell
+anchor --version
+```
+
+
+<br>
+
+----
+
+### Anchor Programs
+
+<br>
+
+
+* An Anchor program consists of three parts:
+  - The `program` module: where the logic is written.
+  - The account structs, marked with `#[derive(Accounts)]`, where accounts are validated.
+  - The `declare_id` macro, creates an `ID` field to store the address of the program.
+
+<br>
+
+
+
+#### The Program Module
+
+<br>
+
+* Where you define the business logic by writing functions that clients or other programs can call:
+
+```rust
+#[program]
+mod hello_anchor {
+    use super::*;
+    pub fn set_data(ctx: Context<SetData>, data: u64) -> Result<()> {
+        if ctx.accounts.token_account.amount > 0 {
+            ctx.accounts.my_account.data = data;
+        }
+        Ok(())
+    }
+}
+```
+
+<br>
+
+* Each endpoint takes a `Context` type as its first argument, so it can access:
+    - the accounts (`ctx.accounts`)
+    - the program_id (`ctx.program_id`) of the executing program
+    - remaining accounts (`ctx.remaining_accounts`)
+
+<br>
+
+* If a function requires instruction data, it can be added through arguments to the function after the context argument.
+
+<br>
+
+#### The Accounts Struct
+
+<br>
+
+* Define which accounts an instruction expects, and their constraints.
+
+* There are two constructs:
+    - `Types`: have a specific use case.
+    - `Account`: when an instruction is the deserialized data of the account. It's a generic over `T`, created to store data.
+
+* The `#[account]` attribute sets the owner of that data to the `declare_id`.
+    - `Account` verifies that the owner of `my_account` equals to `declare_id`.
+
+<br>
+
+```rust
+#[account]
+#[derive(Default)]
+pub struct MyAccount {
+    data: u64
+}
+
+#[derive(Accounts)]
+pub struct SetData<'info> {
+    #[account(mut)]
+    pub my_account: Account<'info, MyAccount>
+}
+```
+
+<br>
+
+* Account types are not dynamic enough to handle all the security checks that the program requires.
+
+* Constraints can be added through:
+
+<br>
+
+```rust
+#[account(<constraints>)]
+pub account: AccountType
+```
+
+
+<br>
+
+#### Errors
+
+<br>
+
+* Anchor programs have two types of errors:   
+    - `AnchorErrors`: divided into anchor internal errors and custom errors
+    - non-anchor errors
+
+* You can use the `require` macro to simplify writing errors.
+
+<br>
+
+```rust
+#[program]
+mod hello_anchor {
+    use super::*;
+    pub fn set_data(ctx: Context<SetData>, data: MyAccount) -> Result<()> {
+        require!(data.data < 100, MyError::DataTooLarge);
+        ctx.accounts.my_account.set_inner(data);
+        Ok(())
+    }
+}
+
+#[error_code]
+pub enum MyError {
+    #[msg("MyAccount may only hold data below 100")]
+    DataTooLarge
+}
+```
+
+<br>
+
+
+----
+
+### Initializing an Anchor Project
 
 <br>
 
 * To initialize a new project (anchor workspace), run:
 
+<br>
+
 ```
 anchor init <workspace-name>
 ```
 
-* These creates the following files:
+<br>
+
+* The following files will be created:
    * `.anchor`: includes the most recent program logs and a local ledger for testing.
    * `app/`: an empty folder that can be used to hold the front end if you use a mono repo.
    * `programs/`: initially contains a program with the workspace name, and a `lib.rs`.
@@ -53,38 +195,27 @@ anchor init <workspace-name>
       * a provider which can be used in your tests (`[provider]`)
       * scripts that anchor executes for you (`[scripts]`).
 
-* An anchor program consists of three parts:
-  * the `program` module: where you write your business logic
-  * the accounts structs which are market with `#[derive(Accounts)]`: where you validate accounts
-  * the `declare_id` macro: creates an `ID` field that stores the address of your program. 
+<br>
+
+---
+
+### Demo
 
 <br>
 
-```rust
-use anchor_lang::prelude::*;
-
-declare_id!("<some string>");
-
-#[program]
-mod hello_anchor {
-    use super::*;
-    pub fn initialize(_ctx: Context<Initialize>) -> Result<()> {
-        Ok(())
-    }
-}
-
-#[derive(Accounts)]
-pub struct Initialize {}
-```
+* Learn how cross-program-instructions works on Anchor through our [demo 2](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/02_anchor_cpi).
 
 
 <br>
 
 ---
 
-### Installation
+### References
 
 <br>
 
-* [Installing Anchor version manager (avm)](https://www.anchor-lang.com/docs/installation), a tool for using multiple versions of the anchor-cli.
-* [The Anchor Book](https://book.anchor-lang.com/).
+* [Anchor Docs](https://www.anchor-lang.com/)
+* [The Anchor Book](https://book.anchor-lang.com/)
+* [Developing with Rust, by Solana Labs](https://solana.com/docs/programs/lang-rust)
+* [Debugging Programs, by Solana Labs](https://solana.com/docs/programs/debugging)
+

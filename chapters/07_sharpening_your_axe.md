@@ -2,26 +2,39 @@
 
 <br>
 
-## Other Dev Guides
+### Development Guides
 
 <br>
 
-* [Solana Development Course](https://www.soldev.app/course)
+
+#### Beginner
+
+<br>
+
+
 * [Solana Bootcamp Videos](https://www.youtube.com/watch?v=0P8JeL3TURU&list=PLilwLeBwGuK6NsYMPP_BlVkeQgff0NwvU)
-* [Cooking with Solana](https://solanacookbook.com/)
-* [Solana Courses by FreeCodeCamp](https://web3.freecodecamp.org/solana)
-* [60 Days of Solana, by RareSkills](https://www.rareskills.io/solana-tutorial)
-* [Rust/Solana Advance Course](https://careerbooster.io/courses/rust-solana-advance-development-course)
-* [freeCodeCamp: Solana Curriculum](https://github.com/freeCodeCamp/solana-curriculum)
 * [Build on Solana by risein](https://www.risein.com/courses/build-on-solana)
+* [freeCodeCamp: Solana Curriculum](https://github.com/freeCodeCamp/solana-curriculum)
 * [Solana Frontend Development Course](https://www.youtube.com/playlist?list=PLMZny7wGLM6w4t7pMGATxFTjjMduTsEiF)
+
+
+<br>
+
+#### Expert
+
+<br>
+
+* [Cooking with Solana](https://solanacookbook.com/)
+* [Solana Development Course](https://www.soldev.app/course)
+* [Rust/Solana Advance Course](https://careerbooster.io/courses/)
+* [60 Days of Solana, by RareSkills](https://www.rareskills.io/solana-tutorial)
 
 
 <br>
 
 ---
 
-## Technical Articles
+### Technical Articles
 
 <br>
 
@@ -45,7 +58,7 @@
 
 ---
 
-## Tools for Developers
+### Tools for Developers
 
 <br>
 
@@ -53,8 +66,9 @@
 
 <br>
 
-* [Sol Faucet](https://solfaucet.com/)
 * [Faucet Solana](https://faucet.solana.com/)
+* [Sol Faucet](https://solfaucet.com/)
+* [QuickNode]https://faucet.quicknode.com/solana/devnet)
 * [Solana Faucet QuickNode](https://faucet.quicknode.com/solana/devnet)
 * [Dev Faucet](https://dev-faucet.solanahub.app/)
 * From the [Playground](https://solana.com/developers/guides/getstarted/hello-world-in-your-browser) with `solana airdrop TOKENS`.
@@ -66,6 +80,17 @@
 
 * [Triton](https://triton.one/)
 * [Helium](https://www.helius.dev/solana-rpc-nodes)
+* [QuickNode](https://faucet.quicknode.com/solana/devnet)
+
+<br>
+
+* Specify RPC provider's URL with:
+
+```
+solana config set --url <RPC url>
+```
+
+
 
 <br>
 
