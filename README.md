@@ -27,7 +27,7 @@
 
 <br>
 
-#### Introduction
+#### Beginner
 
 <br>
 
@@ -44,7 +44,7 @@
 
 <br>
 
-#### Intermediary
+#### Advanced
 
 <br>
 
@@ -58,7 +58,7 @@
 
 <br>
 
-#### Advanced
+#### Expert
 
 <br>
 
