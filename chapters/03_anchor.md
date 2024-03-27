@@ -170,7 +170,39 @@ pub enum MyError {
 
 ---
 
-### Privilege Extension
+### Cross Program Invocations (CPIs)
+
+<br>
+
+* CPIs enable the composability of Solana programs, allowing developers to utilize and build on the instruction of existing programs.
+
+* To execute CPIs, use `invoke` or `invoke_signed` from the `solana_program` crate:
+
+<br>
+
+```rust
+// Used when there are not signatures for PDAs needed
+pub fn invoke(
+    instruction: &Instruction,
+    account_infos: &[AccountInfo<'_>]
+) -> ProgramResult
+
+// Used when a program must provide a 'signature' for a PDA, hence the signer_seeds parameter
+pub fn invoke_signed(
+    instruction: &Instruction,
+    account_infos: &[AccountInfo<'_>],
+    signers_seeds: &[&[&[u8]]]
+) -> ProgramResult
+```
+
+<br>
+
+* To make a CPI, you must specify and construct an instruction on the program being invoked and supply a list of accounts necessary for that instruction.
+    - If a PDA is required as a signed, the `signers_seeds` must also be provided with `invoke_signed`.
+
+<br>
+
+#### Privilege Extension
 
 <br>
 
