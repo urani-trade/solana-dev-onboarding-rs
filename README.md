@@ -32,7 +32,7 @@
 <br>
 
 * **[1. Hello World](demos/01_hello_world)**
-* **[2. Anchor Cross-Program Invocations](demos/03_anchor)**
+* **[2. Anchor and CPI](demos/03_anchor)**
 * **[4. Solidity vs. Solana](demos/04_sol_vs_sol)**
 * **[5. Rust, Structs, Custom Derive Macros](demos/05_rust)**
 * **[6. Block Variables, Sysvars](demos/06_blocks)**
