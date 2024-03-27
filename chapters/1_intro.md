@@ -57,7 +57,17 @@ Everything else is built around these ideas
 * The [Solana Program Library's Token program](https://github.com/solana-labs/solana-program-library/tree/master/token) shows how instruction data can be encoded efficiently for fixed-sized types.
 * Since a transaction can contain instructions in any order, programs should be hardened to safely handle any possible instructions sequence. For example, to deinitizlize an account, the program shoudl explicitly set the account's data to zero.
 
+<br>
 
+#### Transaction Fees
+
+<br>
+
+* Transaction fees are paid in "Lamports", the smallest units of SOL (0.000000001 SOL).
+* The fee is paid to the validators who process the transaction.
+Transaction fees are calculated based on two main parts:
+  - a statically set base fee per signature
+  - the computational resources used during the transaction.
 
 <br>
 
@@ -77,19 +87,6 @@ Programs are special types of accounts that are marked as "executable".
   - **Chain Programs**: written by users and deployed directly to the blockchain for anyone to interact and execute. The Solana Labs also keep a library of them, the [Solana Program Library](https://spl.solana.com/).
 * The instructions's program `id` specifies which program will process the instructions. 
 * Programs on Solana don't store data/state: these are stored in accounts.
-
-<br>
-
----
-
-### Lamports
-
-<br>
-
-* Transaction fees are paid in "Lamports", the smallest units of SOL (0.000000001 SOL).
-    - The fee is paid to the validators who process the transaction.
-    - Transaction fees are calculated based on two main parts: 1) a statically set base fee per signature, and 2) the computational resources used during the transaction.
-  
 
 <br>
 
@@ -152,4 +149,6 @@ Programs are special types of accounts that are marked as "executable".
 <br>
 
 * [Solana Foundation dev documentation](https://solana.com/docs#start-learning)
+* [Solana Transactions](https://solana.com/docs/core/transactions)
+* [Solana Programs](https://solana.com/docs/core/programs#native-programs)
 * [Terminology](https://solana.com/docs/terminology#instruction)
