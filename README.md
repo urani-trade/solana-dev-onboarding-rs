@@ -11,7 +11,7 @@
 <br>
 
 * **[1. Solana Blockchain Overview](chapters/01_intro.md)**
-* **[2. Setup a Dev Environment](chapters/02_dev_env.md)**
+* **[2. Setup Your Dev Environment](chapters/02_dev_env.md)**
 * **[3. Mastering Anchor and CPI](chapters/03_anchor.md)**
 * **[4. Program Derived Addresses](chapters/04_pda.md)**
 * **[5. Events and Communication](chapters/05_events.md)**
