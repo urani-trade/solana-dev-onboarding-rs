@@ -2,7 +2,7 @@
 
 <br>
 
-### Our development resources, aiming to onboarding engineers to Solana development. From geeks to geeks.
+### Our development resources aim to onboard engineers to Solana development. From geeks to geeks.
 
 <br>
 

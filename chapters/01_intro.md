@@ -148,18 +148,24 @@ Programs are special types of accounts that are marked as "executable".
 
 * Programs can own accounts and change the data of the accounts they own. Unlike other blockchains, they can also be upgraded by their owner.
 
-* Programs are stateless, as the primary data stored in a program account is the compiled SBF code.
-
-* Programs can be:
-  - **Native Programs**: programs built directly into the core of the Solana blockchain.
-  - **Chain Programs**: written by users and deployed directly to the blockchain for anyone to interact and execute. The Solana Labs also keep a library of them, the [Solana Program Library](https://spl.solana.com/).
-
 * The instructions's `program_id` specifies which program will process the instructions. 
 
 * Programs on Solana don't store data or state between transactions: these are stored in accounts.
 
-<br>
+* Programs can be:
+  
+  - **Native Programs**: programs built directly into the core of the Solana blockchain. Upgrades are controlled via the releases to the different clusters. Examples include:
+      * System Program: create new accounts, transfer tokens
+      * BPG Loader Program: Deploys, upgrades, and executes programs on-chain
+      * Vote program: Create and manage accounts that track validator voting state and rewards
+  
+  - **Chain Programs**: written by users and deployed directly to the blockchain for anyone to interact and execute. 
+      * The Solana Labs also keep a library of them, the [Solana Program Library](https://spl.solana.com/), a collection of on-chain programs targeting the Sealevel parallel runtime.
 
+
+
+
+<br>
 
 
 #### Memory on Solana
