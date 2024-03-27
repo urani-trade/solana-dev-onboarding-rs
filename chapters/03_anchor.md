@@ -51,7 +51,7 @@ anchor --version
 * An Anchor program consists of three parts:
   - The `program` module: where the logic is written.
   - The account structs, marked with `#[derive(Accounts)]`, where accounts are validated.
-  - The `declare_id` macro, which creates an `ID` field to store the address of the program.
+  - The `declare_id` macro, creates an `ID` field to store the address of the program.
 
 <br>
 
@@ -61,7 +61,7 @@ anchor --version
 
 <br>
 
-* Where you define the business logic, by writing functions that can be called by clietns or other programs.
+* Where you define the business logic by writing functions that clients or other programs can call:
 
 ```rust
 #[program]
@@ -80,12 +80,12 @@ mod hello_anchor {
 
 * Each endpoint takes a `Context` type as its first argument, so it can access:
     - the accounts (`ctx.accounts`)
-    - the program_id (`ctx.program_id`) of the executing programs
-    -  remaining accounts (`ctx.remaining_accounts`)
+    - the program_id (`ctx.program_id`) of the executing program
+    - remaining accounts (`ctx.remaining_accounts`)
 
 <br>
 
-* If a function requires instruction data, they can be added through arguments to the function after the context argument.
+* If a function requires instruction data, it can be added through arguments to the function after the context argument.
 
 <br>
 
@@ -93,7 +93,7 @@ mod hello_anchor {
 
 <br>
 
-* Define which accounts a instruction expects, and their constraints.
+* Define which accounts an instruction expects, and their constraints.
 
 * There are two constructs:
     - `Types`: have a specific use case.
@@ -120,7 +120,7 @@ pub struct SetData<'info> {
 
 <br>
 
-* Account types are not dynamic enough to handle all the security checks that the program requires
+* Account types are not dynamic enough to handle all the security checks that the program requires.
 
 * Constraints can be added through:
 
@@ -140,7 +140,7 @@ pub account: AccountType
     - `AnchorErrors`: divided into anchor internal errors and custom errors
     - non-anchor errors
 
-* You can use the `require` macro to simplify writting errors.
+* You can use the `require` macro to simplify writing errors.
 
 ```rust
 #[program]
