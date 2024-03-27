@@ -126,33 +126,25 @@ Programs are special types of accounts that are marked as "executable".
 
 ---
 
-### Wallets
+## Wallets
 
 <br>
 
-* A wallet is a pair of public and private keys used to verify actions on the blockchain. The public key is used to identify the account, and the private key is used to sign transactions.
+* A wallet is a pair of public and private keys used to verify actions on the blockchain. 
+* The public key is used to identify the account, and the private key is used to sign transactions.
 
 <br>
 
 ---
 
-### Development Overview
+## Development Overview
 
 <br>
 
-* Development takes two step:
-    1. First, you deploy the program in the blockchain.
-    2. Then, anyone can communicate with these programs by writing dApps connecting to a node's JSON RPC API (via HTTP or WebSocket methods). DApps can submit transactions with instructions to these programs via a client SDK.
+* Development takes two steps:
+    1. first, you deploy the program in the blockchain.
+    2. then, anyone can communicate with these programs by writing dApps connecting to a node's JSON RPC API (via HTTP or WebSocket methods). DApps can submit transactions with instructions to these programs via a client SDK.
   
-<br>
-
-<br>
-
-* There are two sets of programs that are maintained by the Solana Labs teams:
-  * Native Programs: used for core blockchain functionality like creating new accounts, assigning ownership, transferring SOL.
-  * Solana Program Library (SPL): used for creating, swapping, and lending tokens, and generating stake pools and maintaining on-chain name service.
-  * Both native and SPL programs can be interacted with using the Solana CLI and the SDKs.
-
 
 <br>
 
