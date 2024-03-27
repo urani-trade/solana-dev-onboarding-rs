@@ -31,14 +31,15 @@
 
 <br>
 
-* **[1. Hello World](demos/01_hello_world)**
-* **[2. Anchor and CPI](demos/03_anchor)**
-* **[4. Solidity vs. Solana](demos/04_sol_vs_sol)**
-* **[5. Rust, Structs, Custom Derive Macros](demos/05_rust)**
-* **[6. Block Variables, Sysvars](demos/06_blocks)**
-* **[7. Logs, Events, Transactions](demos/07_logs_events_txs)**
-* **[8. Transaction Fees and Compute Units](demos/08_transactions)**
-* **[9. Accounts and Storage](demos/09_accounts_and_storage)**
+* **[Demo 1: Hello World](demos/01_hello_world)**
+* **[Demo 2. Anchor and CPI](demos/02_anchor_cpi)**
+* **[Demo 3. Anchor and PDA](demos/03_anchor_pda)**
+* **[Demo 4. Solidity vs. Solana](demos/04_sol_vs_sol)**
+* **[Demo 5. Rust, Structs, Custom Derive Macros](demos/05_rust)**
+* **[Demo 6. Block Variables, Sysvars](demos/06_blocks)**
+* **[Demo 7. Logs, Events, Transactions](demos/07_logs_events_txs)**
+* **[Demo 8. Transaction Fees and Compute Units](demos/08_transactions)**
+* **[Demo 9. Accounts and Storage](demos/09_accounts_and_storage)**
 
 
 <br>

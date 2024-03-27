@@ -1,4 +1,4 @@
-# 🛹 Additional Reso
+# 🛹 Additional Resources
 
 <br>
 

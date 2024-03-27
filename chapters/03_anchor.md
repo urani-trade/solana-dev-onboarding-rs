@@ -203,7 +203,16 @@ anchor init <workspace-name>
 
 <br>
 
-* Learn how cross-program-instructions work on Anchor through our [demo 2](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/02_anchor_cpi).
+#### CPI
+
+* Learn how cross-program-instructions work on Anchor through [demo 2](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/02_anchor_cpi).
+
+
+<br>
+
+#### PDA
+
+* Learn how program-derived-addresses work on Anchor through [demo 3](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/03_anchor_pda).
 
 
 <br>
