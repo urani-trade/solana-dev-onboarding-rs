@@ -124,6 +124,8 @@ pub struct SetData<'info> {
 
 * Constraints can be added through:
 
+<br>
+
 ```rust
 #[account(<constraints>)]
 pub account: AccountType
@@ -141,6 +143,8 @@ pub account: AccountType
     - non-anchor errors
 
 * You can use the `require` macro to simplify writing errors.
+
+<br>
 
 ```rust
 #[program]
@@ -161,6 +165,7 @@ pub enum MyError {
 ```
 
 <br>
+
 
 ----
 
@@ -212,16 +217,11 @@ mod hello_anchor {
 pub struct Initialize {}
 ```
 
+<br>
+
 * The way an endpoint is connected to its corresponding Accounts struct is the `ctx` argument in the endpoint.
 
 * The argument is of type `Context` which is generic over an Account struct, i.e., this is where you put the name of your account validation struct (e.g. `Initalize`).
-
-
-<br>
-
-----
-
-### Tests
 
 
 <br>
