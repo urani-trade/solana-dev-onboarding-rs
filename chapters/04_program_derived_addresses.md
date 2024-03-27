@@ -98,6 +98,12 @@ pub struct UserStats {
 
 <br>
 
+
+* Learn how PDA and CPI works on Anchor through [demo 4](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/04_pda_and_cpi).
+
+<br>
+
+
 ---
 
 ### References
