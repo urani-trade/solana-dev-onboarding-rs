@@ -10,13 +10,13 @@
 
 <br>
 
-* **[1. Introduction to the Solana Blockchain](chapters/1_intro.md)**
-* **[2. Setup a Developing Environment](chapters/2_dev_env.md)**
-* **[3. Mastering the Anchor Framework](chapters/3_anchor.md)**
-* **[4. Master Solana Frontend](chapters/4_frontend.md)**
-* **[5. In-Depth Solana Programs, SPL, CPI](chapters/5_programs_in_depth.md)**
-* **[6. Transfer Hooks](chapters/6_transfer_hooks.md)**
-* **[7. External Resources to Keep Sharpening Your Axe](chapters/7_sharpening_your_axes.md)**
+* **[1. Introduction to the Solana Blockchain](chapters/01_intro.md)**
+* **[2. Setup a Developing Environment](chapters/02_dev_env.md)**
+* **[3. Mastering the Anchor Framework](chapters/03_anchor.md)**
+* **[4. Master Solana Frontend](chapters/04_frontend.md)**
+* **[5. In-Depth Solana Programs, SPL, CPI](chapters/05_programs_in_depth.md)**
+* **[6. Transfer Hooks](chapters/06_transfer_hooks.md)**
+* **[7. External Resources to Keep Sharpening Your Axe](chapters/07_sharpening_your_axes.md)**
 
 
 
@@ -27,24 +27,24 @@
 
 <br>
 
-#### Introduction
+#### Beginner
 
 <br>
 
-* **[1. Hello World](demos/1_hello_world)**
-* **[2. Functions, Constructors, Math, Errors](demos/2_functions)**
-* **[3. Anchor and the Interface Definition Language](demos/3_anchor)**
-* **[4. Solidity vs. Solana](demos/4_sol_vs_sol)**
-* **[5. Rust, Structs, Custom Derive Macros](demos/5_rust)**
-* **[6. Block Variables, Sysvars](demos/6_blocks)**
-* **[7. Logs, Events, Transactions](demos/7_logs_events_txs)**
-* **[8. Transaction Fees and Compute Units](demos/8_transactions)**
-* **[9. Accounts and Storage](demos/9_accounts_and_storage)**
+* **[1. Hello World](demos/01_hello_world)**
+* **[2. Functions, Constructors, Math, Errors](demos/02_functions)**
+* **[3. Anchor and the Interface Definition Language](demos/03_anchor)**
+* **[4. Solidity vs. Solana](demos/04_sol_vs_sol)**
+* **[5. Rust, Structs, Custom Derive Macros](demos/05_rust)**
+* **[6. Block Variables, Sysvars](demos/06_blocks)**
+* **[7. Logs, Events, Transactions](demos/07_logs_events_txs)**
+* **[8. Transaction Fees and Compute Units](demos/08_transactions)**
+* **[9. Accounts and Storage](demos/09_accounts_and_storage)**
 
 
 <br>
 
-#### Intermediary
+#### Advanced
 
 <br>
 
@@ -58,7 +58,7 @@
 
 <br>
 
-#### Advanced
+#### Expert
 
 <br>
 
