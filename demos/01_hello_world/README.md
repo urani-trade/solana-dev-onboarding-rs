@@ -127,7 +127,9 @@ solana program deploy ./target/deploy/hello_world.so
 
 * You can check your Solana wallet's balance to see how much it costs to deploy this simple program.
 
-
+```shell
+solana balance
+```
 
 <br>
 
