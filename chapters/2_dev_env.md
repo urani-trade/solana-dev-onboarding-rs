@@ -1,13 +1,15 @@
-# 🛹 Setup a Testing and Developing Environment [IN CONSTRUCTION]
+# 🛹 Setup a Developing Environment
 
 <br>
 
-### General Guidelines
+### tl; dr
 
 <br>
 
-* When developing on Solana, you setup a local environment with a local validator that runs locally (so that programs can be tested before being deployed to any network). In each environment, you will be using one of three networks:
-  * **Mainnet Beta**: the "production" network where all the action happens. Transactions cost real money.
+* Local developing on Solana means  you will set up a local validator so that programs can be tested before being deployed to the blockchain. 
+
+* In each environment, you will be using one of three networks:
+  * **Mainnet**: the production network where all the action happens. Transactions cost real money.
   * **Testnet**: used for stress testing recent releases. Focused on network performance, stability, and validator behavior.
   * **Devnet**: the primary network for development (tokens are not real, and you can get them from [faucets](more_resources.md)).
  
@@ -16,16 +18,20 @@
 
 ---
 
-### Solana Programs
+### Development Lifecycle
 
 <br>
 
-* Solana on-chain programs are stored in "executable" accounts on Solana. Their development lifecycles have the following steps:
-  * Setup the development environment.
-  * Write the program.
-  * Compile the program (down to [Berkley Packet Filter](https://solana.com/docs/programs/faq#berkeley-packet-filter-bpf) byte-code that will then be deployed to the blockchain).
-  * Generate the program's public address (using the Solana CLI, a new unique Keypair is generated for the new program. The public address is the Pubkey and will be used on-chain as the program's public address, aka `programId`).
-  * Deploy the program to the selected blockchain cluster by creating many transactions containing the program's byte-code. Once the entire program has been sent to the blockchain, a final transaction is sent to write all of the buffered byte-code to the program's data account. This either marks the new program as executable or completes upgrading an existing program.
+* Setup the development environment.
+
+* Write the program.
+
+* Compile the program (down to [Berkley Packet Filter](https://solana.com/docs/programs/faq#berkeley-packet-filter-bpf) byte-code that will then be deployed to the blockchain).
+
+* Generate the program's public address (a new unique keypair, on which the pubkey is the `programId`).
+* Deploy the program to the selected blockchain cluster by creating transactions containing the program's byte-code. 
+* Once the entire program is in the blockchain, a final transaction is sent to write all of the buffered byte-code to the program's data account. 
+  - This either marks the new program as executable or completes upgrading an existing program.
 
 <br>
 

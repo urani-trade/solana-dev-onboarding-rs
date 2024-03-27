@@ -11,7 +11,7 @@
 <br>
 
 * **[1. Introduction to the Solana Blockchain](chapters/1_intro.md)**
-* **[2. Setup a Testing and Developing Environment](chapters/2_envs.md)**
+* **[2. Setup a Developing Environment](chapters/2_dev_env.md)**
 * **[3. Mastering the Anchor Framework](chapters/3_anchor.md)**
 * **[4. Master Solana Frontend](chapters/4_frontend.md)**
 * **[5. In-Depth Solana Programs, SPL, CPI](chapters/5_programs_in_depth.md)**

@@ -6,8 +6,11 @@
 ### tl; dr
 
 * The Solana network can be thought of as one massive global computer. Anyone can store and execute code for a fee.
+
 * To interact with these programs, you send a transaction from a Solana client, a collection of instructions for the blockchain to execute.
+
 * The executable code to perform these actions in the network is called programs, and programs can call each other through cross-program invocation (which makes the Solana blockchain highly composable).
+
 * Like in Linux, everything is a file; in Solana, everything is an account.
 Everything else is built around these ideas
 
@@ -20,10 +23,15 @@ Everything else is built around these ideas
 <br>
 
 * A transaction is the unit of activity on the Solana blockchain. It is a signed data structure containing instructions for the network to perform a particular operation.
+
 * Transactions create, update, or delete data on-chain, but you can read data without a transaction.
+
 * On the Solana blockchain, program execution starts with transactions being submitted to the cluster.
+
 * Each transaction consists of three parts: instructions, an array of accounts to read or write from, and one or more digital signatures.
+
 * An instruction is the smallest execution logic on Solana, and it invokes programs that make calls to update the global state of the network.
+
 * Each transaction consists of one or several instructions that will be processed by the runtime orderly and atomically. If any part of the instructions fails, the entire transaction fails.
 
 <br>
@@ -53,9 +61,13 @@ Everything else is built around these ideas
 <br>
 
 * Each instruction specifies a single program and carries a general purpose byte that is passed to the program (along with the accounts).
+
 * The contents of the instruction data convey what operation the program needs to perform.
+
 * The [Solana Program Library's Token program](https://github.com/solana-labs/solana-program-library/tree/master/token) shows how instruction data can be encoded efficiently for fixed-sized types.
-* Since a transaction can contain instructions in any order, programs should be hardened to safely handle any possible instructions sequence. For example, to deinitizlize an account, the program shoudl explicitly set the account's data to zero.
+
+* Since a transaction can contain instructions in any order, programs should be hardened to safely handle any possible instructions sequence. 
+  - For example, to deinitizlize an account, the program shoudl explicitly set the account's data to zero.
 
 <br>
 
@@ -78,14 +90,20 @@ Transaction fees are calculated based on two main parts:
 <br>
 
 * Solana Programs are the executable code that interprets the instructions sent inside transactions on the blockchain.
+
 * They run on top of the Sealevel runtime (Solana's parallel and high-speed processing model).
 Programs are special types of accounts that are marked as "executable".
+
 * Programs can own accounts and change the data of the accounts they own. Unlike other blockchains, they can also be upgraded by their owner.
+
 * Programs are stateless, as the primary data stored in a program account is the compiled SBF code.
+
 * Programs can be:
   - **Native Programs**: programs built directly into the core of the Solana blockchain.
   - **Chain Programs**: written by users and deployed directly to the blockchain for anyone to interact and execute. The Solana Labs also keep a library of them, the [Solana Program Library](https://spl.solana.com/).
+
 * The instructions's `program_id` specifies which program will process the instructions. 
+
 * Programs on Solana don't store data or state between transactions: these are stored in accounts.
 
 <br>
@@ -98,13 +116,20 @@ Programs are special types of accounts that are marked as "executable".
 <br>
 
 * Accounts on Solana are storage spaces that can hold data up to 10MB. 
+
 * Accounts can hold arbitrary persistent data and hold ownership metadata for the runtime
   * The metadata also includes the lifetime info and is expressed by lamports.
+
 * Solana clients use an address (a 256-bit public key) to find an account.
+
 * Accounts can be signers if the transaction includes their addresses as a digital signature. 
+
 * Accounts can be treated as read-only by transactions. This enables parallel account processing between transactions.
+
 * An account is a program if it's marked as "executable" in its metadata. 
+
 * If a program is marked as final (non-upgradeable), the runtime makes the account's data (the program) immutable.
+
 * Accounts are referenced by an instruction representing the on-chain state and server as both the inputs and outputs of a program.
 
 <br>
@@ -114,7 +139,9 @@ Programs are special types of accounts that are marked as "executable".
 <br>
 
 * To create an account, a client generates a keypair and registers its public key.
+
 * A created account is initialized to be owned by a built-in program (the System program). It includes owner metadata (a `program_id`).
+
 * Accounts are held in validator memory by paying a "rent". Any account that drops to zero lamports is removed. 
   - Currently, all new accounts are required to be rent-exempt.
   - An account is considered rent-exempt if it holds at least 2 years' worth of rent (checked every time an account's balance is reduced).
@@ -130,9 +157,13 @@ Programs are special types of accounts that are marked as "executable".
 <br>
 
 * Cross-program invocation is how Solana's runtime allows programs to call other programs. This is achieved by one program invoking an instruction of the other.
+
 * The invoking program, `invoke()`, requires the caller to pass all the accounts required by the instruction being invoked, except for the executbale account (`program_id`).
+
 * The invoking program is halted until the invoked program finishes processing the instruction.
+
 * The runtime uses the caller program's privileges to determine the callee's privileges.
+
 * Cross-program invocations are constrained to a depth of 4.
 
 <br>
@@ -142,8 +173,11 @@ Programs are special types of accounts that are marked as "executable".
 <br>
 
 * Program derived address allows programs to issue instructions that contain signed accounts that were not signed in the original transaction.
+
 * With PDA, a program may be given the authority over an account for a while.
+
 * With PDA, programs can control specific (program) addresses so that no external user can generate valid transactions with signatures for that address.
+
 * PDA allows programs to programmatically sign for program addresses that are present in instructions invoked via CPI.
 
 <br>
@@ -153,8 +187,11 @@ Programs are special types of accounts that are marked as "executable".
 <br>
 
 * A program address does not lie on the ed25519 curve, so it has no valid private key and cannot generate a signature.
+
 * However, a program address can be used by a program to issue an instruction that includes itself as a signer.
+
 * Program addresses are deterministically derived from a collection of seeds and a `program_id` using a 256-bit pre-image resistant hash function.
+
 * Programs can deterministically derive any number of addresses by using seeds. These seeds can symbolically identify how the addresses are used. 
 
 
@@ -169,6 +206,7 @@ Programs are special types of accounts that are marked as "executable".
 <br>
 
 * A wallet is a pair of public and private keys used to verify actions on the blockchain. 
+
 * The public key is used to identify the account, and the private key is used to sign transactions.
 
 <br>
