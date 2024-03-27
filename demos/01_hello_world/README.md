@@ -9,6 +9,7 @@
 solana-test-validator
 ```
 
+<br>
 
 * Initialize a new Rust library via Cargo:
 
@@ -18,13 +19,18 @@ cd hello_world
 cargo add solana-program
 ```
 
+<br>
+
 * This creates a very basic Solana Rust program following this layout:
 
 ```shell
--- src/
-    |__ lib.rs
--- Cargo.toml
+.
+├── Cargo.toml
+└── src
+    └── lib.rs
 ```
+
+<br>
 
 * You should modify `Cargo.toml` to the following:
 
@@ -98,15 +104,18 @@ pub fn process_instruction(
 cargo build-sbf
 ```
 
+<br>
+
 * This command will create the compiled program's `.so` file inside a folder called `./target/deploy`:
 
 ```
 find . -name '*.so'
 ```
 
+<br>
+
 * Now, let's deploy it:
 
-<br>
 
 ```
 solana program deploy ./target/deploy/hello_world.so 
