@@ -2,7 +2,7 @@
 
 <br>
 
-### Our development resources aim to onboard engineers to Solana development. From geeks to geeks.
+### Our development resources, aiming to onboard engineers to Solana development. From geeks to geeks.
 
 <br>
 
@@ -13,10 +13,11 @@
 * **[1. Solana Blockchain Overview](chapters/01_intro.md)**
 * **[2. Setup a Dev Environment](chapters/02_dev_env.md)**
 * **[3. Mastering Anchor and CPI](chapters/03_anchor.md)**
-* **[4. Program Derived Addresses](chapters/04_program_derived_addresses.md)**
-* **[5. Mastering Solana Frontend](chapters/05_frontend.md)**
-* **[6. Mastering Transfer Hooks](chapters/06_transfer_hooks.md)**
-* **[7. Additional Resources](chapters/07_additional_resources.md)**
+* **[4. Program Derived Addresses](chapters/04_pda.md)**
+* **[5. Events and Communication](chapters/05_events.md)**
+* **[6. Mastering Solana Frontend](chapters/06_frontend.md)**
+* **[7. Mastering Transfer Hooks](chapters/07_transfer_hooks.md)**
+* **[8. Additional Resources](chapters/08_additional_resources.md)**
 
 
 
