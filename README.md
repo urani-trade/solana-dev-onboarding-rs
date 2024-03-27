@@ -33,7 +33,7 @@
 
 * **[Demo 1: Hello World](demos/01_hello_world)**
 * **[Demo 2. Anchor and CPI](demos/02_anchor_cpi)**
-* **[Demo 3. Program Derived Addresses](demos/03_pda)**
+* **[Demo 3. Program Derived Addresses](demos/03_anchor_pda)**
 
 
 <br>
