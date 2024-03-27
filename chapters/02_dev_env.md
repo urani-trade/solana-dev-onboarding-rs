@@ -11,7 +11,7 @@
 * In each environment, you will be using one of three networks:
   * **Mainnet**: the production network where all the action happens. Transactions cost real money.
   * **Testnet**: used for stress testing recent releases. Focused on network performance, stability, and validator behavior.
-  * **Devnet**: the primary network for development (these tokens have no financial value, and you can get them from [these faucets](https://github.com/urani-labs/solana-dev-onboarding-rs/blob/main/chapters/07_additional_resources.md#faucets).
+  * **Devnet**: the primary network for development (these tokens have no financial value).
  
 <br>
 
