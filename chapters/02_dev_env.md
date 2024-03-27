@@ -190,7 +190,6 @@ solana config set --url https://api.mainnet-beta.solana.com
 <br>
 
 
-
 ---
 
 ### Demo 1: Hello World
@@ -203,7 +202,7 @@ solana config set --url https://api.mainnet-beta.solana.com
 
 ----
 
-### Useful Commands
+### Useful `solana-cli` Commands
 
 <br>
 
@@ -244,6 +243,23 @@ solana program deploy <PROGRAM_FILEPATH>
 ```
 
 <br>
+
+
+---
+
+### Useful Solana Dev Libraries
+
+<br>
+
+* [@solana/web3.js](https://solana-labs.github.io/solana-web3.js/): a library with many basic Solana tools to interact, send transactions, and read from the blockchain.
+
+* [@solana/spl-token](https://www.npmjs.com/package/@solana/spl-token): a library that contains many of the js/ts bindings needed to interact with SPL tokens. You can use this library to mint new tokens, transfer tokens, etc.
+
+* [wallet-adapter](https://github.com/anza-xyz/wallet-adapter): a collection of libraries to help bootstrap wallet collections within Solana (such as Phantom, Solflare, and more).
+
+
+<br>
+
 
 ---
 
