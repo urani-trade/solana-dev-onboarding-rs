@@ -20,7 +20,7 @@ Everything else is built around these ideas
 
 ---
 
-### Transactions
+### ➡️ Transactions
 
 <br>
 
@@ -89,7 +89,7 @@ Transaction fees are calculated based on two main parts:
 
 ---
 
-### Accounts
+### ➡️ Accounts
 
 
 <br>
@@ -137,7 +137,7 @@ Transaction fees are calculated based on two main parts:
 
 ---
 
-### Programs
+### ➡️ Programs
 
 <br>
 
@@ -239,7 +239,7 @@ Programs are special types of accounts that are marked as "executable".
 
 ---
 
-### Wallets
+### ➡️ Wallets
 
 <br>
 
@@ -254,7 +254,7 @@ Programs are special types of accounts that are marked as "executable".
 
 ---
 
-### Development Overview
+### ➡️ Development Overview
 
 <br>
 
@@ -267,7 +267,7 @@ Programs are special types of accounts that are marked as "executable".
 
 ----
 
-### References
+### ➡️ References
 
 <br>
 
