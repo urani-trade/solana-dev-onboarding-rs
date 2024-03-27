@@ -2,7 +2,7 @@
 
 <br>
 
-### Our development resources, aiming to onboarding Uranians to Solana development. From geeks to geeks.
+### Our development resources, aiming to onboarding engineers to Solana development. From geeks to geeks.
 
 <br>
 
@@ -13,10 +13,10 @@
 * **[1. Introduction to the Solana Blockchain](chapters/01_intro.md)**
 * **[2. Setup a Developing Environment](chapters/02_dev_env.md)**
 * **[3. Mastering the Anchor Framework](chapters/03_anchor.md)**
-* **[4. Master Solana Frontend](chapters/04_frontend.md)**
-* **[5. In-Depth Solana Programs, SPL, CPI](chapters/05_programs_in_depth.md)**
-* **[6. Transfer Hooks](chapters/06_transfer_hooks.md)**
-* **[7. External Resources to Keep Sharpening Your Axe](chapters/07_sharpening_your_axes.md)**
+* **[4. Mastering Solana Frontend](chapters/04_frontend.md)**
+* **[5. In-Depth Solana Programs, PDA, CPI](chapters/05_programs_in_depth.md)**
+* **[6. Mastering Transfer Hooks](chapters/06_transfer_hooks.md)**
+* **[7. Additional Resources](chapters/07_additional_resources.md)**
 
 
 

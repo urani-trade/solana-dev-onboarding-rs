@@ -1,4 +1,4 @@
-# 🛹 External Resources to Keep Sharpening Your Axe
+# 🛹 Additional Reso
 
 <br>
 
@@ -40,16 +40,19 @@
 
 #### Low-level Theory
 
+<br>
+
 * [The LLVM Compiler Infrastructure](https://llvm.org/)
 * [The Executable and Linkable Format (ELF)](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format)
 
 <br>
 
 
-#### SPL
+#### Sealevel
 
-* [spl.solana.com](https://spl.solana.com/)
-* [The Sealevel parallel runtime](https://medium.com/solana-labs/sealevel-parallel-processing-thousands-of-smart-contracts-d814b378192)
+<br>
+
+* [Sealevel Parallel Runtime, by Solana Labs](https://medium.com/solana-labs/sealevel-parallel-processing-thousands-of-smart-contracts-d814b378192)
 
 <br>
 
@@ -66,12 +69,11 @@
 
 <br>
 
-* [Faucet Solana](https://faucet.solana.com/)
+* [Solana Labs](https://faucet.solana.com/)
 * [Sol Faucet](https://solfaucet.com/)
-* [QuickNode]https://faucet.quicknode.com/solana/devnet)
-* [Solana Faucet QuickNode](https://faucet.quicknode.com/solana/devnet)
+* [QuickNode](https://faucet.quicknode.com/solana/devnet)
 * [Dev Faucet](https://dev-faucet.solanahub.app/)
-* From the [Playground](https://solana.com/developers/guides/getstarted/hello-world-in-your-browser) with `solana airdrop TOKENS`.
+* `solana airdrop TOKENS`
 
 <br>
 
@@ -84,7 +86,10 @@
 
 <br>
 
-* Specify RPC provider's URL with:
+* Specify the RPC provider's URL with:
+
+<br>
+
 
 ```
 solana config set --url <RPC url>

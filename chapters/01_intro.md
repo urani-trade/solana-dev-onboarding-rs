@@ -5,6 +5,8 @@
 
 ### tl; dr
 
+<br>
+
 * The Solana network can be thought of as one massive global computer. Anyone can store and execute code for a fee.
 
 * To interact with these programs, you send a transaction from a Solana client, a collection of instructions for the blockchain to execute.
