@@ -169,15 +169,19 @@ pub enum MyError {
 
 ----
 
-### Hello World
+### Initialzing an Anchor Project
 
 <br>
 
 * To initialize a new project (anchor workspace), run:
 
+<br>
+
 ```
 anchor init <workspace-name>
 ```
+
+<br>
 
 * These creates the following files:
    * `.anchor`: includes the most recent program logs and a local ledger for testing.
@@ -191,44 +195,22 @@ anchor init <workspace-name>
       * a provider which can be used in your tests (`[provider]`)
       * scripts that anchor executes for you (`[scripts]`).
 
-* An anchor program consists of three parts:
-  * the `program` module: where you write your business logic
-  * the accounts structs which are market with `#[derive(Accounts)]`: where you validate accounts
-  * the `declare_id` macro: creates an `ID` field that stores the address of your program. 
+<br>
+
+---
+
+### Demo
 
 <br>
 
-```rust
-use anchor_lang::prelude::*;
-
-declare_id!("<some string>");
-
-#[program]
-mod hello_anchor {
-    use super::*;
-    
-    pub fn initialize(_ctx: Context<Initialize>) -> Result<()> {
-    
-        Ok(())
-    }
-}
-
-#[derive(Accounts)]
-pub struct Initialize {}
-```
-
-<br>
-
-* The way an endpoint is connected to its corresponding Accounts struct is the `ctx` argument in the endpoint.
-
-* The argument is of type `Context` which is generic over an Account struct, i.e., this is where you put the name of your account validation struct (e.g. `Initalize`).
+* Learn how Cross-program-instructions work on Anchor through our [demo 2](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/02_anchor_cpi).
 
 
 <br>
 
 ---
 
-### Resources
+### References
 
 <br>
 
