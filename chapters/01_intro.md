@@ -205,9 +205,12 @@ Programs are special types of accounts that are marked as "executable".
 
 <br>
 
+
 * A wallet is a pair of public and private keys used to verify actions on the blockchain. 
 
 * The public key is used to identify the account, and the private key is used to sign transactions.
+
+* You can choose your wallet from [this list](https://solana.com/ecosystem/explore?categories=wallet).
 
 <br>
 
@@ -234,4 +237,6 @@ Programs are special types of accounts that are marked as "executable".
 * [Solana Programs](https://solana.com/docs/core/programs#native-programs)
 * [Accounts and Storing State](https://solana.com/docs/core/accounts)
 * [Cross-Program Invocation](https://solana.com/docs/core/cpi)
+* [Wallets Explained](https://solana.com/developers/guides/intro/wallets-explained)
 * [Terminology](https://solana.com/docs/terminology#instruction) and [FAQ](https://solana.com/docs/programs/faq)
+* [Solana Beta StackExchange](https://solana.stackexchange.com/)
