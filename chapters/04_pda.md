@@ -10,7 +10,10 @@
 
 * PDAs are addresses with special properties. They are not public keys (so they don't have an associated public key).
 
-* PDAs provide a mechanism to build hashmap-like structures on-chain, allowing programs to sign instructions.
+* * PDAs provide a mechanism to build hashmap-like structures on-chain, allowing programs to sign instructions.
+    * `findProgramAddress` will deterministically derive a PDA from a programId and seeds (collection of bytes)
+    * A bump (one byte) is used to push a potential PDA off the ed25519 elliptic curve.
+    * Programs can sign for their PDAs by providing the seeds and bump to invoke_signed.
 
 * PDAs simplify the programming model and make programs more secure. 
 
@@ -19,7 +22,7 @@
 
 ----
 
-### PDA Creation
+### Generating PDA
 
 <br>
 
@@ -49,6 +52,18 @@ fn find_pda(seeds, program_id) {
 <br>
 
 * The first bump that results in a PDA is called a "canonical bump," and they are the recommended one for usage.
+
+<br>
+
+----
+
+### Interacting with PDAS
+
+<br>
+
+* When a PDA is generated, `findProgramAddress` returns both the address and the bump used to kick the address off the elliptic curve.
+
+* With a bump, a program can sign any instruction that requires its PDA, by passing the instruction, the list of accounts, and the seeds and bumps used to derive the PDA to `invoke_signed`.
 
 <br>
 
@@ -99,7 +114,7 @@ pub struct UserStats {
 <br>
 
 
-* Learn how PDA and CPI works on Anchor through [demo 4](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/04_pda_and_cpi).
+* Learn how PDA and CPI work on Anchor through [demo 4](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/04_pda_and_cpi).
 
 <br>
 
@@ -111,4 +126,6 @@ pub struct UserStats {
 <br>
 
 * [Anchor Docs on PDA](https://www.anchor-lang.com/docs/pdas)
+* [Solana's Cookbook on PDA](https://solanacookbook.com/core-concepts/pdas.html#facts)
+* [Understanding PDAs, by brianfriel](https://www.brianfriel.xyz/understanding-program-derived-addresses/)
 
