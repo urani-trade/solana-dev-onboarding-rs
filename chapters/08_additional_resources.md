@@ -12,10 +12,12 @@
 <br>
 
 
+* [Solana Bytes, by Solana Labs](https://www.youtube.com/watch?v=90BTugVYGqQ&list=PLilwLeBwGuK51Ji870apdb88dnBr1Xqhm&index=3)
 * [Solana Bootcamp Videos](https://www.youtube.com/watch?v=0P8JeL3TURU&list=PLilwLeBwGuK6NsYMPP_BlVkeQgff0NwvU)
 * [Build on Solana by risein](https://www.risein.com/courses/build-on-solana)
 * [freeCodeCamp: Solana Curriculum](https://github.com/freeCodeCamp/solana-curriculum)
 * [Solana Frontend Development Course](https://www.youtube.com/playlist?list=PLMZny7wGLM6w4t7pMGATxFTjjMduTsEiF)
+  
 
 
 <br>
