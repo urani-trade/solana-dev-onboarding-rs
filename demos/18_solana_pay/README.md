@@ -1,1 +1,0 @@
-# 🛹 Solana Pay [IN CONSTRUCTION]

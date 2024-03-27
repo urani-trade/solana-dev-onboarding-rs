@@ -1,1 +1,0 @@
-# 🛹 Authorizing Wallets to Accounts [IN CONSTRUCTION]

@@ -1,1 +1,0 @@
-# 🛹 Solidity vs. Solana [IN CONSTRUCTION]

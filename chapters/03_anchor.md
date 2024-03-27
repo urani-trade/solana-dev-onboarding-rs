@@ -134,7 +134,9 @@ pub account: AccountType
 
 <br>
 
-#### Errors
+----
+
+### Errors
 
 <br>
 
@@ -166,6 +168,20 @@ pub enum MyError {
 
 <br>
 
+---
+
+### Privilege Extension
+
+<br>
+
+* CPIs extend the privileges of the caller to the callee. 
+
+* Privilege extension can be dangerous. If a CPI is made by a malicious program, the program has the same privileges as the caller.
+
+* Anchor protects your code from CPIs to malicious programs by the `Program<'info, T>` type check being given to the account is the expected program `T`.
+
+
+<br>
 
 ----
 
@@ -199,21 +215,11 @@ anchor init <workspace-name>
 
 ---
 
-### Demo
+### Demos
 
 <br>
-
-#### CPI
 
 * Learn how cross-program instructions work on Anchor through [demo 2](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/02_anchor_cpi).
-
-
-<br>
-
-#### PDA
-
-* Learn how program-derived-addresses work on Anchor through [demo 3](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/03_anchor_pda).
-
 
 <br>
 

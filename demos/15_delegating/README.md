@@ -1,1 +1,0 @@
-# 🛹 Delegating Accounts [IN CONSTRUCTION]

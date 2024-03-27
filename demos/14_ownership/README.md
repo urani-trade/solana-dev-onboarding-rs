@@ -1,1 +1,0 @@
-# 🛹 Owner and Authority [IN CONSTRUCTION]
