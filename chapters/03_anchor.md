@@ -205,7 +205,7 @@ anchor init <workspace-name>
 
 #### CPI
 
-* Learn how cross-program-instructions work on Anchor through [demo 2](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/02_anchor_cpi).
+* Learn how cross-program instructions work on Anchor through [demo 2](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/02_anchor_cpi).
 
 
 <br>

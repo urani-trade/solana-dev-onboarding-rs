@@ -274,3 +274,12 @@ impl<'info> PullStrings<'info> {
 }
 ```
 
+<br>
+
+---
+
+### References
+
+<br>
+
+* [Cross-program instructions, by Anchor](https://www.anchor-lang.com/docs/cross-program-invocations)
