@@ -11,7 +11,7 @@
 * In each environment, you will be using one of three networks:
   * **Mainnet**: the production network where all the action happens. Transactions cost real money.
   * **Testnet**: used for stress testing recent releases. Focused on network performance, stability, and validator behavior.
-  * **Devnet**: the primary network for development (tokens are not real, and you can get them from [faucets](more_resources.md)).
+  * **Devnet**: the primary network for development (these tokens have no financial value, and you can get them from [these faucets](urani-labs/solana-dev-onboarding-rs/chapters/07_sharpening_your_axe.md)).
  
 <br>
 
@@ -65,7 +65,7 @@
   - building Solana programs
   - deploying your programs to the blockchain
  
-* Install the Anchor framework using [these instructions](https://solana.com/developers/guides/getstarted/setup-local-development#4-install-anchor-for-solana).
+* Install the Anchor framework using [these instructions](urani-labs/solana-dev-onboarding-rs/chapters/03_anchor.md).
 
 <br>
 
