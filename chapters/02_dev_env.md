@@ -22,20 +22,20 @@
 
 <br>
 
-* Setup the development environment with a local blockchain cluster.
+1. Setup the development environment with a local blockchain cluster.
 
-* Create a filesystem wallet and airdrop Solana tokens to it.
+2. Create a filesystem wallet and airdrop Solana tokens to it.
 
-* Write the program.
+3. Write programs.
 
-* Compile the program (down to [Berkley Packet Filter](https://solana.com/docs/programs/faq#berkeley-packet-filter-bpf) byte-code that will then be deployed to the blockchain).
+4. Compile the program (down to [Berkley Packet Filter](https://solana.com/docs/programs/faq#berkeley-packet-filter-bpf) byte-code that will then be deployed to the blockchain).
 
-* Generate the program's public address (a new unique keypair, on which the pubkey is the `programId`).
+5. Generate the program's public address (a new unique keypair, on which the pubkey is the `programId`).
 
-* Deploy the program to the selected blockchain cluster by creating transactions containing the program's byte-code. 
+6. Deploy the program to the selected blockchain cluster by creating transactions containing the program's byte-code. 
 
-* Once the entire program is in the blockchain, a final transaction is sent to write all of the buffered byte-code to the program's data account. 
-  - This either marks the new program as executable or completes upgrading an existing program.
+7. Once the entire program is in the blockchain, a final transaction is sent to write all of the buffered byte-code to the program's data account. 
+    - This either marks the new program as executable or completes upgrading an existing program.
 
 <br>
 
@@ -140,7 +140,11 @@ solana balance
 
 * Devnet endpoint: `https://api.devnet.solana.com`.
 
-* From the CLI, one can connect with `solana config set --url https://api.devnet.solana.com`.
+* From the CLI, one can connect with:
+
+```shell
+solana config set --url https://api.devnet.solana.com
+```
 
 <br>
 
@@ -149,10 +153,46 @@ solana balance
 
 <br>
 
+* Testnet serves as Solana's core contributors stress test.
+
+
+* Gossip endpoint at `entrypoint.testnet.solana.com:8001`.
+
+* Devnet endpoint: `https://api.testnet.solana.com`.
+
+* From the CLI, one can connect with:
+
+```shell
+solana config set --url https://api.testnet.solana.com
+```
 
 <br>
 
-#### Demo 1: Hello World
+
+#### Mainnet
+
+<br>
+
+* Solana's permissionless, persistent cluster.
+
+
+* Gossip endpoint at `entrypoint.mainnet-beta.solana.com:8001`.
+
+* Devnet endpoint: `https://api.mainnet-beta.solana.com`.
+
+* From the CLI, one can connect with:
+
+```shell
+solana config set --url https://api.mainnet-beta.solana.com
+```
+
+<br>
+
+
+
+---
+
+### Demo 1: Hello World
 
 <br>
 

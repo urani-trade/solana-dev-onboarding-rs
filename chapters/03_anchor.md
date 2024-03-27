@@ -1,4 +1,4 @@
-# 🛹 Mastering the Anchor Framework [IN CONSTRUCTION]
+# 🛹 Mastering the Anchor Framework 
 
 <br>
 

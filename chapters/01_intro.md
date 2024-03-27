@@ -229,9 +229,9 @@ Programs are special types of accounts that are marked as "executable".
 ### References
 
 <br>
-)
+
 * [Solana Transactions](https://solana.com/docs/core/transactions)
 * [Solana Programs](https://solana.com/docs/core/programs#native-programs)
 * [Accounts and Storing State](https://solana.com/docs/core/accounts)
 * [Cross-Program Invocation](https://solana.com/docs/core/cpi)
-* [Terminology](https://solana.com/docs/terminology#instruction)
+* [Terminology](https://solana.com/docs/terminology#instruction) and [FAQ](https://solana.com/docs/programs/faq)
