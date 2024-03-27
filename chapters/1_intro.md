@@ -73,7 +73,7 @@ Transaction fees are calculated based on two main parts:
 
 ---
 
-### Programs
+## Programs
 
 <br>
 
@@ -86,25 +86,39 @@ Programs are special types of accounts that are marked as "executable".
   - **Native Programs**: programs built directly into the core of the Solana blockchain.
   - **Chain Programs**: written by users and deployed directly to the blockchain for anyone to interact and execute. The Solana Labs also keep a library of them, the [Solana Program Library](https://spl.solana.com/).
 * The instructions's program `id` specifies which program will process the instructions. 
-* Programs on Solana don't store data/state: these are stored in accounts.
+* Programs on Solana don't store data or state between transactions: these are stored in accounts.
 
 <br>
 
 ---
 
-### Accounts
+## Accounts
 
 
 <br>
 
-* Accounts referenced by an instruction represent on-chain state and server as both the inputs and outputs of a pogram.
-* Accounts on Solana are storage spaces that can hold data up to 10MB. They can store data, programs, and native system programs.
-  * All programs in Solana are stateless (they don't store any state data, only code).
-  * If an account stores program code, it's market "executable" and can process instructions.
-  * You can think of an account as a file: users can have many different files, and developers can write programs that can talk to these files.
-  * The Solana client uses an address to look up an account: the address is a 256-bit public key.
-  * The account also includes metadata that tells the runtime who is allowed to access the data and how.
-  * When an account is created, it needs to be assigned some space, and tokens are required to rent this space. An account will be removed if it doesn't have enough tokens to cover the rent. However, if the account holds enough tokens to cover the rent for two years, it's considered "rent-exempt" and won't be deleted.
+* Accounts on Solana are storage spaces that can hold data up to 10MB. 
+* Accounts can hold arbitrary persistent data and hold ownership metadata for the runtime
+  * The metadata also includes the lifetime info and is expressed by lamports.
+* Solana clients use an address (a 256-bit public key) to find an account.
+* Accounts can be signers if the transaction includes their addresses as a digital signature. 
+* Accounts can be treated as read-only by transactions. This enables parallel account processing between transactions.
+* An account is a program if it's marked as "executable" in its metadata. 
+* If a program is marked as final (non-upgradeable), the runtime makes the account's data (the program) immutable.
+* Accounts are referenced by an instruction representing the on-chain state and server as both the inputs and outputs of a program.
+
+<br>
+
+#### Creating an Account
+
+<br>
+
+* To create an account, a client generates a keypair and registers its public key.
+* A created account is initialized to be owned by a built-in program (the System program). It includes owner metadata (a program `id`).
+* Accounts are held in validator memory by paying a "rent". Any account that drops to zero lamports is removed. 
+  - Currently, all new accounts are required to be rent-exempt.
+  - An account is considered rent-exempt if it holds at least 2 years' worth of rent (checked every time an account's balance is reduced).
+  - Rent can be estimated via the command `solana rent`.
 
 
 <br>
@@ -151,4 +165,5 @@ Programs are special types of accounts that are marked as "executable".
 * [Solana Foundation dev documentation](https://solana.com/docs#start-learning)
 * [Solana Transactions](https://solana.com/docs/core/transactions)
 * [Solana Programs](https://solana.com/docs/core/programs#native-programs)
+* [Accounts and Storing State](https://solana.com/docs/core/accounts)
 * [Terminology](https://solana.com/docs/terminology#instruction)
