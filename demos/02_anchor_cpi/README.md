@@ -168,7 +168,7 @@ anchor build
 
 <br>
 
-* Test the program with this file inside `puppet-master/test/puppet-master.ts`:
+* Test the program with the following file inside `puppet/test/puppet.ts`:
 
 <br>
 
@@ -219,12 +219,12 @@ describe("puppet", () => {
 
 <br>
 
-* Running:
+* Copy `puppet-master/target/idl/puppet_master.json` to `puppet/target/idl` and run:
 
 <br>
 
 ```shell
-cargo test
+anchor test
 ```
 
 <br>
