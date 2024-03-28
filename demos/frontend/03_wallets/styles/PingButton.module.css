@@ -1,0 +1,14 @@
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: middle;
+    align-items: center;
+}
+
+.button {
+    margin: 10px 0 10px 0;
+    padding: 15px;
+    font-size: 16px;
+    border: 0;
+    font-family: "Roboto", sans-serif;
+  }
