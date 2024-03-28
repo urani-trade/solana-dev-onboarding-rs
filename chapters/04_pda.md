@@ -109,12 +109,11 @@ pub struct UserStats {
 
 <br>
 
-* Learn how PDA works on Anchor through [demo 3](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/03_anchor_pda).
+* Learn how PDA works on Anchor through [backend's demo 3](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/03_anchor_pda).
 
-<br>
+* Learn how PDA and CPI work on Anchor through [backend's demo 4](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/04_pda_and_cpi).
 
-
-* Learn how PDA and CPI work on Anchor through [demo 4](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/04_pda_and_cpi).
+* Build a frontend dApp that leverages PDA through [frontend's demo 5](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/05_serialize_custom_data).
 
 <br>
 

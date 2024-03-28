@@ -13,14 +13,10 @@
 Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
 
 - **Massively cheaper**, as transaction fees are a small fraction of a penny.
-
 - **Massively faster**, as most transactions are completed in a couple of seconds.
-
 - **Highly decentralized**, having one of the highest Nakamoto coefficients (decentralization score) of any proof-of-stake network.
-
 - **Fun AF**, with an uncomparable UI/UX and developer experience.
 
-<br>
 
 #### Shall we begin?
 
@@ -70,5 +66,6 @@ Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
 * **[Demo 2: Writing Non-Native Programs](demos/frontend/02_non_native_programs)**
 * **[Demo 3: Interacting with Wallets](demos/frontend/03_wallets_ping)**
 * **[Demo 4: Sending Transactions with Wallets](demos/frontend/04_wallets_tx)**
+* **[Demo 5: Serializing Custom Data with PDA](demos/frontend/05_serialize_custom_data)**
 
 
