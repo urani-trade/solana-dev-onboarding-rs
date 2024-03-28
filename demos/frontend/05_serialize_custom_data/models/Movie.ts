@@ -38,7 +38,7 @@ export class Movie {
         return buffer.slice(0, this.borshInstructionSchema.getSpan(buffer))
     }
 
-    static deserialize(buffer?: Buffer): Movie | null {
+    static deserialize(buffer?: Buffer): Movie|null {
         if (!buffer) {
             return null
         }
@@ -46,9 +46,8 @@ export class Movie {
         try {
             const { title, rating, description } = this.borshAccountSchema.decode(buffer)
             return new Movie(title, rating, description)
-        } catch (e) {
+        } catch(e) {
             console.log('Deserialization error:', e)
-            console.log(buffer)
             return null
         }
     }

@@ -1,7 +1,7 @@
 
+import { Center, Box, Heading } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Center, Box, Heading } from '@chakra-ui/react'
 import { AppBar } from '../components/AppBar'
 import { MovieList } from '../components/MovieList'
 import { Form } from '../components/Form'
@@ -11,17 +11,17 @@ const Home: NextPage = () => {
   return (
     <div className={styles.App}>
       <Head>
-        <title>Demo 5: Serizalization with PDA</title>
+        <title>Movie Reviews</title>
       </Head>
       <AppBar />
       <Center>
         <Box>
           <Heading as="h1" size="l" color="white" ml={4} mt={8}>
-            Add a movie review
+            Add a review
           </Heading>
           <Form />
           <Heading as="h1" size="l" color="white" ml={4} mt={8}>
-            Existing reviews
+            Existing Reviews
           </Heading>
           <MovieList />
         </Box>
