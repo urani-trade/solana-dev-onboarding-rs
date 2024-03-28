@@ -27,9 +27,11 @@
 <br>
 
 * [Cooking with Solana](https://solanacookbook.com/)
+* [Solandy.sol's tutorials](https://www.youtube.com/solandy)
 * [Solana Development Course](https://www.soldev.app/course)
 * [Rust/Solana Advance Course](https://careerbooster.io/courses/)
 * [60 Days of Solana, by RareSkills](https://www.rareskills.io/solana-tutorial)
+
 
 
 <br>
