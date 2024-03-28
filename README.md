@@ -66,7 +66,7 @@ Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
 * **[Demo 2: Writing Non-Native Programs](demos/frontend/02_non_native_programs)**
 * **[Demo 3: Interacting with Wallets](demos/frontend/03_wallets_ping)**
 * **[Demo 4: Sending Transactions with Wallets](demos/frontend/04_wallets_tx)**
-* **[Demo 5: Serializing Custom Data with PDA](demos/frontend/05_serialize_custom_data)**
+* **[Demo 5: Serializing Custom Data with PDA I](demos/frontend/05_serialize_custom_data)**
 * **[Demo 6: Serializing Custom Data with PDA II](demos/frontend/06_serialize_custom_data_II)**
-
+* **[Demo 7: Serializing Custom Data with PDA III](demos/frontend/07_serialize_custom_data_III)**
 

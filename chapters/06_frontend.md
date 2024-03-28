@@ -168,6 +168,8 @@ const accountKeys = accountsWithoutData.map(account => account.pubkey)
 
 <br>
 
-* [Demo 5: Serializing Custom Data with PDA](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/05_serialize_custom_data)
+* [Demo 5: Serializing Custom Data with PDA I](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/05_serialize_custom_data)
 
 * [Demo 6: Serializing Custom Data with PDA II](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/06_serialize_custom_data_II)
+
+* [Demo 7: Serializing Custom Data with PDA III](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/07_serialize_custom_data_III)
