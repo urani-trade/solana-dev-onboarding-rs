@@ -77,7 +77,7 @@
 * You can run a full blockchain cluster on your machine with:
 
 
-```shell
+```
 solana-test-validator
 solana config set --url localhost
 ```
@@ -93,7 +93,7 @@ solana config set --url localhost
 
 * To create a simple file system wallet (at `~/.config/solana/id.json`) to use during local developments, type:
 
-```shell
+```
 solana-keygen new
 ```
 
@@ -101,13 +101,13 @@ solana-keygen new
 
 * You can set your new wallet as the default:
 
-```shell
+```
 solana config get -k ~/.config/solana/id.json
 ```
 
 * Aidrop testing Solana tokens:
 
-```shell
+```
 solana airdrop 10
 solana balance
 ```
@@ -143,7 +143,7 @@ solana balance
 
 * From the CLI, one can connect with:
 
-```shell
+```
 solana config set --url https://api.devnet.solana.com
 ```
 
@@ -163,7 +163,7 @@ solana config set --url https://api.devnet.solana.com
 
 * From the CLI, one can connect with:
 
-```shell
+```
 solana config set --url https://api.testnet.solana.com
 ```
 
@@ -183,7 +183,7 @@ solana config set --url https://api.testnet.solana.com
 
 * From the CLI, one can connect with:
 
-```shell
+```
 solana config set --url https://api.mainnet-beta.solana.com
 ```
 
@@ -239,7 +239,7 @@ solana program deploy <PROGRAM_FILEPATH>
 * If a program has been deployed, and redeployment goes beyond the `max_len` of the account, it's possible to extend the program to fit the larger redeployment:
 
 ```
-> solana program extend <PROGRAM_ID> <ADDITIONAL_BYTES>
+solana program extend <PROGRAM_ID> <ADDITIONAL_BYTES>
 ```
 
 <br>
