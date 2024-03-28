@@ -6,6 +6,26 @@
 
 <br>
 
+## 🛹 Why Solana?
+
+<br>
+
+Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
+
+- **Massively cheaper**, as transaction fees are a small fraction of a penny.
+
+- **Massively faster**, as most transactions are completed in a couple of seconds.
+
+- **Highly decentralized**, having one of the highest Nakamoto coefficients (decentralization score) of any proof-of-stake network.
+
+- **Fun AF**, with an uncomparable UI/UX and developer experience.
+
+<br>
+
+#### Shall we begin?
+
+<br>
+
 ## 🛹 Embrance the Theory
 
 <br>
@@ -17,7 +37,9 @@
 * **[5. Events and Communication](chapters/05_events.md)**
 * **[6. Mastering Solana Frontend](chapters/06_frontend.md)**
 * **[7. Mastering Transfer Hooks](chapters/07_transfer_hooks.md)**
-* **[8. Additional Resources](chapters/08_additional_resources.md)**
+* **[8. Mastering Security on Solana](chapters/08_security.md)**
+* **[9. Mastering Mobile Development](chapters/09_mobile.md)**
+* **[10. Additional Resources](chapters/10_additional_resources.md)**
 
 
 
@@ -28,23 +50,24 @@
 
 <br>
 
-#### Beginner
+#### Backend (Rust)
 
 <br>
 
-* **[Demo 1: Hello World](demos/01_hello_world)**
-* **[Demo 2. Anchor and CPI](demos/02_anchor_cpi)**
-* **[Demo 3. Program Derived Addresses](demos/03_anchor_pda)**
-* **[Demo 4: PDA and CPI on Anchor](demos/04_pda_and_cpi)**
+* **[Demo 1: Hello World](demos/backend/01_hello_world)**
+* **[Demo 2. Anchor and CPI](demos/backend/02_anchor_cpi)**
+* **[Demo 3. Program Derived Addresses](demos/backend/03_anchor_pda)**
+* **[Demo 4: PDA and CPI on Anchor](demos/backend/04_pda_and_cpi)**
 
 
 <br>
 
-#### Advanced
+#### Frontend (JavaScript/TypeScript)
 
 <br>
 
-
+* **[Demo 1: Connecting to the Blockchain](demos/frontend/01_connecting_to_the_blockchain)**
+* **[Demo 2: Writing Non-Native Programs](demos/frontend/02_non_native_programs)**
 
 
 

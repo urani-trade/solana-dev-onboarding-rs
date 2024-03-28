@@ -13,8 +13,11 @@
 
 * The executable code to perform these actions in the network is called programs, and programs can call each other through cross-program invocation (which makes the Solana blockchain highly composable).
 
-* Like in Linux, everything is a file; in Solana, everything is an account.
-Everything else is built around these ideas
+* Like in Linux, everything is a file; in Solana, everything is an account. Addresses in the network are represented by the public keys from asymmetric cryptography (on an ed25519 curve).
+
+* SOL is Solana's native token, used to pay transaction fees, pay rent for accounts, and more. Each SOL is made from 1 billion Lamports.
+
+* Everything else is built around these ideas.
 
 <br>
 
