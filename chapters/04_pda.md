@@ -103,6 +103,48 @@ pub struct UserStats {
 
 <br>
 
+----
+
+### Examples of PDAs
+
+<br>
+
+* A program with global state:
+
+```javascript
+const [pda, bump] = await findProgramAddress(Buffer.from("GLOBAL_STATE"), programId)
+```
+
+<br>
+
+* A program with user-specific data:
+
+```javascript
+const [pda, bump] = await web3.PublicKey.findProgramAddress(
+  [
+    publicKey.toBuffer()
+  ],
+  programId
+)
+```
+
+<br>
+
+* A program with multiple data items per user:
+
+```javascript
+const [pda, bump] = await web3.PublicKey.findProgramAddress(
+  [
+    publicKey.toBuffer(), 
+    Buffer.from("Shopping list")
+  ],
+  programId,
+);
+```
+
+
+<br>
+
 ---
 
 ### Demos

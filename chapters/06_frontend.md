@@ -67,7 +67,11 @@
 
 ---
 
-## 🛹 Serializing Data
+## 🛹 Serializing Data and PDA
+
+<br>
+
+### Instruction Serialization
 
 <br>
 
@@ -84,6 +88,12 @@
     - an array listing every account that will be read from or written to during execution
     - a byte buffer of instruction data
 
+<br>
+
+---
+
+### Libraries
+
 * [@solana/web3.js](https://solana-labs.github.io/solana-web3.js/) simplifies this process, so developers can focus on adding instructions and signatures. 
     - The library builds the array of accounts based on that information and handles the logic for including a recent blockhash.
 
@@ -91,13 +101,32 @@
 * To facilitate this process of serialization, we can use [Binary Object Representation Serializer for Hashin (Borsh)](https://borsh.io/) and the library [@coral-xyz/borsh](https://github.com/coral-xyz).
     - Borsh can be used in security-critical projects as it prioritizes consistency, safety, speed; and comes with a strict specification.
 
+<br>
+
+---
+
+### PDA
+
+<br>
+
+* Programs store data in PDAs (Program Derived Address), which can be thought as a key value store, where the address is the key, and the data inside the account is the value.
+    - Like records in a database, with the address being the primary key used to look up the values inside.
+
+* PDAs do not have a corresponding secret key. 
+    - To store and locate data, we derive a PDA using the `findProgramAddress(seeds, programid)` method.
+
+* The accounts belonging to a program can be retrieved with `getProgramAccounts(programId)`.
+    - Account data needs to be deserialized using the same layout used to store it in the first place.
+    - Accounts created by a program can be fetched with `connection.getProgramAccounts(programId)`.
+
+
 
 <br>
 
 
 ---
 
-### Frontend demos
+### Demos
 
 <br>
 
