@@ -196,7 +196,7 @@ solana config set --url https://api.mainnet-beta.solana.com
 
 <br>
 
-* Test your setup by running [this hello world program](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/01_hello_world).
+* Test your setup by running [this hello world program](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/01_hello_world).
 
 <br>
 
