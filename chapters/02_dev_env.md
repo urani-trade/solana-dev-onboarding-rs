@@ -192,11 +192,24 @@ solana config set --url https://api.mainnet-beta.solana.com
 
 ---
 
-### Demo 1: Hello World
+### Demos
 
 <br>
 
-* Test your setup by running [this hello world program](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/01_hello_world).
+#### Backend Demo 1: Hello World
+
+<br>
+
+* Test your setup by running [this demo](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/01_hello_world).
+
+<br>
+
+
+#### Frontend Demo 1: Interacting with the Blockchain
+
+<br>
+
+* Test your learnings by running [this demo](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/01_connecting_to_the_blockchain).
 
 <br>
 
