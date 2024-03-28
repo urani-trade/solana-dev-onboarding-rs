@@ -123,10 +123,48 @@
 
 <br>
 
+---
+
+## 🛹 RPC Pagination 
+
+<br>
+
+* RPC calls can be used to paginate, order and filter deserialized account data, through some configuration options for the `getProgramAccounts`:
+    1. You can fetch a large number of accounts without their data by filtering them to return just an array of public keys.
+    2. Once you have a filtered list of public keys, you can order them and fetch the account data they belong to.
+
+* `dataSlice` lets you provide two things:
+    - `offset`,  the offset from the beginning of the data buffer to start the slice
+    - `length`, the number of bytes to return, starting from the provided offset
+
+<br>
+
+```javascript
+const accountsWithoutData = await connection.getProgramAccounts(
+  programId,
+  {
+    dataSlice: { offset: 0, length: 0 }
+  }
+)
+
+const accountKeys = accountsWithoutData.map(account => account.pubkey)
+```
+
+<br>
+
+* `filters` let you match specific criteria, which can have objects matching the following:
+    - `memcmp`, compares a provided series of bytes with program account data at a particular offset. Fields:
+        - `offset`, the number to offset into program account data before comparing data
+        - `bytes`, a base-58 encoded string representing the data to match; limited to less than 129 bytes
+        - `dataSize`, compares the program account data length with the provided data size
+ 
+
+
+<br>
 
 ---
 
-### Demos
+## 🛹 Demos
 
 <br>
 
