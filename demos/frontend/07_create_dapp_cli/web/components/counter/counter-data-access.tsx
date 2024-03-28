@@ -1,6 +1,6 @@
 'use client';
 
-import { DappExampleIDL, getDappExampleProgramId } from '@dapp-example/anchor';
+import { CounterIDL, getCounterProgramId } from '@counter/anchor';
 import { Program } from '@coral-xyz/anchor';
 import { useConnection } from '@solana/wallet-adapter-react';
 import { Cluster, Keypair, PublicKey } from '@solana/web3.js';
@@ -11,20 +11,20 @@ import { useCluster } from '../cluster/cluster-data-access';
 import { useAnchorProvider } from '../solana/solana-provider';
 import { useTransactionToast } from '../ui/ui-layout';
 
-export function useDappExampleProgram() {
+export function useCounterProgram() {
   const { connection } = useConnection();
   const { cluster } = useCluster();
   const transactionToast = useTransactionToast();
   const provider = useAnchorProvider();
   const programId = useMemo(
-    () => getDappExampleProgramId(cluster.network as Cluster),
+    () => getCounterProgramId(cluster.network as Cluster),
     [cluster]
   );
-  const program = new Program(DappExampleIDL, programId, provider);
+  const program = new Program(CounterIDL, programId, provider);
 
   const accounts = useQuery({
-    queryKey: ['dapp-example', 'all', { cluster }],
-    queryFn: () => program.account.dappExample.all(),
+    queryKey: ['counter', 'all', { cluster }],
+    queryFn: () => program.account.counter.all(),
   });
 
   const getProgramAccount = useQuery({
@@ -33,11 +33,11 @@ export function useDappExampleProgram() {
   });
 
   const initialize = useMutation({
-    mutationKey: ['dapp-example', 'initialize', { cluster }],
+    mutationKey: ['counter', 'initialize', { cluster }],
     mutationFn: (keypair: Keypair) =>
       program.methods
         .initialize()
-        .accounts({ dappExample: keypair.publicKey })
+        .accounts({ counter: keypair.publicKey })
         .signers([keypair])
         .rpc(),
     onSuccess: (signature) => {
@@ -56,24 +56,20 @@ export function useDappExampleProgram() {
   };
 }
 
-export function useDappExampleProgramAccount({
-  account,
-}: {
-  account: PublicKey;
-}) {
+export function useCounterProgramAccount({ account }: { account: PublicKey }) {
   const { cluster } = useCluster();
   const transactionToast = useTransactionToast();
-  const { program, accounts } = useDappExampleProgram();
+  const { program, accounts } = useCounterProgram();
 
   const accountQuery = useQuery({
-    queryKey: ['dapp-example', 'fetch', { cluster, account }],
-    queryFn: () => program.account.dappExample.fetch(account),
+    queryKey: ['counter', 'fetch', { cluster, account }],
+    queryFn: () => program.account.counter.fetch(account),
   });
 
   const closeMutation = useMutation({
-    mutationKey: ['dapp-example', 'close', { cluster, account }],
+    mutationKey: ['counter', 'close', { cluster, account }],
     mutationFn: () =>
-      program.methods.close().accounts({ dappExample: account }).rpc(),
+      program.methods.close().accounts({ counter: account }).rpc(),
     onSuccess: (tx) => {
       transactionToast(tx);
       return accounts.refetch();
@@ -81,9 +77,9 @@ export function useDappExampleProgramAccount({
   });
 
   const decrementMutation = useMutation({
-    mutationKey: ['dapp-example', 'decrement', { cluster, account }],
+    mutationKey: ['counter', 'decrement', { cluster, account }],
     mutationFn: () =>
-      program.methods.decrement().accounts({ dappExample: account }).rpc(),
+      program.methods.decrement().accounts({ counter: account }).rpc(),
     onSuccess: (tx) => {
       transactionToast(tx);
       return accountQuery.refetch();
@@ -91,9 +87,9 @@ export function useDappExampleProgramAccount({
   });
 
   const incrementMutation = useMutation({
-    mutationKey: ['dapp-example', 'increment', { cluster, account }],
+    mutationKey: ['counter', 'increment', { cluster, account }],
     mutationFn: () =>
-      program.methods.increment().accounts({ dappExample: account }).rpc(),
+      program.methods.increment().accounts({ counter: account }).rpc(),
     onSuccess: (tx) => {
       transactionToast(tx);
       return accountQuery.refetch();
@@ -101,9 +97,9 @@ export function useDappExampleProgramAccount({
   });
 
   const setMutation = useMutation({
-    mutationKey: ['dapp-example', 'set', { cluster, account }],
+    mutationKey: ['counter', 'set', { cluster, account }],
     mutationFn: (value: number) =>
-      program.methods.set(value).accounts({ dappExample: account }).rpc(),
+      program.methods.set(value).accounts({ counter: account }).rpc(),
     onSuccess: (tx) => {
       transactionToast(tx);
       return accountQuery.refetch();

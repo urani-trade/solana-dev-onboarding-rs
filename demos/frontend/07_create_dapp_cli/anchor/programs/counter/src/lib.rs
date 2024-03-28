@@ -2,51 +2,51 @@
 
 use anchor_lang::prelude::*;
 
-declare_id!("5ASqQu2RHgcxLfvMhnpVpECWswBm8QHLz37duPosGh7");
+declare_id!("FaC3oSqrzou2eaJft4UpCxZYtCe6hGa4WWSLTzg1yRMD");
 
 #[program]
-pub mod dapp_example {
+pub mod counter {
     use super::*;
 
-  pub fn close(_ctx: Context<CloseDappExample>) -> Result<()> {
+  pub fn close(_ctx: Context<CloseCounter>) -> Result<()> {
     Ok(())
   }
 
   pub fn decrement(ctx: Context<Update>) -> Result<()> {
-    ctx.accounts.dapp_example.count = ctx.accounts.dapp_example.count.checked_sub(1).unwrap();
+    ctx.accounts.counter.count = ctx.accounts.counter.count.checked_sub(1).unwrap();
     Ok(())
   }
 
   pub fn increment(ctx: Context<Update>) -> Result<()> {
-    ctx.accounts.dapp_example.count = ctx.accounts.dapp_example.count.checked_add(1).unwrap();
+    ctx.accounts.counter.count = ctx.accounts.counter.count.checked_add(1).unwrap();
     Ok(())
   }
 
-  pub fn initialize(_ctx: Context<InitializeDappExample>) -> Result<()> {
+  pub fn initialize(_ctx: Context<InitializeCounter>) -> Result<()> {
     Ok(())
   }
 
   pub fn set(ctx: Context<Update>, value: u8) -> Result<()> {
-    ctx.accounts.dapp_example.count = value.clone();
+    ctx.accounts.counter.count = value.clone();
     Ok(())
   }
 }
 
 #[derive(Accounts)]
-pub struct InitializeDappExample<'info> {
+pub struct InitializeCounter<'info> {
   #[account(mut)]
   pub payer: Signer<'info>,
 
   #[account(
   init,
-  space = 8 + DappExample::INIT_SPACE,
+  space = 8 + Counter::INIT_SPACE,
   payer = payer
   )]
-  pub dapp_example: Account<'info, DappExample>,
+  pub counter: Account<'info, Counter>,
   pub system_program: Program<'info, System>,
 }
 #[derive(Accounts)]
-pub struct CloseDappExample<'info> {
+pub struct CloseCounter<'info> {
   #[account(mut)]
   pub payer: Signer<'info>,
 
@@ -54,17 +54,17 @@ pub struct CloseDappExample<'info> {
   mut,
   close = payer, // close account and return lamports to payer
   )]
-  pub dapp_example: Account<'info, DappExample>,
+  pub counter: Account<'info, Counter>,
 }
 
 #[derive(Accounts)]
 pub struct Update<'info> {
   #[account(mut)]
-  pub dapp_example: Account<'info, DappExample>,
+  pub counter: Account<'info, Counter>,
 }
 
 #[account]
 #[derive(InitSpace)]
-pub struct DappExample {
+pub struct Counter {
   count: u8,
 }

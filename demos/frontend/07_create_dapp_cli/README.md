@@ -2,7 +2,7 @@
 
 <br>
 
-### Creating a New Project
+### 1. Creating a New Project
 
 <br>
 
@@ -25,39 +25,17 @@ npx create-solana-dapp@latest
 npm install
 ```
 
-<br>
-
-* Start the Next.js app with:
-
-<br>
-
-```
-npm run dev
-```
-
 
 <br>
 
 
 ---
 
-### Starting the Web App
+### 2. Syncing the program id
 
 <br>
 
-```
-npm run dev
-```
-
-<br>
-
----
-
-### Syncing the program id
-
-<br>
-
-* Run the follow to create a new keypair in the `anchor/target/deploy` directory:
+* Run the follow to create a new keypair inside the `./anchor/target/deploy` directory:
 
 <br>
 
@@ -65,19 +43,11 @@ npm run dev
 npm run anchor keys sync
 ```
 
-<br> 
-
-* Then save the address to the Anchor config file and update the `declare_id!` macro in the `./src/lib.rs` file of the program.
-
-<br>
-
-* Finally, update the constant in `anchor/lib/counter-exports.ts` to match the new program id.
-
 <br>
 
 ---
 
-### Building the Program:
+### 3. Building the Program
 
 <br>
 
@@ -89,19 +59,7 @@ npm run anchor-build
 
 ---
 
-### Staring the Test Validator 
-
-<br>
-
-```shell
-npm run anchor-localnet
-```
-
-<br>
-
----
-
-### Running Tests
+### 4. Running Tests
 
 <br>
 
@@ -113,36 +71,39 @@ npm run anchor-test
 
 ---
 
-### Deploying to Devnet
-
-<br>
-
-```shell
-npm run anchor deploy --provider.cluster devnet
-```
-
-<br>
-
----
-
-### Starting the Web App
-
-<br>
-
-```shell
-npm run dev
-```
-
-
-<br>
-
----
-
-
-### Building the web app
+### 5. Building the dApp
 
 <br>
 
 ```shell
 npm run build
 ```
+
+<br>
+
+---
+
+### 6. Starting the dApp
+
+<br>
+
+```
+npm run dev
+```
+
+<br>
+
+---
+
+### 7. Deploying the dApp
+
+<br>
+
+* Start the validator in another window with `solana-test-validator`, and then run:
+
+<br>
+
+```shell
+npm run anchor deploy 
+```
+

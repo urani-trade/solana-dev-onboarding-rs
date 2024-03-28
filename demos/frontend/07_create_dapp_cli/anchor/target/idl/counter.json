@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "name": "dapp_example",
+  "name": "counter",
   "instructions": [
     {
       "name": "close",
@@ -11,7 +11,7 @@
           "isSigner": true
         },
         {
-          "name": "dappExample",
+          "name": "counter",
           "isMut": true,
           "isSigner": false
         }
@@ -22,7 +22,7 @@
       "name": "decrement",
       "accounts": [
         {
-          "name": "dappExample",
+          "name": "counter",
           "isMut": true,
           "isSigner": false
         }
@@ -33,7 +33,7 @@
       "name": "increment",
       "accounts": [
         {
-          "name": "dappExample",
+          "name": "counter",
           "isMut": true,
           "isSigner": false
         }
@@ -49,7 +49,7 @@
           "isSigner": true
         },
         {
-          "name": "dappExample",
+          "name": "counter",
           "isMut": true,
           "isSigner": true
         },
@@ -65,7 +65,7 @@
       "name": "set",
       "accounts": [
         {
-          "name": "dappExample",
+          "name": "counter",
           "isMut": true,
           "isSigner": false
         }
@@ -80,7 +80,7 @@
   ],
   "accounts": [
     {
-      "name": "DappExample",
+      "name": "Counter",
       "type": {
         "kind": "struct",
         "fields": [
@@ -93,6 +93,6 @@
     }
   ],
   "metadata": {
-    "address": "5ASqQu2RHgcxLfvMhnpVpECWswBm8QHLz37duPosGh7"
+    "address": "FaC3oSqrzou2eaJft4UpCxZYtCe6hGa4WWSLTzg1yRMD"
   }
 }

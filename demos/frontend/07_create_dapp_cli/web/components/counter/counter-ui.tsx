@@ -5,12 +5,12 @@ import { useMemo } from 'react';
 import { ellipsify } from '../ui/ui-layout';
 import { ExplorerLink } from '../cluster/cluster-ui';
 import {
-  useDappExampleProgram,
-  useDappExampleProgramAccount,
-} from './dapp-example-data-access';
+  useCounterProgram,
+  useCounterProgramAccount,
+} from './counter-data-access';
 
-export function DappExampleCreate() {
-  const { initialize } = useDappExampleProgram();
+export function CounterCreate() {
+  const { initialize } = useCounterProgram();
 
   return (
     <button
@@ -23,8 +23,8 @@ export function DappExampleCreate() {
   );
 }
 
-export function DappExampleList() {
-  const { accounts, getProgramAccount } = useDappExampleProgram();
+export function CounterList() {
+  const { accounts, getProgramAccount } = useCounterProgram();
 
   if (getProgramAccount.isLoading) {
     return <span className="loading loading-spinner loading-lg"></span>;
@@ -46,7 +46,7 @@ export function DappExampleList() {
       ) : accounts.data?.length ? (
         <div className="grid md:grid-cols-2 gap-4">
           {accounts.data?.map((account) => (
-            <DappExampleCard
+            <CounterCard
               key={account.publicKey.toString()}
               account={account.publicKey}
             />
@@ -62,14 +62,14 @@ export function DappExampleList() {
   );
 }
 
-function DappExampleCard({ account }: { account: PublicKey }) {
+function CounterCard({ account }: { account: PublicKey }) {
   const {
     accountQuery,
     incrementMutation,
     setMutation,
     decrementMutation,
     closeMutation,
-  } = useDappExampleProgramAccount({ account });
+  } = useCounterProgramAccount({ account });
 
   const count = useMemo(
     () => accountQuery.data?.count ?? 0,

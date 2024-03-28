@@ -1,5 +1,5 @@
 {
-  "name": "@dapp-example/source",
+  "name": "@counter/source",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {

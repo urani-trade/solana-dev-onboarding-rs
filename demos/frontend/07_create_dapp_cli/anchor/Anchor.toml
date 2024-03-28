@@ -5,7 +5,7 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-dapp_example = "5ASqQu2RHgcxLfvMhnpVpECWswBm8QHLz37duPosGh7"
+counter = "FaC3oSqrzou2eaJft4UpCxZYtCe6hGa4WWSLTzg1yRMD"
 
 [registry]
 url = "https://api.apr.dev"

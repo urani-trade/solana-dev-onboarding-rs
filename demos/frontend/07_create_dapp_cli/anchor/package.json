@@ -1,5 +1,5 @@
 {
-  "name": "@dapp-example/anchor",
+  "name": "@counter/anchor",
   "version": "0.0.1",
   "dependencies": {
     "@coral-xyz/anchor": "^0.29.0",
