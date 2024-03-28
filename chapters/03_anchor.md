@@ -251,7 +251,7 @@ anchor init <workspace-name>
 
 <br>
 
-* Learn how cross-program instructions work on Anchor through [demo 2](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/02_anchor_cpi).
+* Learn how cross-program instructions work on Anchor through [backend's demo 2](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/02_anchor_cpi).
 
 <br>
 
