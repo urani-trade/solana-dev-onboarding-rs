@@ -17,6 +17,7 @@
 * [Build on Solana by risein](https://www.risein.com/courses/build-on-solana)
 * [freeCodeCamp: Solana Curriculum](https://github.com/freeCodeCamp/solana-curriculum)
 * [Solana Frontend Development Course](https://www.youtube.com/playlist?list=PLMZny7wGLM6w4t7pMGATxFTjjMduTsEiF)
+* [Create a Solana dApp from Scratch](https://lorisleiva.com/create-a-solana-dapp-from-scratch)
   
 
 

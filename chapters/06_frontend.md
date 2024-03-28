@@ -109,7 +109,7 @@
 
 <br>
 
-* Programs store data in PDAs (Program Derived Address), which can be thought as a key value store, where the address is the key, and the data inside the account is the value.
+* Programs store data in PDAs (Program Derived Addresses), which can be thought of as a key-value store, where the address is the key and the data inside the account is the value.
     - Like records in a database, with the address being the primary key used to look up the values inside.
 
 * PDAs do not have a corresponding secret key. 
@@ -162,12 +162,33 @@ const accountKeys = accountsWithoutData.map(account => account.pubkey)
 
 <br>
 
+----
+
+## 🛹 `create-solana-dapp`
+
+<br>
+
+* For full-stack development, [create-solana-dapp](https://github.com/solana-developers/create-solana-dapp) is an awesome CLI for creating Solana dApps on the fly.
+
+* Supported UI frameworks:
+    - ReactJS
+    - NextJS
+
+* Supported on-chain program frameworks:
+    - Anchor
+
+
+<br>
+
+
 ---
 
 ## 🛹 Demos
 
 <br>
 
-* [Demo 5: Serializing Custom Data with PDA](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/05_serialize_custom_data)
+* [Demo 5: Serializing Custom Data with PDA I](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/05_serialize_custom_data)
 
 * [Demo 6: Serializing Custom Data with PDA II](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/06_serialize_custom_data_II)
+
+* [Demo 7: Example with create-dapp-cli](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/07_create_dapp_cli)

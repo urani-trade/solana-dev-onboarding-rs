@@ -98,12 +98,18 @@ export class StudentIntro {
 
 ### Running
 
+<br>
+
 * To check the final dApp, change the settings of your Phantom wallet to "devnet" and then run:
+
+<br>
 
 ```
 npm install
 npm run dev
 ```
+
+<br>
 
 * Open your browser at `localhost:3000` and submit an introduction
 
