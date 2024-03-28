@@ -6,6 +6,22 @@
 
 <br>
 
+## 🛹 Why Solana?
+
+<br>
+
+* Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
+  - Massively cheaper, as transaction fees are a small fraction of a penny.
+  - Massively faster, as most transactions are completed in a couple of seconds.
+  - Highly centralized,  having one of the highest Nakamoto coefficients (decentralization score) of any proof-of-stake network.
+  - Fun, with an uncomparable UI/UX and developer experience.
+
+<br>
+
+#### *Shall we begin?*
+
+<br>
+
 ## 🛹 Embrance the Theory
 
 <br>
