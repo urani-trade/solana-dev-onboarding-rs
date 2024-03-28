@@ -1,4 +1,4 @@
 target
 Cargo.lock
 node_modules
-target
+target/*
