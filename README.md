@@ -66,7 +66,7 @@ Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
 
 <br>
 
-
+* **[Demo 1: Connecting to the Blockchain](demos/frontend/01_connecting_to_the_blockchain)**
 
 
 
