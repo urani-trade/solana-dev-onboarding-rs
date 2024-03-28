@@ -28,7 +28,7 @@ console.log(`Sender balance: ${sender_balance}`);
 // Create a function that airdrops SOL to the sender's account
 // if they don't have enough balance
 async function airdropToAccount(account: sender, lamports: LAMPORT_AIRDROP) {
-  if (sender_balance < lamports) {
+  if (sender_balance < LAMPORT_AIRDROP) {
     console.log(`Airdropping ${lamports} to ${account.publicKey.toBase58()}`);
     await connection.requestAirdrop(sender.publicKey, LAMPORT_AIRDROP);
   }
