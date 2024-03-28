@@ -7,7 +7,7 @@ export const AppBar: FC = () => {
     return (
         <div className={styles.AppHeader}>
             <Image src="/solanaLogo.png" height={30} width={200} />
-            <span>Movie Reviews</span>
+            <span>Demo 5: Serialization + PDA</span>
             <WalletMultiButton />
         </div>
     )
