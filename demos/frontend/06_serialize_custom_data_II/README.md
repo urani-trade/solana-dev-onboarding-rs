@@ -1,0 +1,108 @@
+# 🛹 Demo 6: Serializing Custom Data with PDA II
+
+
+<br>
+
+### tl; dr
+
+<br>
+
+
+* In this demo we build a chat dApp that lets people submit their introduction and have it stored on Solana’s network. 
+
+<br>
+
+---
+
+### Setup
+
+<br>
+
+* Run `npm install` from the root of the project.
+* Install [Phantom Wallet](https://phantom.app/).
+
+
+<br>
+
+---
+
+### The Buffer Layout
+
+<br>
+
+* We create the instruction buffer layout in `models/StudentIntro.ts`, and the program expects instruction data to contain:
+    - `variant` as an unsigned, 8-bit integer representing the instruction to run (should be 0)
+    - `name` as a string representing a name
+    - `message` as a string representing the message
+
+
+<br>
+
+```javascript
+import * as borsh from '@project-serum/borsh'
+
+export class StudentIntro {
+    name: string;
+    message: string;
+
+    constructor(name: string, message: string) {
+        this.name = name;
+        this.message = message;
+    }
+
+    static mocks: StudentIntro[] = [
+        new StudentIntro('Elizabeth Holmes', `Learning Solana so I can use it to build sick NFT projects.`),
+        new StudentIntro('Jack Nicholson', `I want to overhaul the world's financial system. Lower friction payments/transfer, lower fees, faster payouts, better collateralization for loans, etc.`),
+        new StudentIntro('Terminator', `i'm basically here to protect`),
+    ]
+
+    borshInstructionSchema = borsh.struct([
+        borsh.u8('variant'),
+        borsh.str('name'),
+        borsh.str('message'),
+    ])
+
+    static borshAccountSchema = borsh.struct([
+        borsh.bool('initialized'),
+        borsh.str('name'),
+        borsh.str('message'),
+    ])
+
+    serialize(): Buffer {
+        const buffer = Buffer.alloc(1000)
+        this.borshInstructionSchema.encode({ ...this, variant: 0 }, buffer)
+        return buffer.slice(0, this.borshInstructionSchema.getSpan(buffer))
+    }
+
+    static deserialize(buffer?: Buffer): StudentIntro|null {
+        if (!buffer) {
+            return null
+        }
+
+        try {
+            const { name, message } = this.borshAccountSchema.decode(buffer)
+            return new StudentIntro(name, message)
+        } catch(e) {
+            console.log('Deserialization error:', e)
+            return null
+        }
+    }
+}
+```
+
+<br>
+
+---
+
+### Running
+
+* To check the final dApp, change the settings of your Phantom wallet to "devnet" and then run:
+
+```
+npm install
+npm run dev
+```
+
+* Open your browser at `localhost:3000` and submit an introduction
+
+* Check the transaction at the [Solana Explorer](https://explorer.solana.com/?cluster=devnet).

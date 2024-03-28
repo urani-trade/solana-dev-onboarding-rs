@@ -88,7 +88,7 @@
     - The library builds the array of accounts based on that information and handles the logic for including a recent blockhash.
 
 
-* To facilitate this process of serialization, we can use [Binary Object Representation Serializer for Hashin (Borsh)]() and the library [@coral-xyz/borsh](https://github.com/coral-xyz).
+* To facilitate this process of serialization, we can use [Binary Object Representation Serializer for Hashin (Borsh)](https://borsh.io/) and the library [@coral-xyz/borsh](https://github.com/coral-xyz).
     - Borsh can be used in security-critical projects as it prioritizes consistency, safety, speed; and comes with a strict specification.
 
 
@@ -97,8 +97,10 @@
 
 ---
 
-### Demos
+### Frontend demos
 
 <br>
 
 * [Demo 5: Serializing Custom Data with PDA](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/05_serialize_custom_data)
+
+* [Demo 6: Serializing Custom Data with PDA II](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/06_serialize_custom_data_II)
