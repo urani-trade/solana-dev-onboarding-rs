@@ -1,5 +1,9 @@
+
+.anchor
+.DS_Store
 target
-Cargo.lock
+**/*.rs.bk
 node_modules
-target/*
+test-ledger
+.yarn
 .env

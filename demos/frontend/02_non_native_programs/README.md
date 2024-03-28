@@ -139,7 +139,7 @@ npx esrun tests/ping.ts
 
 <br>
 
-* Now copy the transaction signature and paste into the search at [the Solana explore](https://explorer.solana.com/?cluster=devnet) to find details and logs about the transaction, including how many times the program has been pinged.
+* Now copy the transaction signature and paste into the search at the [Solana explorer](https://explorer.solana.com/?cluster=devnet) to find details and logs about the transaction, including how many times the program has been pinged.
 
 <br>
 
