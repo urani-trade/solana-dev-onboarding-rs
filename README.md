@@ -68,6 +68,7 @@ Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
 
 * **[Demo 1: Connecting to the Blockchain](demos/frontend/01_connecting_to_the_blockchain)**
 * **[Demo 2: Writing Non-Native Programs](demos/frontend/02_non_native_programs)**
-* **[Demo 3: Interacting with Wallets](demos/frontend/03_wallets)**
+* **[Demo 3: Interacting with Wallets](demos/frontend/03_wallets_ping)**
+* **[Demo 4: Sending Transactions with Wallets](demos/frontend/04_wallets_tx)**
 
 

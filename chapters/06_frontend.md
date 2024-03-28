@@ -61,7 +61,9 @@
 #### Introduction to [@solana/wallet-adapter](https://github.com/anza-xyz/wallet-adapter)
 
 
-* [Demo 3: Interacting with Wallets](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/03_wallets)
+* [Demo 3: Interacting with Wallets](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/03_wallets_ping)
+
+* [Demo 4: Sending Transactions with Wallets](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/04_wallets_tx)
 
 <br>
 

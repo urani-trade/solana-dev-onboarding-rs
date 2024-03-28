@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../../shared/lib/router/utils/is-dynamic.ts"],"names":["isDynamicRoute","TEST_ROUTE","route","test"],"mappings":"Y;;;E;QAGgBA,cAAc,GAAdA,cAAc,A;AAH9B,EAAqC,AAArC,mCAAqC;AACrC,KAAK,CAACC,UAAU;SAEAD,cAAc,CAACE,KAAa,EAAW,CAAC;IACtD,MAAM,CAACD,UAAU,CAACE,IAAI,CAACD,KAAK;AAC9B,CAAC"}

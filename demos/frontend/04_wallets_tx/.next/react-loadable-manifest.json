@@ -1,0 +1,32 @@
+{
+  "../node_modules/@solana/wallet-adapter-blocto/lib/esm/adapter.mjs -> @blocto/sdk": {
+    "id": "../node_modules/@solana/wallet-adapter-blocto/lib/esm/adapter.mjs -> @blocto/sdk",
+    "files": [
+      "static/chunks/node_modules_blocto_sdk_dist_blocto-sdk_umd_js.js"
+    ]
+  },
+  "../node_modules/@solana/wallet-adapter-ledger/lib/esm/adapter.mjs -> @ledgerhq/hw-transport-webhid": {
+    "id": "../node_modules/@solana/wallet-adapter-ledger/lib/esm/adapter.mjs -> @ledgerhq/hw-transport-webhid",
+    "files": [
+      "static/chunks/node_modules_ledgerhq_hw-transport-webhid_lib-es_TransportWebHID_js.js"
+    ]
+  },
+  "../node_modules/@solana/wallet-adapter-solflare/lib/esm/adapter.mjs -> @solflare-wallet/sdk": {
+    "id": "../node_modules/@solana/wallet-adapter-solflare/lib/esm/adapter.mjs -> @solflare-wallet/sdk",
+    "files": [
+      "static/chunks/node_modules_solflare-wallet_sdk_lib_esm_index_js.js"
+    ]
+  },
+  "../node_modules/@solana/wallet-adapter-sollet/lib/esm/base.mjs -> @project-serum/sol-wallet-adapter": {
+    "id": "../node_modules/@solana/wallet-adapter-sollet/lib/esm/base.mjs -> @project-serum/sol-wallet-adapter",
+    "files": [
+      "static/chunks/node_modules_solana_wallet-adapter-sollet_node_modules_project-serum_sol-wallet-adapter_dist_-a0ad08.js"
+    ]
+  },
+  "../node_modules/@solana/wallet-adapter-torus/lib/esm/adapter.mjs -> @toruslabs/solana-embed": {
+    "id": "../node_modules/@solana/wallet-adapter-torus/lib/esm/adapter.mjs -> @toruslabs/solana-embed",
+    "files": [
+      "static/chunks/node_modules_toruslabs_solana-embed_dist_solanaEmbed_esm_js.js"
+    ]
+  }
+}

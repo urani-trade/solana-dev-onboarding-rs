@@ -1,0 +1,1 @@
+{"version":3,"file":"useConnection.js","sourceRoot":"","sources":["../../src/useConnection.tsx"],"names":[],"mappings":"AACA,OAAc,EAAE,aAAa,EAAE,UAAU,EAAE,MAAM,OAAO,CAAC;AAMzD,MAAM,CAAC,MAAM,iBAAiB,GAAG,aAAa,CAAyB,EAA4B,CAAC,CAAC;AAErG,MAAM,UAAU,aAAa;IACzB,OAAO,UAAU,CAAC,iBAAiB,CAAC,CAAC;AACzC,CAAC"}
