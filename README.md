@@ -10,15 +10,19 @@
 
 <br>
 
-* Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
-  - Massively cheaper, as transaction fees are a small fraction of a penny.
-  - Massively faster, as most transactions are completed in a couple of seconds.
-  - Highly centralized,  having one of the highest Nakamoto coefficients (decentralization score) of any proof-of-stake network.
-  - Fun, with an uncomparable UI/UX and developer experience.
+Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
+
+- Massively cheaper, as transaction fees are a small fraction of a penny.
+
+- Massively faster, as most transactions are completed in a couple of seconds.
+
+- Highly centralized,  having one of the highest Nakamoto coefficients (decentralization score) of any proof-of-stake network.
+
+- Fun, with an uncomparable UI/UX and developer experience.
 
 <br>
 
-#### *Shall we begin?*
+#### Shall we begin?
 
 <br>
 
@@ -33,7 +37,9 @@
 * **[5. Events and Communication](chapters/05_events.md)**
 * **[6. Mastering Solana Frontend](chapters/06_frontend.md)**
 * **[7. Mastering Transfer Hooks](chapters/07_transfer_hooks.md)**
-* **[8. Additional Resources](chapters/08_additional_resources.md)**
+* **[8. Mastering Security on Solana](chapters/08_security.md)**
+* **[9. Mastering Mobile Development](chapters/09_mobile.md)**
+* **[10. Additional Resources](chapters/10_additional_resources.md)**
 
 
 
