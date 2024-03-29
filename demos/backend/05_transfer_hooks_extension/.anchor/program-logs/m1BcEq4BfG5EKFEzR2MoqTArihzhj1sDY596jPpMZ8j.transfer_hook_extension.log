@@ -1,9 +1,0 @@
-Streaming transaction logs mentioning m1BcEq4BfG5EKFEzR2MoqTArihzhj1sDY596jPpMZ8j. Confirmed commitment
-Transaction executed in slot 4:
-  Signature: 4UQ8EKwzaiMSgfUdQeqPaoMSwVZmWwmecetq1AfRR6cQaRy6vWBicGrZuAWLctoWfgeirH1A8ULF5dtY8YS9DJVJ
-  Status: Ok
-  Log Messages:
-    Program m1BcEq4BfG5EKFEzR2MoqTArihzhj1sDY596jPpMZ8j invoke [1]
-    Program log: Instruction: Initialize
-    Program m1BcEq4BfG5EKFEzR2MoqTArihzhj1sDY596jPpMZ8j consumed 221 of 200000 compute units
-    Program m1BcEq4BfG5EKFEzR2MoqTArihzhj1sDY596jPpMZ8j success
