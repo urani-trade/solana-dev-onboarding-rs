@@ -418,6 +418,10 @@ Transfer Signature: 2rbr8SbH6UXEaVWtpZovfTLRXMN18M8DCJydMiB56Wa825zzAb97m2haUJLe
 
 <br>
 
+* Go to the [Solana Explorer](https://explorer.solana.com/?cluster=devnet) and search for the transactions above. You should see the message "Hello Transfer Hook!".
+
+<br>
+
 ---
 
 ### References
