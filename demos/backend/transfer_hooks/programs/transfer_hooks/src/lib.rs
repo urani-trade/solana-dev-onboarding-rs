@@ -3,21 +3,18 @@ pub use anchor_lang::{
     system_program::{ create_account, CreateAccount },
     solana_program::program_memory::sol_memcpy,
 };
-
+pub use spl_tlv_account_resolution::{
+    account::ExtraAccountMeta, seeds::Seed, state::ExtraAccountMetaList,
+};
+pub use anchor_spl::token_interface::{ Mint, TokenAccount, TokenInterface };
+pub use spl_transfer_hook_interface::instruction::{ExecuteInstruction, TransferHookInstruction};
 use anchor_spl::token_2022::{
     mint_to, MintTo,
     Token2022
 };
 
-pub use spl_tlv_account_resolution::{
-    account::ExtraAccountMeta, seeds::Seed, state::ExtraAccountMetaList,
-};
-
-pub use anchor_spl::token_interface::{ Mint, TokenAccount, TokenInterface };
-
-pub use spl_transfer_hook_interface::instruction::{ExecuteInstruction, TransferHookInstruction};
-
 declare_id!("6HDohFvWAiJ78K8x7qki3aZ3MvMD1nSJr1g2hYvfRxhe");
+
 
 #[program]
 pub mod vesting_template {
@@ -25,29 +22,32 @@ pub mod vesting_template {
 
     pub fn initialize_extra_account_meta_list(
         ctx: Context<InitializeExtraAccountMetaList>,
-    ) -> Result<()> {
+        ) -> Result<()> {
+        
         // index 0-3 are the accounts required for token transfer (source, mint, destination, owner)
         // index 4 is address of ExtraAccountMetaList account
         let account_metas = vec![
         
-        // index 5, vesting_account
-        ExtraAccountMeta::new_with_seeds(
-            &[
-                Seed::Literal { bytes: "vesting".as_bytes().to_vec() },
-                Seed::AccountKey { index: 1 },
-                Seed::AccountKey { index: 0 }
-            ],
-            false, // is_signer
-            true,  // is_writable
-        )?,
+            // index 5, vesting_account
+            ExtraAccountMeta::new_with_seeds(
+                &[
+                    Seed::Literal { bytes: "vesting".as_bytes().to_vec() },
+                    Seed::AccountKey { index: 1 },
+                    Seed::AccountKey { index: 0 }
+                ],
+                false, // is_signer
+                true,  // is_writable
+            )?,
         ];
     
         // calculate account size
         let account_size = ExtraAccountMetaList::size_of(account_metas.len())? as u64;
+        
         // calculate minimum required lamports
         let lamports = Rent::get()?.minimum_balance(account_size as usize);
     
         let mint = ctx.accounts.mint.key();
+        
         let signer_seeds: &[&[&[u8]]] = &[&[
             b"extra-account-metas",
             &mint.as_ref(),
@@ -79,66 +79,20 @@ pub mod vesting_template {
     }
 
 
-    pub fn transfer_hook(ctx: Context<TransferHook>, amount: u64) -> Result<()> {
-        let info = ctx.accounts.vesting_account.to_account_info();
-        let data = info.try_borrow_mut_data()?;
-
-        // Try and Deserialize the Account, if it deserialize then we know that the sender has a vesting account and we should check it.
-        match  VestingAccount::try_deserialize(&mut &data[..]) {
-            Ok(vesting_account) => {
-                let mut amount_locked: u64 = 0;
-                let current_time = Clock::get()?.unix_timestamp;
-
-                // Calculate the amount allowed to be transferred
-                for vesting_data in vesting_account.vesting_data.iter() {
-                    if vesting_data.time > current_time {
-                        let amount_to_add: u64 = (vesting_data.amount_basis_point as u64).checked_mul(vesting_account.amount).ok_or(VestingErr::Overflow)?.checked_div(10000).ok_or(VestingErr::Overflow)?;
-                        amount_locked = amount_to_add.checked_add(amount).ok_or(VestingErr::Overflow)?;
-                    }
-                }
-
-                // Check if the amount locked is less than what will remain after the transfer
-                require!(amount_locked <= ctx.accounts.source_token.amount.checked_sub(amount).ok_or(VestingErr::Overflow)?, VestingErr::LockedAmount);
-            },
-            Err(_) => {
-            // Do nothing: the source_token doesn't have a vesting schedule
-            }
-        }
-        
-        Ok(())
-    }
-
-    
-    // fallback instruction handler as workaround to anchor instruction discriminator check
-    pub fn fallback<'info>(
-        program_id: &Pubkey,
-        accounts: &'info [AccountInfo<'info>],
-        data: &[u8],
-    ) -> Result<()> {
-        let instruction = TransferHookInstruction::unpack(data)?;
-
-        // match instruction discriminator to transfer hook interface execute instruction
-        // token2022 program CPIs this instruction on token transfer
-        match instruction {
-            TransferHookInstruction::Execute { amount } => {
-                let amount_bytes = amount.to_le_bytes();
-
-                // invoke custom transfer hook instruction on our program
-                __private::__global::transfer_hook(program_id, accounts, &amount_bytes)
-            }
-            _ => return Err(ProgramError::InvalidInstructionData.into()),
-        }
-    }
-
-
     // Iterate through vesting data, calculate total_basis_points, 
     // and set the vesting account state
-    pub fn create_vesting_account(ctx: Context<CreateVestingAccount>, vesting_data: Vec<VestingData>, amount: u64) -> Result<()> {
-        
+    pub fn create_vesting_account(
+            ctx: Context<CreateVestingAccount>, 
+            vesting_data: Vec<VestingData>, 
+            amount: u64
+        ) -> Result<()> {
+    
         let mut total_basis_points: u16 = 0;
 
         for vesting_data in vesting_data.iter() {
-            total_basis_points = total_basis_points.checked_add(vesting_data.amount_basis_point).ok_or(VestingErr::Overflow)?;
+            total_basis_points = total_basis_points.
+            checked_add(vesting_data.amount_basis_point).
+            ok_or(VestingErr::Overflow)?;
         }
 
         require!(total_basis_points <= 10000, VestingErr::TooMuchBasisPoints);
@@ -150,9 +104,10 @@ pub mod vesting_template {
                 vesting_data,
             }
         );
-         
+     
         Ok(())
     }
+
 
 
     pub fn claim_tokens(ctx: Context<ClaimTokens>) -> Result<()> {
@@ -181,6 +136,58 @@ pub mod vesting_template {
             ctx.accounts.vesting_account.amount
         )
     }    
+
+
+    pub fn transfer_hook(ctx: Context<TransferHook>, amount: u64) -> Result<()> {
+        let info = ctx.accounts.vesting_account.to_account_info();
+        let data = info.try_borrow_mut_data()?;
+
+        // Try and Deserialize the Account, if it deserialize then we know that the sender has a vesting account and we should check it.
+        match  VestingAccount::try_deserialize(&mut &data[..]) {
+            Ok(vesting_account) => {
+                let mut amount_locked: u64 = 0;
+                let current_time = Clock::get()?.unix_timestamp;
+
+                // Calculate the amount allowed to be transferred
+                for vesting_data in vesting_account.vesting_data.iter() {
+                    if vesting_data.time > current_time {
+                        let amount_to_add: u64 = (vesting_data.amount_basis_point as u64).checked_mul(vesting_account.amount).ok_or(VestingErr::Overflow)?.checked_div(10000).ok_or(VestingErr::Overflow)?;
+                        amount_locked = amount_to_add.checked_add(amount).ok_or(VestingErr::Overflow)?;
+                    }
+                }
+
+                // Check if the amount locked is less than what will remain after the transfer
+                require!(amount_locked <= ctx.accounts.source_token.amount.checked_sub(amount).ok_or(VestingErr::Overflow)?, VestingErr::LockedAmount);
+            },
+            Err(_) => {}
+        }
+        
+        Ok(())
+    }
+
+
+    // fallback instruction handler as workaround to anchor instruction discriminator check
+    pub fn fallback<'info>(
+        program_id: &Pubkey,
+        accounts: &'info [AccountInfo<'info>],
+        data: &[u8],
+    ) -> Result<()> {
+        let instruction = TransferHookInstruction::unpack(data)?;
+
+        // match instruction discriminator to transfer hook interface execute instruction
+        // token2022 program CPIs this instruction on token transfer
+        match instruction {
+            TransferHookInstruction::Execute { amount } => {
+                let amount_bytes = amount.to_le_bytes();
+
+                // invoke custom transfer hook instruction on our program
+                __private::__global::transfer_hook(program_id, accounts, &amount_bytes)
+            }
+            _ => return Err(ProgramError::InvalidInstructionData.into()),
+        }
+    }
+
+
 }
 
 
