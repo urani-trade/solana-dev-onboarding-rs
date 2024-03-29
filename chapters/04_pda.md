@@ -127,7 +127,7 @@ pub struct UserStats {
 * A program with global state:
 
 ```javascript
-const [pda, bump] = await findProgramAddress(Buffer.from("GLOBAL_STATE"), programId)
+const [pda, bump] = await findProgramAddress(Buffer.from("GLOBAL_STATE"), program_id)
 ```
 
 <br>
@@ -139,7 +139,7 @@ const [pda, bump] = await web3.PublicKey.findProgramAddress(
   [
     publicKey.toBuffer()
   ],
-  programId
+  program_id
 )
 ```
 
@@ -153,7 +153,7 @@ const [pda, bump] = await web3.PublicKey.findProgramAddress(
     publicKey.toBuffer(), 
     Buffer.from("Shopping list")
   ],
-  programId,
+  program_id,
 );
 ```
 
