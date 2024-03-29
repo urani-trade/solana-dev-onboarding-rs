@@ -52,7 +52,6 @@ spl-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb create-token 
 <br>
 
 
-* [Backend's Demo 5: Transfer Hooks Extension](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/05_transfer_hooks_extension)
 
 <br>
 

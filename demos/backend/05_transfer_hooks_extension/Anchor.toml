@@ -5,14 +5,14 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-transfer_hook_extension = "m1BcEq4BfG5EKFEzR2MoqTArihzhj1sDY596jPpMZ8j"
+transfer_hook_extension = "7v76bq4YNRgFoQzkWZ8vf1DSJnSYPX4tDCs38rjjd6Qi"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
 cluster = "Localnet"
-wallet = "/Users/m/.config/solana/id.json"
+wallet = "~/.config/solana/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"

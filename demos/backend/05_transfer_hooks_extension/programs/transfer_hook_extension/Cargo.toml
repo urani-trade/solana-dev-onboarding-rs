@@ -1,12 +1,12 @@
 [package]
-name = "transfer_hook_extension"
+name = "transfer_hook"
 version = "0.1.0"
 description = "Created with Anchor"
 edition = "2021"
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "transfer_hook_extension"
+name = "transfer_hook"
 
 [features]
 no-entrypoint = []
@@ -17,3 +17,6 @@ default = []
 
 [dependencies]
 anchor-lang = "0.29.0"
+anchor-spl = "0.29.0"
+spl-tlv-account-resolution = "0.6.3"
+spl-transfer-hook-interface = "0.6.3"
