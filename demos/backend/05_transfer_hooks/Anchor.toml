@@ -5,16 +5,14 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-puppet = "DJYudpSv3Mf46jse4w5LwfLQNrdtD1aEMzAqp5DJCNhS"
-
+vesting_template = "FohntM2s5Z1uqyDbBAu1CHxYh9umzeiRSKr198rSSdvT"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
 cluster = "Localnet"
-wallet = "/Users/urani/.config/solana/id.json"
+wallet = "/Users/leo/.config/solana/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
-

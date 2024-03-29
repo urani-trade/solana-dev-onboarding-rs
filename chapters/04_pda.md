@@ -187,4 +187,6 @@ const [pda, bump] = await web3.PublicKey.findProgramAddress(
 * [Solana's Cookbook on PDA](https://solanacookbook.com/core-concepts/pdas.html#facts)
 * [Understanding PDAs, by brianfriel](https://www.brianfriel.xyz/understanding-program-derived-addresses/)
 * [PDA, by Solana Bytes](https://www.youtube.com/watch?v=ZwFNPvqUclM&list=PLilwLeBwGuK51Ji870apdb88dnBr1Xqhm&index=8)
+* [solana-program-library/token
+/transfer-hook](https://github.com/igneous-labs/solana-program-library/tree/master/token/transfer-hook)
 
