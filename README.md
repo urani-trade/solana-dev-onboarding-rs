@@ -54,7 +54,7 @@ Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
 * **[Demo 2. Anchor and CPI](demos/backend/02_anchor_cpi)**
 * **[Demo 3. Program Derived Addresses](demos/backend/03_anchor_pda)**
 * **[Demo 4: PDA and CPI on Anchor](demos/backend/04_pda_and_cpi)**
-
+* **[Demo 5: Transfer Hooks](demos/backend/05_transfer_hooks)**
 
 <br>
 
