@@ -1,2 +1,0 @@
-cargo:rustc-cfg=RUSTC_WITH_SPECIALIZATION
-cargo:rustc-cfg=RUSTC_NEEDS_PROC_MACRO_HYGIENE
