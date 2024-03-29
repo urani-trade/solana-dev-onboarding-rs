@@ -395,10 +395,10 @@ anchor deploy
 
 <br>
 
-* Run tests with:
+* Run tests with (using `--detach` so the validator continues running after the test):
 
 ```
-anchor test
+anchor test --detach
 
   transfer-hook
 Transaction Signature: 3bovnhEP85A21dhNKhHPHeQwa2GPbtYzdhnnQFTdNCYqRb7paG6XhX3nnzPivfyb4BddopbJdyTTKeZymmxt2evQ
@@ -415,6 +415,10 @@ Transfer Signature: 2rbr8SbH6UXEaVWtpZovfTLRXMN18M8DCJydMiB56Wa825zzAb97m2haUJLe
 
 ✨  Done in 2.79s.
 ```
+
+<br>
+
+* Go to the [Solana Explorer](https://explorer.solana.com/?cluster=devnet) (set it to `localhost`) and search for the transactions above. You should see the message "Hello Transfer Hook!".
 
 <br>
 

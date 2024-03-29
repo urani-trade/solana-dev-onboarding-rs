@@ -10,6 +10,7 @@
 * The [Transfer Hook Interface](https://spl.solana.com/transfer-hook-interface), introduced within the [Solana Program Library](https://spl.solana.com/) allows token creators to "hook" additional custom logic into token transfers to shape the dynamics of users' and tokens' interactions.
 
 
+
 <br>
 
 
@@ -24,6 +25,8 @@
 * All accounts from the initial transfer are converted to read-only accounts (i.e., the signer privileges of the sender do not extend to the Transfer Hook program). 
 
 * Extra accounts required by `Execute` are stored in a predefined PDA that must be derived using the following seeds: `extra-account-metas` string, the mint account address, and the transfer hook `_id`.
+
+* For every token transfer involving tokens from the Mint Account, the Token Extensions program makes a Cross Program Invocation (CPI) to execute an instruction on the Transfer Hook program.
 
 <br>
 
@@ -73,7 +76,9 @@ const [pda] = PublicKey.findProgramAddressSync(
 
 
 * [Backend's Demo 5: Transfer Hook Hello World](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/05_transfer_hooks_extension)
-* [Backend's Demo 6: Transfer Hook for Vesting](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/06_transfer_hooks_vesting)
+* [Backend's Demo 6: Transfer Hook with a Counter](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/06_transfer_hooks_counter)
+* [Backend's Demo 7: Transfer Hook for Vesting](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/07_transfer_hooks_vesting)
+
 
 
 <br>

@@ -236,10 +236,9 @@ describe("vesting_template", () => {
       ),
       transferInstruction,
     );
-    console.log("Transaction:", transaction);
     
     const txSig = await sendAndConfirmTransaction(
-      provider.connection,
+      connection,
       transaction,
       [wallet.payer],
       { skipPreflight: true },

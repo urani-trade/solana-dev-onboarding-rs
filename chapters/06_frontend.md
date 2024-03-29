@@ -12,7 +12,6 @@
 
 
 * [Demo 1: Interacting with the Blockchain](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/01_connecting_to_the_blockchain)
-
 * [Demo 2: Non-native Programs](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/02_non_native_programs)
 
 <br>
@@ -59,7 +58,6 @@
 
 
 * [Demo 3: Interacting with Wallets](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/03_wallets_ping)
-
 * [Demo 4: Sending Transactions with Wallets](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/04_wallets_tx)
 
 
@@ -188,7 +186,5 @@ const accountKeys = accountsWithoutData.map(account => account.pubkey)
 <br>
 
 * [Demo 5: Serializing Custom Data with PDA I](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/05_serialize_custom_data)
-
 * [Demo 6: Serializing Custom Data with PDA II](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/06_serialize_custom_data_II)
-
 * [Demo 7: Example with create-dapp-cli](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/07_create_dapp_cli)

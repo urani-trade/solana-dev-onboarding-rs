@@ -2,6 +2,8 @@
 
 <br>
 
+
+
 ### Development Guides
 
 <br>
@@ -100,9 +102,11 @@
 solana config set --url <RPC url>
 ```
 
-
-
 <br>
 
 
+#### Forums
 
+<br>
+
+* [Solana Developer Forums](https://forum.solana.com/)
