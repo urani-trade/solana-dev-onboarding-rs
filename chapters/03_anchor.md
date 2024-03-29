@@ -247,6 +247,23 @@ anchor init <workspace-name>
 
 ---
 
+### Useful Commands
+
+<br>
+
+* List the current program id:
+
+<br>
+
+```
+anchor keys list
+```
+
+<br>
+
+
+---
+
 ### Demos
 
 <br>
