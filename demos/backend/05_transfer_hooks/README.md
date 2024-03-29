@@ -718,3 +718,13 @@ anchor keys list
 ```
 anchor test
 ```
+
+<br>
+
+---
+
+### References
+
+<br>
+
+* [Leveraging Transfer Hooks on Solana, by Leo](https://medium.com/@LeoOnSol/hooked-the-power-of-leveraging-transfer-hooks-on-solana-2b0f15770e64)

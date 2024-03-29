@@ -113,11 +113,11 @@
     - Like records in a database, with the address being the primary key used to look up the values inside.
 
 * PDAs do not have a corresponding secret key. 
-    - To store and locate data, we derive a PDA using the `findProgramAddress(seeds, programid)` method.
+    - To store and locate data, we derive a PDA using the `findProgramAddress(seeds, program_id)` method.
 
-* The accounts belonging to a program can be retrieved with `getProgramAccounts(programId)`.
+* The accounts belonging to a program can be retrieved with `getProgramAccounts(program_id)`.
     - Account data needs to be deserialized using the same layout used to store it in the first place.
-    - Accounts created by a program can be fetched with `connection.getProgramAccounts(programId)`.
+    - Accounts created by a program can be fetched with `connection.getProgramAccounts(program_id)`.
 
 
 
@@ -141,7 +141,7 @@
 
 ```javascript
 const accountsWithoutData = await connection.getProgramAccounts(
-  programId,
+  program_id,
   {
     dataSlice: { offset: 0, length: 0 }
   }
