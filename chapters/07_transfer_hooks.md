@@ -36,7 +36,7 @@
 
 * All accounts from the initial transfer are converted to read-only accounts (i.e., the signer privileges of the sender do not extend to the Transfer Hook program). 
 
-* Extra accounts required by `Execute` are stored in a predefined PDA that must be derived using the following seeds: `extra-account-metas` string, the mint account address, the transfer hook `program_id`.
+* Extra accounts required by `Execute` are stored in a predefined PDA that must be derived using the following seeds: `extra-account-metas` string, the mint account address, and the transfer hook `_id`.
 
 <br>
 
@@ -63,7 +63,7 @@ const [pda] = PublicKey.findProgramAddressSync(
         - `Discriminator`, the first 8 bytes of the hash of "spl-transfer-hook-interface:execute"
         - `Data`:
             - `amount`: `u64`, the transfer amount
-            - `accounts:
+            - `accounts`:
                 - 1 []: Source token account
                 - 2 []: Mint
                 - 3 []: Destination token account
@@ -73,7 +73,7 @@ const [pda] = PublicKey.findProgramAddressSync(
 * `InitializeExtraAccountMetaList` is optional and intializes the validation account to store a list of extra required `AccountMeta` configurations for the `Execute` instruction.
 
 
-* `UpdateExtraAccountMetaList` is optional and allows an on-chain program to update its list of required accounts for 1Execute`. 
+* `UpdateExtraAccountMetaList` is optional and allows an on-chain program to update its list of required accounts for `Execute`. 
 
 
 <br>
