@@ -7,11 +7,12 @@
 
 <br>
 
+* PDAs can be thought a way of mimic-ing web2's databases writing schemmes. For instance, a dApp that needs to update its own data without having a 'client' authorizing those changes.
 
 * PDAs are addresses with special properties. They are not public keys (so they don't have an associated public key).
 
 * * PDAs provide a mechanism to build hashmap-like structures on-chain, allowing programs to sign instructions.
-    * `findProgramAddress` will deterministically derive a PDA from a programId and seeds (collection of bytes)
+    * `findProgramAddress` will deterministically derive a PDA from a `program_id`` and seeds (collection of bytes)
     * A bump (one byte) is used to push a potential PDA off the ed25519 elliptic curve.
     * Programs can sign for their PDAs by providing the seeds and bump to invoke_signed.
 
@@ -26,17 +27,31 @@
 
 <br>
 
+#### *When you use seeds to derive a public key, there is a chance that the seed you use and the public derived from them have an associated private key (depicted by the ed2559 elliptic curve).*
+#### *So if the seeds derive a private key that exists in the curve, Solana will add an additional integer (a bump) to the seed list to make sure it bumps off the curve and cannot have a private key.*
+
+<br>
+
+<p align="center">
+<img src="images/pda.png" width="60%" align="center" style="padding:1px;border:1px solid black;"/>
+</p>
+
+
+
+
+
+<br>
+
 * PDA are created by hashing a number of seeds the user can choose with the `program_id`.
 
 * Seeds can be anything: pubkey, strings, an array of numbers, etc.
 
-* There is a 50% chance that this hash can result in a public key, so a bump has to be searched:
+* There is a 50% chance that this hash can result in a public key. This is how a bump can be searched:
 
 <br>
 
 
 ```rust
-// pseudo code
 fn find_pda(seeds, program_id) {
   for bump in 0..256 {
     let potential_pda = hash(seeds, bump, program_id);
@@ -73,7 +88,7 @@ fn find_pda(seeds, program_id) {
 
 <br>
 
-* PDAs are hashed from a bump, a program_id, and several seeds. These seeds can be used to build hashmap-like structures on-chain.
+* PDAs are hashed from a bump, a `program_id`, and several seeds. These seeds can be used to build hashmap-like structures on-chain.
 
 * With PDA, you can create structs that encode the information about a relationship between the user and some data account, so that PDA serves as the address:
 
@@ -171,4 +186,7 @@ const [pda, bump] = await web3.PublicKey.findProgramAddress(
 * [Anchor Docs on PDA](https://www.anchor-lang.com/docs/pdas)
 * [Solana's Cookbook on PDA](https://solanacookbook.com/core-concepts/pdas.html#facts)
 * [Understanding PDAs, by brianfriel](https://www.brianfriel.xyz/understanding-program-derived-addresses/)
+* [PDA, by Solana Bytes](https://www.youtube.com/watch?v=ZwFNPvqUclM&list=PLilwLeBwGuK51Ji870apdb88dnBr1Xqhm&index=8)
+* [solana-program-library/token
+/transfer-hook](https://github.com/igneous-labs/solana-program-library/tree/master/token/transfer-hook)
 
