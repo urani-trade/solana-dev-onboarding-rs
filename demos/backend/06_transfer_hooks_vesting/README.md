@@ -1,4 +1,4 @@
-# 🛹 Demo 5: Vesting Program with Transfer Hooks
+# 🛹 Demo 6: Transfer Hooks for Vesting
 
 <br>
 

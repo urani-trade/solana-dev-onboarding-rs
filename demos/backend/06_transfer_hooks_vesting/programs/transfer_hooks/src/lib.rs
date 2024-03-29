@@ -13,7 +13,7 @@ use anchor_spl::token_2022::{
     Token2022
 };
 
-declare_id!("6HDohFvWAiJ78K8x7qki3aZ3MvMD1nSJr1g2hYvfRxhe");
+declare_id!("2qaMkdHBvzCZsVNwcb5riqq4dm5tbKmph2BuN8u7Mr9Y");
 
 
 #[program]

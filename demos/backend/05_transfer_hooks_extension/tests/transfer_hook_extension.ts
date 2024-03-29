@@ -1,5 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
-import { IDL, VestingTemplate } from "../target/types/vesting_template";
+import { Program } from "@coral-xyz/anchor";
+import { TransferHook } from "../target/types/transfer_hook";
 import {
   PublicKey,
   SystemProgram,
@@ -9,30 +10,31 @@ import {
 } from "@solana/web3.js";
 import {
   ExtensionType,
+  TOKEN_2022_PROGRAM_ID,
   getMintLen,
   createInitializeMintInstruction,
   createInitializeTransferHookInstruction,
+  ASSOCIATED_TOKEN_PROGRAM_ID,
+  createAssociatedTokenAccountInstruction,
+  createMintToInstruction,
   createTransferCheckedInstruction,
   getAssociatedTokenAddressSync,
-  createAssociatedTokenAccountIdempotentInstruction,
-  TOKEN_2022_PROGRAM_ID,
-  ASSOCIATED_TOKEN_PROGRAM_ID,
+  createTransferCheckedWithTransferHookInstruction,
 } from "@solana/spl-token";
 
 
-describe("vesting_template", () => {
-  
+describe("transfer-hook", () => {
+ 
   // Configure the client to use the local cluster.
   const provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
+  const program = anchor.workspace.TransferHook as Program<TransferHook>;
   const wallet = provider.wallet as anchor.Wallet;
   const connection = provider.connection;
-  const programId = new PublicKey("6HDohFvWAiJ78K8x7qki3aZ3MvMD1nSJr1g2hYvfRxhe");
-  const program = new anchor.Program<VestingTemplate>(IDL, programId, provider);
 
   // Generate keypair to use as address for the transfer-hook enabled mint
   const mint = new Keypair();
-  const decimals = 0;
+  const decimals = 9;
 
   // Sender token account address
   const sourceTokenAccount = getAssociatedTokenAddressSync(
@@ -60,15 +62,12 @@ describe("vesting_template", () => {
     program.programId
   );
 
-  const vestingAccount = PublicKey.findProgramAddressSync([Buffer.from("vesting"), mint.publicKey.toBuffer(), sourceTokenAccount.toBuffer()], program.programId)[0];
-  const mintAuth = PublicKey.findProgramAddressSync([Buffer.from("vesting_auth"), mint.publicKey.toBuffer()], program.programId)[0];
-
   it("Create Mint Account with Transfer Hook Extension", async () => {
     const extensions = [ExtensionType.TransferHook];
     const mintLen = getMintLen(extensions);
     const lamports =
       await provider.connection.getMinimumBalanceForRentExemption(mintLen);
-  
+
     const transaction = new Transaction().add(
       SystemProgram.createAccount({
         fromPubkey: wallet.publicKey,
@@ -81,42 +80,63 @@ describe("vesting_template", () => {
         mint.publicKey,
         wallet.publicKey,
         program.programId, // Transfer Hook Program ID
-        TOKEN_2022_PROGRAM_ID,
+        TOKEN_2022_PROGRAM_ID
       ),
       createInitializeMintInstruction(
         mint.publicKey,
         decimals,
-        mintAuth,
+        wallet.publicKey,
         null,
-        TOKEN_2022_PROGRAM_ID,
-      ),
+        TOKEN_2022_PROGRAM_ID
+      )
     );
-  
+
     const txSig = await sendAndConfirmTransaction(
       provider.connection,
       transaction,
-      [wallet.payer, mint],
+      [wallet.payer, mint]
     );
     console.log(`Transaction Signature: ${txSig}`);
   });
 
-  it("Create Token Accounts", async () => {
+  // Create the two token accounts for the transfer-hook enabled mint
+  // Fund the sender token account with 100 tokens
+  it("Create Token Accounts and Mint Tokens", async () => {
+    // 100 tokens
+    const amount = 100 * 10 ** decimals;
+
     const transaction = new Transaction().add(
-      createAssociatedTokenAccountIdempotentInstruction(
+      createAssociatedTokenAccountInstruction(
         wallet.publicKey,
         sourceTokenAccount,
         wallet.publicKey,
         mint.publicKey,
         TOKEN_2022_PROGRAM_ID,
-        ASSOCIATED_TOKEN_PROGRAM_ID,
+        ASSOCIATED_TOKEN_PROGRAM_ID
       ),
+      createAssociatedTokenAccountInstruction(
+        wallet.publicKey,
+        destinationTokenAccount,
+        recipient.publicKey,
+        mint.publicKey,
+        TOKEN_2022_PROGRAM_ID,
+        ASSOCIATED_TOKEN_PROGRAM_ID
+      ),
+      createMintToInstruction(
+        mint.publicKey,
+        sourceTokenAccount,
+        wallet.publicKey,
+        amount,
+        [],
+        TOKEN_2022_PROGRAM_ID
+      )
     );
 
     const txSig = await sendAndConfirmTransaction(
       connection,
       transaction,
       [wallet.payer],
-      { skipPreflight: true },
+      { skipPreflight: true }
     );
 
     console.log(`Transaction Signature: ${txSig}`);
@@ -127,122 +147,52 @@ describe("vesting_template", () => {
     const initializeExtraAccountMetaListInstruction = await program.methods
       .initializeExtraAccountMetaList()
       .accounts({
-        payer: wallet.publicKey,
-        extraAccountMetaList: extraAccountMetaListPDA,
         mint: mint.publicKey,
+        extraAccountMetaList: extraAccountMetaListPDA,
       })
       .instruction();
 
     const transaction = new Transaction().add(
-      initializeExtraAccountMetaListInstruction,
+      initializeExtraAccountMetaListInstruction
     );
 
     const txSig = await sendAndConfirmTransaction(
       provider.connection,
       transaction,
       [wallet.payer],
-      { skipPreflight: true },
+      { skipPreflight: true, commitment: "confirmed" }
     );
     console.log("Transaction Signature:", txSig);
-  });
-
-  interface VestingData {
-    amountBasisPoint: number;
-    time: anchor.BN;
-  }
-
-  const vestingData: VestingData[] = [
-    {
-      amountBasisPoint: 10000,
-      time: new anchor.BN(Math.floor(Date.now() + 3600 / 1000)),
-    },
-  ];
-
-  it("Create Vesting Account", async () => {
-    const tx = await program.methods
-    .createVestingAccount(
-      vestingData,
-      new anchor.BN(1000 * 10 ** decimals),
-    )
-    .accounts({
-      mint: mint.publicKey,
-      token: sourceTokenAccount,
-      vestingAccount,
-    })
-    .signers([wallet.payer]).rpc({ skipPreflight: true });
-
-    console.log("Signature:", tx);
-  });
-
-  it("Claim Tokens", async () => {
-    const tx = await program.methods
-    .claimTokens()
-    .accounts({
-      mint: mint.publicKey,
-      token: sourceTokenAccount,
-      mintAuth,
-      vestingAccount,
-      tokenProgram: TOKEN_2022_PROGRAM_ID,
-    })
-    .signers([wallet.payer]).rpc({ skipPreflight: true });
-
-    console.log("Signature:", tx);
   });
 
   it("Transfer Hook with Extra Account Meta", async () => {
     // 1 tokens
     const amount = 1 * 10 ** decimals;
+    const bigIntAmount = BigInt(amount);
 
     // Standard token transfer instruction
-    const transferInstruction = createTransferCheckedInstruction(
+    const transferInstruction = await createTransferCheckedWithTransferHookInstruction(
+      connection,
       sourceTokenAccount,
       mint.publicKey,
       destinationTokenAccount,
       wallet.publicKey,
-      amount,
+      bigIntAmount,
       decimals,
       [],
-      TOKEN_2022_PROGRAM_ID,
+      "confirmed",
+      TOKEN_2022_PROGRAM_ID
     );
-  
-    // Manually add all the extra accounts required by the transfer hook instruction
-    // Also include the address of the ExtraAccountMetaList account and Transfer Hook Program
-    transferInstruction.keys.push(
-      {
-        pubkey: extraAccountMetaListPDA,
-        isSigner: false,
-        isWritable: false,
-      },
-      {
-        pubkey: vestingAccount,
-        isSigner: false,
-        isWritable: true,
-      },
-      {
-        pubkey: programId,
-        isSigner: false,
-        isWritable: false,
-      },
-    );
-  
+
     const transaction = new Transaction().add(
-      createAssociatedTokenAccountIdempotentInstruction(
-        wallet.publicKey,
-        destinationTokenAccount,
-        recipient.publicKey,
-        mint.publicKey,
-        TOKEN_2022_PROGRAM_ID,
-        ASSOCIATED_TOKEN_PROGRAM_ID,
-      ),
-      transferInstruction,
+      transferInstruction
     );
-    console.log("Transaction:", transaction);
-    
+
     const txSig = await sendAndConfirmTransaction(
-      provider.connection,
+      connection,
       transaction,
       [wallet.payer],
-      { skipPreflight: true },
+      { skipPreflight: true }
     );
     console.log("Transfer Signature:", txSig);
   });
