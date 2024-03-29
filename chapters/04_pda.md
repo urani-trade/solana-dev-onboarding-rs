@@ -12,7 +12,7 @@
 * PDAs are addresses with special properties. They are not public keys (so they don't have an associated public key).
 
 * * PDAs provide a mechanism to build hashmap-like structures on-chain, allowing programs to sign instructions.
-    * `findProgramAddress` will deterministically derive a PDA from a `program_id`` and seeds (collection of bytes)
+    * `findProgramAddress()` will deterministically derive a PDA from a `program_id`` and seeds (collection of bytes)
     * A bump (one byte) is used to push a potential PDA off the ed25519 elliptic curve.
     * Programs can sign for their PDAs by providing the seeds and bump to invoke_signed.
 
@@ -76,7 +76,7 @@ fn find_pda(seeds, program_id) {
 
 <br>
 
-* When a PDA is generated, `findProgramAddress` returns both the address and the bump used to kick the address off the elliptic curve.
+* When a PDA is generated, `findProgramAddress()` returns both the address and the bump used to kick the address off the elliptic curve.
 
 * With a bump, a program can sign any instruction that requires its PDA, by passing the instruction, the list of accounts, and the seeds and bumps used to derive the PDA to `invoke_signed`.
 
@@ -167,9 +167,7 @@ const [pda, bump] = await web3.PublicKey.findProgramAddress(
 <br>
 
 * Learn how PDA works on Anchor through [backend's demo 3](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/03_anchor_pda).
-
 * Learn how PDA and CPI work on Anchor through [backend's demo 4](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/04_pda_and_cpi).
-
 * Build a frontend dApp that leverages PDA through [frontend's demo 5](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/05_serialize_custom_data) and 
 [frontend's demo 6](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/06_serialize_custom_data_II).
 
