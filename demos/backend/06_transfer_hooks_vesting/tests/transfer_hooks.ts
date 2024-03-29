@@ -27,7 +27,7 @@ describe("vesting_template", () => {
   anchor.setProvider(provider);
   const wallet = provider.wallet as anchor.Wallet;
   const connection = provider.connection;
-  const programId = new PublicKey("6HDohFvWAiJ78K8x7qki3aZ3MvMD1nSJr1g2hYvfRxhe");
+  const programId = new PublicKey("2qaMkdHBvzCZsVNwcb5riqq4dm5tbKmph2BuN8u7Mr9Y");
   const program = new anchor.Program<VestingTemplate>(IDL, programId, provider);
 
   // Generate keypair to use as address for the transfer-hook enabled mint
