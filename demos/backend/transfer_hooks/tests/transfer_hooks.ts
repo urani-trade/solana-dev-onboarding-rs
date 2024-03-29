@@ -9,15 +9,14 @@ import {
 } from "@solana/web3.js";
 import {
   ExtensionType,
-  TOKEN_2022_PROGRAM_ID,
   getMintLen,
   createInitializeMintInstruction,
   createInitializeTransferHookInstruction,
-  ASSOCIATED_TOKEN_PROGRAM_ID,
-  createMintToInstruction,
   createTransferCheckedInstruction,
   getAssociatedTokenAddressSync,
   createAssociatedTokenAccountIdempotentInstruction,
+  TOKEN_2022_PROGRAM_ID,
+  ASSOCIATED_TOKEN_PROGRAM_ID,
 } from "@solana/spl-token";
 
 
