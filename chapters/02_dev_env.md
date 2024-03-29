@@ -31,7 +31,7 @@
 
 4. Compile the program (down to [Berkley Packet Filter](https://solana.com/docs/programs/faq#berkeley-packet-filter-bpf) byte-code that will then be deployed to the blockchain).
 
-5. Generate the program's public address (a new unique keypair, on which the pubkey is the `programId`).
+5. Generate the program's public address (a new unique keypair, on which the pubkey is the `program_id`).
 
 6. Deploy the program to the selected blockchain cluster by creating transactions containing the program's byte-code. 
 
