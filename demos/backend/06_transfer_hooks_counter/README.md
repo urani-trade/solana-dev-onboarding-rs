@@ -7,7 +7,7 @@
 
 <br>
 
-* In this demo we see you how to increase a counter every time a token is transferred. 
+* This demo shows you how to increase a counter every time a token is transferred.
 
 <br>
 
@@ -18,9 +18,9 @@
 <br>
 
 
-* Additional logic to this transfer hook that needs additional account should be added to the `ExtraAccountMetaList` account. 
+* Additional logic to this transfer hook that needs an additional account should be added to the ExtraAccountMetaList account.
 
-* In this case we have a PDA saving the amount how often the token has been transferred, by this code added to the `initialize_extra_account_meta_list` instruction:
+* In this case, we have a PDA saving the amount how often the token has been transferred by this code added to the  `initialize_extra_account_meta_list` instruction:
 
 <br>
 
