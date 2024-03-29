@@ -1,2 +1,2 @@
-# 🛹 Mobile Development on Solana [IN CONSTRUCTION]
+# 🛹 Mobile Development on Solana [UNDER CONSTRUCTION]
 

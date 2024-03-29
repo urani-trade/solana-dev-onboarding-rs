@@ -1,4 +1,4 @@
-# 🛹 Token Extensions
+# 🛹 Token Extensions [UNDER CONSTRUCTION]
 
 <br>
 
@@ -42,17 +42,6 @@ spl-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb create-token 
     - Metadata Pointer:	`--metadata-address <accountId>`
     - Confidential Transfers:	`--enable-confidential-transfers auto`
 
-
-<br>
-
----
-
-### Demo
-
-<br>
-
-
-
 <br>
 
 ---
@@ -63,3 +52,9 @@ spl-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb create-token 
 
 
 * [Token Extensions on Solana Developer Guides](https://www.youtube.com/playlist?list=PLilwLeBwGuK6imBuGLSLmzMEyj6yVHGDO)
+* [How to use the Mint Close Authority extension](https://solana.com/developers/guides/token-extensions/mint-close-authority)
+* [How to use the Transfer Fee extension](https://solana.com/developers/guides/token-extensions/transfer-fee)
+* [How to use the Permanent Delegate extension](https://solana.com/developers/guides/token-extensions/interest-bearing-tokens)
+* [How to use the Metadata Pointer extension](https://solana.com/developers/guides/token-extensions/metadata-pointer)
+* [How to use the Non-transferable extension](https://solana.com/developers/guides/token-extensions/non-transferable)
+* [Token-2022 Program official docs](https://spl.solana.com/token-2022)
