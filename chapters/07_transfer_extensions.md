@@ -6,12 +6,12 @@
 
 <br>
 
-* Solana ecosystem faced a demand for enhanced token features:
-    - Before, expanding the capabilities of tokens required forking the existing Token Program, which introduced challenges due to architectural requirements for transactions specifying the involved programs and accounts.
 
-* Token-2022 was created to add new token functionality, with minimal disruption to users, wallets, and dApps.
-    - This enabled Token Extensions, introducing a suite of program-level enhancements such as confidential transactions, customizable transfer logic, and enriched metadata.
+* The Transfer Hook extension and [Transfer Hook Interface](https://github.com/solana-labs/solana-program-library/tree/master/token/transfer-hook/interface) allow users to create Mint Accounts that execute custom instruction logic on every token transfer.
 
+* To achieve this, developers must build a program that implements the Transfer Hook Interface and initialize a Mint Account with an enabled Transfer Hook extension.
+
+* For every token transfer involving tokens from the Mint Account, the Token Extensions program invokes a Cross-Program Instruction (CPI) to execute an instruction on the Transfer Hook program.
 
 <br>
 
@@ -43,6 +43,16 @@ spl-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb create-token 
     - Confidential Transfers:	`--enable-confidential-transfers auto`
 
 
+<br>
+
+---
+
+### Demo
+
+<br>
+
+
+* [Backend's Demo 5: Transfer Hooks Extension](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/05_transfer_hooks_extension)
 
 <br>
 

@@ -1,0 +1,1 @@
+/Users/m/src/OPEN_SOURCE/solana-dev-onboarding-rs/demos/backend/05_transfer_hooks_extension/target/sbf-solana-solana/release/libtransfer_hook_extension.rlib: /Users/m/src/OPEN_SOURCE/solana-dev-onboarding-rs/demos/backend/05_transfer_hooks_extension/programs/transfer_hook_extension/src/lib.rs

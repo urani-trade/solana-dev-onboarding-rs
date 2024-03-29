@@ -71,7 +71,9 @@ const [pda] = PublicKey.findProgramAddressSync(
 
 <br>
 
-* [Backend's demo 5: Transfer Hooks for Vesting](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/05_transfer_hooks)
+
+* [Backend's Demo 5: Transfer Hooks Extension](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/05_transfer_hooks_extension)
+* [Backend's Demo 6: Transfer Hooks for Vesting](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/06_transfer_hooks_vesting)
 
 
 <br>
