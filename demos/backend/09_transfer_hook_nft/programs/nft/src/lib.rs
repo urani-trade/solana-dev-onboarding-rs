@@ -1,7 +1,7 @@
 pub use state::*;
-pub use context::*;
+pub use instructions::*;
 mod errors;
-mod context;
+mod instructions;
 mod state;
 
 declare_id!("CVDULabQV9WSVkyYnSCegKtEKmk1GLCW6nKjfWnU7BHG");
