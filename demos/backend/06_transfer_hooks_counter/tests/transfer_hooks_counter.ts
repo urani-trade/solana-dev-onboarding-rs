@@ -27,7 +27,6 @@ describe("transfer_hooks_counter", () => {
   // Configure the client to use the local cluster.
   const provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
-
   const program = anchor.workspace.TransferHooksCounter as Program<TransferHooksCounter>;
   const wallet = provider.wallet as anchor.Wallet;
   const connection = provider.connection;
@@ -185,6 +184,7 @@ describe("transfer_hooks_counter", () => {
     const amount = 1 * 10 ** decimals;
     const amountBigInt = BigInt(amount);
 
+    // Add extra accounts 
     let transferInstructionWithHelper = await createTransferCheckedWithTransferHookInstruction( 
       connection,
       sourceTokenAccount,
