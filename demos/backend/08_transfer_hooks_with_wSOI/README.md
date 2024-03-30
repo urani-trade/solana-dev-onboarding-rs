@@ -676,7 +676,7 @@ describe("transfer_hooks_with_w_soi", () => {
 <br>
 
 ```
-anchor buikd
+anchor build
 anchor test --detach
 ```
 

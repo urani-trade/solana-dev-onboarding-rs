@@ -61,8 +61,10 @@ pub struct InitializeExtraAccountMetaList<'info> {
         seeds = [b"counter"],
         bump,
         payer = payer,
-        space = 16
+        space = 16 // u64
     )]
+    
+    // initialize the accounts
     pub counter_account: Account<'info, CounterAccount>,
     pub token_program: Interface<'info, TokenInterface>,
     pub associated_token_program: Program<'info, AssociatedToken>,
@@ -94,6 +96,8 @@ pub struct TransferHook<'info> {
         seeds = [b"counter"],
         bump
     )]
+    
+    // Thus is the extra account for the counter
     pub counter_account: Account<'info, CounterAccount>,
 }
 ```
@@ -101,7 +105,7 @@ pub struct TransferHook<'info> {
 <br>
 
 
-* We also create an account holding an `u64` counter variable:
+* We then create an account holding an `u64` counter variable:
 
 <br>
 
@@ -172,19 +176,18 @@ let transferInstructionWithHelper =
 
 <br>
 
-* Build with:
+* Build and run the tests:
+
+<br>
 
 ```
 anchor build
+anchor test --detach
 ```
 
 <br>
 
-* Run tests with:
-
-```
-anchor test
-```
+* Check the [Solana Explore](https://explorer.solana.com/?cluster=devnet) (`localhost`) to see the log for the message `("This token has been transferred {0} times")`.
 
 <br>
 
@@ -194,4 +197,4 @@ anchor test
 
 <br>
 
-* [Transfers Hook, by Solana Labs](https://solana.com/developers/guides/token-extensions/transfer-hook)
+* [Transfers Hook for a Counter, by Solana Labs](https://solana.com/developers/guides/token-extensions/transfer-hook)
