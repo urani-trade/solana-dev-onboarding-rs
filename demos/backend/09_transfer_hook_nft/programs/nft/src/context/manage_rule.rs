@@ -11,11 +11,11 @@ pub struct ManageRule<'info> {
     #[account(
         init_if_needed,
         payer = signer,
-        space = EphemeralRule::INIT_SPACE,
+        space = NftRule::INIT_SPACE,
         seeds = [b"ephemeral_rule", seed.to_le_bytes().as_ref()],
         bump,
     )]
-    pub rule: Account<'info, EphemeralRule>,
+    pub rule: Account<'info, NftRule>,
     
     pub system_program: Program<'info, System>,
 }
@@ -30,7 +30,7 @@ impl<'info> ManageRule<'info> {
     ) -> Result<()> {
 
         self.rule.set_inner(
-            EphemeralRule {
+            NftRule {
                 seed,
                 rule_creator,
                 renewal_price,

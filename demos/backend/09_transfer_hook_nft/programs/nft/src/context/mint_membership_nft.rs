@@ -56,15 +56,15 @@ pub struct CreateMembership<'info> {
         seeds = [b"ephemeral_rule", rule.seed.to_le_bytes().as_ref()],
         bump,
     )]
-    pub rule: Account<'info, EphemeralRule>,
+    pub rule: Account<'info, NftRule>,
     #[account(
         init,
         payer = payer,
-        space = EphemeralData::INIT_SPACE,
+        space = NftData::INIT_SPACE,
         seeds = [b"ephemeral_data", membership.key().as_ref()],
         bump,
     )]
-    pub data: Account<'info, EphemeralData>,
+    pub data: Account<'info, NftData>,
 
     /// CHECK:
     #[account(
@@ -94,7 +94,7 @@ impl<'info> CreateMembership<'info> {
 
         // Step 0: Populate the EphemeralData account so we can reference it to use it.
         self.data.set_inner(
-            EphemeralData {
+            NftData {
                 mint: self.membership.key(),
                 rule: self.rule.key(),
                 expiry_time: Clock::get()?.unix_timestamp + time,

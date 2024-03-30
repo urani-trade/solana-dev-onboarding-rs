@@ -22,14 +22,14 @@ pub struct ManageTime<'info> {
         bump,
         has_one = treasury
     )]
-    pub rule: Account<'info, EphemeralRule>,
+    pub rule: Account<'info, NftRule>,
     #[account(
         mut,
         seeds = [b"ephemeral_data", membership.key().as_ref()],
         bump,
         has_one = rule
     )]
-    pub data: Account<'info, EphemeralData>,
+    pub data: Account<'info, NftData>,
 
     pub system_program: Program<'info, System>,
 }

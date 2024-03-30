@@ -23,14 +23,14 @@ pub struct BurnMembership<'info> {
         seeds = [b"ephemeral_rule", rule.seed.to_le_bytes().as_ref()],
         bump,
     )]
-    pub rule: Account<'info, EphemeralRule>,
+    pub rule: Account<'info, NftRule>,
     #[account(
         mut,
         close = epplex,
         seeds = [b"ephemeral_data", membership.key().as_ref()],
         bump,
     )]
-    pub data: Account<'info, EphemeralData>,
+    pub data: Account<'info, NftData>,
 
     /// CHECK:
     #[account(
