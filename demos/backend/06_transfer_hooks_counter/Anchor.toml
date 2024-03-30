@@ -5,7 +5,7 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-transfer_hooks_counter = "6G2DEXFp5sBkxvWop8X4k3gkKmYAcNTc8yfC5yTLFxR8"
+transfer_hooks_counter = "2fqi6BRCRdWcQzXDe6ox4ZxANPiwvwZueeT8FQtm3TQM"
 
 [registry]
 url = "https://api.apr.dev"
