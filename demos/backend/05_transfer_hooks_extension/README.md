@@ -7,7 +7,7 @@
 
 <br>
 
-* In this demo, we run a simple transfer hook (`transfer_hook`) that prints a message on every token transfer. 
+* In this demo, we run a simple transfer hook (`transfer_hook`) that prints a message on every token transfer. We recommend you look at the code and absorb the structure and the main concepts. We will leave deeper explanations for the following demos.
 
 * This program will only include 3 instructions:
   - `initialize_extra_account_meta_list`: creates an account that stores a list of extra accounts required by the `transfer_hook instruction`. 
@@ -101,8 +101,6 @@ pub mod transfer_hook {
     ) -> Result<()> {
         let instruction = TransferHookInstruction::unpack(data)?;
 
-        // match instruction discriminator to transfer hook interface execute instruction  
-        // token2022 program CPIs this instruction on token transfer
         match instruction {
             TransferHookInstruction::Execute { amount } => {
                 let amount_bytes = amount.to_le_bytes();
@@ -383,19 +381,10 @@ describe("transfer-hook", () => {
 anchor build
 ```
 
-<br>
-
-* Deploy with:
 
 <br>
 
-```
-anchor deploy
-```
-
-<br>
-
-* Run tests with (using `--detach` so the validator continues running after the test):
+* Run tests using `--detach` so the validator continues running after the test:
 
 ```
 anchor test --detach

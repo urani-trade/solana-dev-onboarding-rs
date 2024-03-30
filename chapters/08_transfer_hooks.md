@@ -9,7 +9,12 @@
 
 * The [Transfer Hook Interface](https://spl.solana.com/transfer-hook-interface), introduced within the [Solana Program Library](https://spl.solana.com/) allows token creators to "hook" additional custom logic into token transfers to shape the dynamics of users' and tokens' interactions.
 
-
+* Possibilities are unlimited, but here are some examples of logic code that could be implemented with Transfer Hooks:
+    - NFT Royalties
+    - Black or white list wallets that can receive tokens
+    - Implementing custom fees on token transfers
+    - Track statistics over your token transfers
+    - Custom token transfer events
 
 <br>
 
@@ -20,11 +25,11 @@
 
 <br>
 
-* Whenever the token is minted or transfered, the `Execute` instruction is triggered together with a Transfer Instruction (the custom logic).
-
-* All accounts from the initial transfer are converted to read-only accounts (i.e., the signer privileges of the sender do not extend to the Transfer Hook program). 
+* Whenever the token is transferred, the `Execute` instruction is triggered together with a Transfer Instruction (the custom logic).
 
 * For every token transfer involving tokens from the Mint Account, the Token Extensions program makes a Cross Program Invocation (CPI) to execute an instruction on the Transfer Hook program.
+
+* All accounts from the initial transfer are converted to read-only accounts (i.e., the signer privileges of the sender do not extend to the Transfer Hook program). 
 
 * Extra accounts required by `Execute` are stored in a predefined PDA that must be derived using the following seeds: `extra-account-metas` string, the mint account address, and the transfer hook `_id`:
 
@@ -48,20 +53,19 @@ const [pda] = PublicKey.findProgramAddressSync(
 
 * [The Transfer Hook interface specification](https://spl.solana.com/transfer-hook-interface/specification) includes two optional instructions and one required one; each uses a specific 8-byte discriminator at the start of its data.
 
-* The `Execute` instruction is required, and this is the instruction in which custom transfer functionality lives.
-    - It contains the following parts:
-        - `Discriminator`, the first 8 bytes of the hash of "spl-transfer-hook-interface:execute"
-        - `Data`:
-            - `amount`: `u64`, the transfer amount
-            - `accounts`:
-                - 1 []: Source token account
-                - 2 []: Mint
-                - 3 []: Destination token account
-                - 4 []: Source token account authority
-                - 5 []: Validation account
+* The `Execute` instruction is required, and this is the instruction in which custom transfer functionality lives. It contains the following parts:
+    - `Discriminator`, the first 8 bytes of the hash of "spl-transfer-hook-interface:execute"
+    - `Data`:
+        - `amount`: `u64`, the transfer amount
+        - `accounts`:
+            - 1 `[]`: Source token account
+            - 2 `[]`: Mint
+            - 3 `[]`: Destination token account
+            - 4 `[]`: Source token account authority
+            - 5 `[]`: Validation account
 
 * `InitializeExtraAccountMetaList` is optional and intializes the validation account to store a list of extra required `AccountMeta` configurations for the `Execute` instruction.
-
+    - The validation account is a PDA off of the transfer hook program, derived with the following seeds: `"extra-account-metas" + <mint-address>`.
 
 * `UpdateExtraAccountMetaList` is optional and allows an on-chain program to update its list of required accounts for `Execute`. 
 
