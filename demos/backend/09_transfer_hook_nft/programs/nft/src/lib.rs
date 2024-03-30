@@ -1,5 +1,4 @@
-pub use state::*;
-pub use instructions::*;
+pub use { state::*, instructions::* };
 mod errors;
 mod instructions;
 mod state;
@@ -45,13 +44,6 @@ pub mod nft {
     ) -> Result<()> {
         ctx.accounts.create(time, name, symbol, uri, ctx.bumps)
     }
-
-    pub fn burn_membership(
-        ctx: Context<BurnMembership>,
-    ) -> Result<()> {
-        ctx.accounts.burn(ctx.bumps)
-    }
-
 
     /////////////////
     // time.rs

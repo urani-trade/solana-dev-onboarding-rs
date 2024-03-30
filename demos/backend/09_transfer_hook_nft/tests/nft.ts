@@ -1,5 +1,5 @@
 import * as anchor from "@coral-xyz/anchor";
-import { IDL, EpplexProgram } from "../target/types/nft";
+import { IDL, NFT } from "../target/types/nft";
 import {
   PublicKey,
   SystemProgram,
@@ -20,7 +20,7 @@ describe("nft", () => {
   const connection = provider.connection;
   const programId = new PublicKey("CVDULabQV9WSVkyYnSCegKtEKmk1GLCW6nKjfWnU7BHG");
 
-  const program = new anchor.Program<EpplexProgram>(IDL, programId, provider);
+  const program = new anchor.Program<NFT>(IDL, programId, provider);
 
   // Helpers
   function wait(ms: number) {
@@ -111,22 +111,6 @@ describe("nft", () => {
       data, 
     })
     .signers([wallet.payer]).rpc().then(confirm).then(log);
-  });
-
-  it("Burn Membership", async () => {
-    await program.methods
-    .burnMembership()
-    .accounts({
-      burner: wallet.publicKey,
-      epplex: Keypair.generate().publicKey,
-      membership: membership.publicKey,
-      membershipAta,
-      rule, 
-      data, 
-      auth,
-      token2022Program: TOKEN_2022_PROGRAM_ID,
-    })
-    .signers([wallet.payer]).rpc({skipPreflight: true}).then(confirm).then(log);
   });
 
 

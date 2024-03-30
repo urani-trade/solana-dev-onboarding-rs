@@ -69,7 +69,7 @@ impl<'info> ManageTime<'info> {
         time: u64, 
     ) -> Result<()> {
 
-        require!(self.data.expiry > Clock::get()?.unix_timestamp, NftError::AlreadyExpired);
+        require!(self.data.expiry > Clock::get()?.unix_timestamp, NftError::Expired);
         require!(self.payer.key() == self.rule.creator, NftError::NotAuthorized);
 
         let time: u64 = time.checked_mul(3600).ok_or(NftError::Overflow)?;

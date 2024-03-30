@@ -75,7 +75,7 @@ pub struct CreateMembership<'info> {
     pub auth: UncheckedAccount<'info>,
 
     #[account(address = RENT_ID)]
-    /// CHECK: this is fine since we are hard coding the rent sysvar.
+    /// CHECK
     pub rent: UncheckedAccount<'info>,
     pub associated_token_program: Program<'info, AssociatedToken>,
     pub token_2022_program: Program<'info, Token2022>,
@@ -92,7 +92,7 @@ impl<'info> CreateMembership<'info> {
         bumps: CreateMembershipBumps,    
     ) -> Result<()> {
 
-        // Step 0: Populate the Data account so we can reference it to use it.
+        // Populate the Data account
         self.data.set_inner(
             NftData {
                 mint: self.membership.key(),
@@ -101,7 +101,7 @@ impl<'info> CreateMembership<'info> {
             }
         );
 
-        // Step 1: Initialize Account
+        // Initialize the Account
         let size = ExtensionType::try_calculate_account_len::<spl_token_2022::state::Mint>(
             &[
                 ExtensionType::MintCloseAuthority,
@@ -138,9 +138,8 @@ impl<'info> CreateMembership<'info> {
             ],
         )?;
 
-        // Step 2: Initialize Extension needed: 
+        // Initialize Extensions 
 
-        // 2.1: Permanent Delegate, 
         invoke(
             &initialize_permanent_delegate(
                 &self.token_2022_program.key(),
@@ -151,21 +150,19 @@ impl<'info> CreateMembership<'info> {
                 self.membership.to_account_info(),
             ],
         )?;
-        
-        // 2.2: Transfer Hook,
+
         invoke(
             &intialize_transfer_hook(
                 &self.token_2022_program.key(),
                 &self.membership.key(),
                 Some(self.auth.key()),
-                None,  // TO-DO: Add Transfer Hook
+                None,  // to add
             )?,
             &vec![
                 self.membership.to_account_info(),
             ],
         )?;
         
-        // 2.3: Close Mint Authority, 
         invoke(
             &initialize_mint_close_authority(
                 &self.token_2022_program.key(),
@@ -177,7 +174,6 @@ impl<'info> CreateMembership<'info> {
             ],
         )?;
         
-        // 2.4: Metadata Pointer
         invoke(
             &initialize_metadata_pointer(
                 &self.token_2022_program.key(),
@@ -190,7 +186,6 @@ impl<'info> CreateMembership<'info> {
             ],
         )?;
 
-        // Step 3: Initialize Mint & Metadata Account
         invoke(
             &initialize_mint2(
                 &self.token_2022_program.key(),
@@ -204,6 +199,7 @@ impl<'info> CreateMembership<'info> {
             ],
         )?;
 
+        // Metadata Account
         let seeds: &[&[u8]; 2] = &[
             b"nft_auth",
             &[bumps.auth],
@@ -229,16 +225,15 @@ impl<'info> CreateMembership<'info> {
             signer_seeds
         )?;
 
-        // Step 4: Initialize the ATA & Mint to ATA + Changing Mint Authority to None so that nobody can mint anymore tokens.: 
+        // Initialize the ATA & Mint to ATA 
 
-        // 4.1: Initialize ATA
         create(
             CpiContext::new(
                 self.associated_token_program.to_account_info(),
                 Create {
-                    payer: self.payer.to_account_info(), // payer
+                    payer: self.payer.to_account_info(), 
                     associated_token: self.membership_ata.to_account_info(),
-                    authority: self.payer.to_account_info(), // owner
+                    authority: self.payer.to_account_info(), 
                     mint: self.membership.to_account_info(),
                     system_program: self.system_program.to_account_info(),
                     token_program: self.token_2022_program.to_account_info(),
@@ -246,7 +241,6 @@ impl<'info> CreateMembership<'info> {
             ),
         )?;
 
-        // 4.2: Mint to ATA
         mint_to(
             CpiContext::new(
                 self.token_2022_program.to_account_info(),
@@ -259,7 +253,6 @@ impl<'info> CreateMembership<'info> {
             1
         )?;
 
-        // 4.3: Removing mint authority
         set_authority(
             CpiContext::new(
                 self.token_2022_program.to_account_info(),
@@ -270,7 +263,7 @@ impl<'info> CreateMembership<'info> {
                 // &[deployment_seeds]
             ),
             AuthorityType::MintTokens,
-            None, // Set mint authority to be None
+            None, // Set mint authority, nobody can mint any tokens
         )?;
 
         Ok(())
