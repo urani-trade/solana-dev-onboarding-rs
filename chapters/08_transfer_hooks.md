@@ -29,6 +29,14 @@
 
 * For every token transfer involving tokens from the Mint Account, the Token Extensions program makes a Cross Program Invocation (CPI) to execute an instruction on the Transfer Hook program.
 
+<br>
+
+> [!IMPORTANT]
+> **Mint Accounts**: To create a new token, `create-token()` function is used to initialize a new Mint Account, which contains basic information about the token. This account stores general information about the token and who has permissions over it. There is no data about token holdings of particular individuals (these are stored in Token Accounts).
+
+
+<br>
+
 * All accounts from the initial transfer are converted to read-only accounts (i.e., the signer privileges of the sender do not extend to the Transfer Hook program). 
 
 * Extra accounts required by `Execute` are stored in a predefined PDA that must be derived using the following seeds: `extra-account-metas` string, the mint account address, and the transfer hook `_id`:

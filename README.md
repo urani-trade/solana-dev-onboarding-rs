@@ -32,7 +32,7 @@ Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
 * **[4. Program Derived Addresses](chapters/04_pda.md)**
 * **[5. Events and Communication](chapters/05_events.md)**
 * **[6. Mastering Solana Frontend](chapters/06_frontend.md)**
-* **[7. Mastering Transfer Extensions](chapters/07_transfer_extensions.md)**
+* **[7. Mastering Token Extensions](chapters/07_token_extensions.md)**
 * **[8. Mastering Transfer Hooks](chapters/08_transfer_hooks.md)**
 * **[9. Mastering Security on Solana](chapters/09_security.md)**
 * **[10. Mastering Mobile Development](chapters/10_mobile.md)**
@@ -59,6 +59,7 @@ Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
 * **[Demo 6: Transfer Hook with a Counter](demos/backend/06_transfer_hooks_counter)**
 * **[Demo 7: Transfer Hook for Vesting](demos/backend/07_transfer_hooks_vesting)**
 * **[Demo 8: Transfer Hooks with wSOL fee](demos/backend/08_transfer_hooks_with_wSOL)**
+* **[Demo 9: Token Extensions for Membership NFT](demos/backend/09_token_extensions)**
 
 <br>
 

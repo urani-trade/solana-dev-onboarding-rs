@@ -7,11 +7,11 @@
 
 <br>
 
-* In this demo, we implement a method for users to gain token access gradually.
+* In this demo, we use transfer hooks to implement a method where users gradually gain token access. 
+  - This method restricts the number of tokens that can be transferred from the owner's associated token account (ATA).
 
 * Unlike traditional locking mechanisms, this approach places tokens directly in users' wallets.
 
-* Security occurs through a transfer hook, which restricts the number of tokens that can be transferred from the owner's associated token account (ATA).
 
 <br>
 
@@ -22,10 +22,12 @@
 
 <br>
 
-* We start creating our `vesting_template` program, with the following functions:
+* We start creating our `vesting_template` program, with the common methods:
     - `initialize_extra_account_meta_list()` 
     - `transfer_hook()`
     - `fallback()`
+
+* plus the custom methods:
     - `create_vesting_account()`
     - `claim_tokens()`
 
@@ -41,19 +43,19 @@ pub mod vesting_template {
 
 <br>
 
-* The first instruction is used to initialize `extra_account_meta_list`:
+* The first instruction is used to initialize `extra_account_meta_list()`, where:
+  1. index 0-3 are the accounts required for token transfer (source, mint, destination, owner)
+  2. index 4 is the address of the `ExtraAccountMetaList` account
+  3. index 5 is the `vesting_account`
 
 <br>
 
 ```rust
 pub fn initialize_extra_account_meta_list(
-        ctx: Context<InitializeExtraAccountMetaList>,
+    ctx: Context<InitializeExtraAccountMetaList>,
     ) -> Result<()> {
         
-    // index 0-3 are the accounts required for token transfer (source, mint, destination, owner)
-    // index 4 is address of ExtraAccountMetaList account
     let account_metas = vec![
-        // index 5, vesting_account
         ExtraAccountMeta::new_with_seeds(
             &[
                 Seed::Literal { bytes: "vesting".as_bytes().to_vec() },
@@ -65,12 +67,8 @@ pub fn initialize_extra_account_meta_list(
             )?,
     ];
     
-    // calculate account size
     let account_size = ExtraAccountMetaList::size_of(account_metas.len())? as u64;
-        
-    // calculate minimum required lamports
     let lamports = Rent::get()?.minimum_balance(account_size as usize);
-    
     let mint = ctx.accounts.mint.key();
         
     let signer_seeds: &[&[&[u8]]] = &[&[
@@ -79,7 +77,6 @@ pub fn initialize_extra_account_meta_list(
         &[ctx.bumps.extra_account_meta_list],
     ]];
     
-    // create ExtraAccountMetaList account
     create_account(
         CpiContext::new(
             ctx.accounts.system_program.to_account_info(),
@@ -94,7 +91,6 @@ pub fn initialize_extra_account_meta_list(
         ctx.program_id,
     )?;
     
-    // initialize ExtraAccountMetaList account with extra accounts
     ExtraAccountMetaList::init::<ExecuteInstruction>(
         &mut ctx.accounts.extra_account_meta_list.try_borrow_mut_data()?,
         &account_metas,
@@ -115,7 +111,7 @@ pub fn initialize_extra_account_meta_list(
 
 * Let's create an account that will:
     - record the amount of tokens vested
-    - check if the airdrop has been claimed
+    - check whether an airdrop has been claimed
     - store vesting specifics
 
 
@@ -135,7 +131,8 @@ pub struct VestingAccount {
     pub vesting_data: Vec<VestingData>,
 }
 
-// Iterate through vesting data, calculate total_basis_points, 
+// Iterate through vesting data, 
+// calculate total_basis_points, 
 // and set the vesting account state
 pub fn create_vesting_account(
         ctx: Context<CreateVestingAccount>, 
@@ -216,14 +213,11 @@ pub fn claim_tokens(ctx: Context<ClaimTokens>) -> Result<()> {
 
 <br>
 
-* For the `Execute` instruction, we add `vesting_account` to the account arrays.
-
-* This account is incorporated as an `UncheckedAccount`, to avoid the transaction to fail if a `VestingAccount` is not deserialized from the Execute Accounts Struct.
+* This account is incorporated as an `UncheckedAccount` to avoid the transaction failing if a `VestingAccoun`t is not deserialized from the `Accounts` struct:
 
 <br>
 
 ```rust
-// fallback instruction handler as workaround to anchor instruction discriminator check
 pub fn fallback<'info>(
         program_id: &Pubkey,
         accounts: &'info [AccountInfo<'info>],
@@ -231,13 +225,9 @@ pub fn fallback<'info>(
     ) -> Result<()> {
     let instruction = TransferHookInstruction::unpack(data)?;
 
-    // match instruction discriminator to transfer hook interface execute instruction
-    // token2022 program CPIs this instruction on token transfer
     match instruction {
         TransferHookInstruction::Execute { amount } => {
             let amount_bytes = amount.to_le_bytes();
-
-            // invoke custom transfer hook instruction on our program
                 __private::__global::transfer_hook(program_id, accounts, &amount_bytes)
         }
     _ => return Err(ProgramError::InvalidInstructionData.into()),
@@ -248,7 +238,7 @@ pub fn fallback<'info>(
 <br>
 
 * The identification of this account relies on specific seeds:
-    - the word 'vesting' in byte form
+    - the word `vesting` in byte form
     - the public key of the mint (1)
     - the public key of the source token (0)
     
@@ -279,7 +269,7 @@ ExtraAccountMeta::new_with_seeds(
 
 * We first verify the presence of a vesting schedule for the token sender by deserializing `vesting_account`:
     - if no errors, it confirms the sender’s tokens are subject to a vesting schedule, which must be enforced.
-    - if an error occurs, we handle it gracefully without failing the transaction, indicating the sender doesn’t have a vesting schedule and can trade their tokens freely.
+    - if an error occurs, handle it gracefully without failing the transaction (i.e., the sender doesn't have a vesting schedule and can trade their tokens freely).
 
 <br>
 
@@ -288,7 +278,6 @@ pub fn transfer_hook(ctx: Context<TransferHook>, amount: u64) -> Result<()> {
     let info = ctx.accounts.vesting_account.to_account_info();
     let data = info.try_borrow_mut_data()?;
 
-    // Try and Deserialize the Account, if it deserialize then we know that the sender has a vesting account and we should check it.
     match  VestingAccount::try_deserialize(&mut &data[..]) {
         Ok(vesting_account) => {
             let mut amount_locked: u64 = 0;
@@ -308,8 +297,8 @@ pub fn transfer_hook(ctx: Context<TransferHook>, amount: u64) -> Result<()> {
 
             // Check if the amount locked is less than what will remain after the transfer
             // Ensures the tokens remaining in the `source_token account`, minus what the 
-            // owner intends to transfer, equals or exceeds the locked amount, maintaining 
-            // the integrity of the vesting schedule.
+            // owner intends to transfer, equals or exceeds the locked amount,
+            // maintaining the integrity of the vesting schedule.
             require!(amount_locked <= ctx.accounts.source_token.amount.checked_sub(amount).ok_or(VestingErr::Overflow)?, VestingErr::LockedAmount);
         },
 
@@ -700,7 +689,6 @@ describe("vesting_template", () => {
 anchor build
 ```
 
-
 <br>
 
 * Find the `programId`, and replace it inside `Anchor.toml`, `test/transfer_hooks.js`, and `programs/src/lib.rs`:
@@ -712,6 +700,7 @@ anchor keys list
 ```
 
 <br>
+
 
 * Run tests with:
 
