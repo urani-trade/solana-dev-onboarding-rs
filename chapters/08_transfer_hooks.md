@@ -20,13 +20,13 @@
 
 <br>
 
-* Whenever the token is minted, the `Execute` instruction is triggered together with a Transfer Instruction (the custom logic).
+* Whenever the token is minted or transfered, the `Execute` instruction is triggered together with a Transfer Instruction (the custom logic).
 
 * All accounts from the initial transfer are converted to read-only accounts (i.e., the signer privileges of the sender do not extend to the Transfer Hook program). 
 
-* Extra accounts required by `Execute` are stored in a predefined PDA that must be derived using the following seeds: `extra-account-metas` string, the mint account address, and the transfer hook `_id`.
-
 * For every token transfer involving tokens from the Mint Account, the Token Extensions program makes a Cross Program Invocation (CPI) to execute an instruction on the Transfer Hook program.
+
+* Extra accounts required by `Execute` are stored in a predefined PDA that must be derived using the following seeds: `extra-account-metas` string, the mint account address, and the transfer hook `_id`:
 
 <br>
 

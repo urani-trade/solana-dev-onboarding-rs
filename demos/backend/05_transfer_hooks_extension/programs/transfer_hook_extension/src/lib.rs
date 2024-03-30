@@ -18,6 +18,8 @@ declare_id!("7v76bq4YNRgFoQzkWZ8vf1DSJnSYPX4tDCs38rjjd6Qi");
 pub mod transfer_hook {
     use super::*;
 
+    // Creates an account that stores a list of extra accounts required by the
+    // transfer_hook instruction. 
     pub fn initialize_extra_account_meta_list(
         ctx: Context<InitializeExtraAccountMetaList>,
     ) -> Result<()> {
@@ -58,6 +60,7 @@ pub mod transfer_hook {
     }
 
     
+    // Instruction invoked via CPI on every token transfer
     pub fn transfer_hook(_ctx: Context<TransferHook>, _amount: u64) -> Result<()> {
         msg!("Hello Transfer Hook!");
         Ok(())
