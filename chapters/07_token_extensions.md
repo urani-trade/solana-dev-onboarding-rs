@@ -50,7 +50,7 @@ spl-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb create-token 
 
 <br>
 
-* [Demo 9: Token Extensions for Membership NFT](demos/backend/09_transfer_extensions)
+* [Demo 9: Token Extensions for Membership NFT](demos/backend/09_token_extensions)
 
 <br>
 
