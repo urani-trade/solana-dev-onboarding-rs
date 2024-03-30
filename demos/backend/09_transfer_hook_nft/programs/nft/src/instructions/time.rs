@@ -2,7 +2,6 @@ pub use anchor_lang::{
     system_program::{transfer, Transfer},
     prelude::*
 };
-
 use crate::{errors::*, state::*};
 
 #[derive(Accounts)]
@@ -37,7 +36,7 @@ pub struct ManageTime<'info> {
 impl<'info> ManageTime<'info> {
     pub fn add(
         &mut self,
-        time: u64, // Time in hours
+        time: u64, 
     ) -> Result<()> {
 
         let mut cost = time * self.rule.price;
@@ -67,14 +66,13 @@ impl<'info> ManageTime<'info> {
 
     pub fn remove(
         &mut self,
-        time: u64, // Time in hours
+        time: u64, 
     ) -> Result<()> {
 
         require!(self.data.expiry > Clock::get()?.unix_timestamp, NftError::AlreadyExpired);
         require!(self.payer.key() == self.rule.creator, NftError::NotAuthorized);
 
         let time: u64 = time.checked_mul(3600).ok_or(NftError::Overflow)?;
-
         self.data.expiry = self.data.expiry.checked_sub(time as i64).ok_or(NftError::Overflow)?;
 
         Ok(())

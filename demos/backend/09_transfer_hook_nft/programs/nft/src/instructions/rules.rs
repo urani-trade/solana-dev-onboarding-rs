@@ -1,7 +1,5 @@
 pub use anchor_lang::prelude::*;
-
-use crate::state::*;
-pub use crate::{errors::*};
+use crate::{errors::*, state::*};
 
 #[derive(Accounts)]
 #[instruction(seed: u64)]
