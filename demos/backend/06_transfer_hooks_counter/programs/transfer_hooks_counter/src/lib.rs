@@ -11,6 +11,7 @@ use spl_tlv_account_resolution::{
 };
 use spl_transfer_hook_interface::instruction::{ExecuteInstruction, TransferHookInstruction};
 
+
 declare_id!("6G2DEXFp5sBkxvWop8X4k3gkKmYAcNTc8yfC5yTLFxR8");
 
 #[error_code]
@@ -27,7 +28,9 @@ pub mod transfer_hooks_counter {
         ctx: Context<InitializeExtraAccountMetaList>,
     ) -> Result<()> {
 
-        // The `addExtraAccountsToInstruction` JS helper function resolving incorrectly
+        // If the trasnfer hook needs additional accounts, they need to be
+        // added to ExtraAccountMeta. In this case, we want a PDA that
+        // saves the amount how often the token has been tranferred.
         let account_metas = vec![
             ExtraAccountMeta::new_with_seeds(
                 &[Seed::Literal {
@@ -76,13 +79,7 @@ pub mod transfer_hooks_counter {
 
     pub fn transfer_hook(ctx: Context<TransferHook>, amount: u64) -> Result<()> {
 
-        if amount > 50 {
-            msg!("The amount is too big {0}", amount);
-        //    return err!(MyError::AmountTooBig);
-        }
-
-        ctx.accounts.counter_account.counter += 1;
-
+        ctx.accounts.counter_account.counter.checked_add(1).unwrap();
         msg!("This token has been transfered {0} times", ctx.accounts.counter_account.counter);
        
         Ok(())
@@ -169,5 +166,5 @@ pub struct TransferHook<'info> {
 
 #[account]
 pub struct CounterAccount {
-    counter: u8,
+    counter: u64,
 }
