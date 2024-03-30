@@ -885,7 +885,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "epplex-program"
+name = "epplex-nft"
 version = "0.1.0"
 dependencies = [
  "ahash 0.8.6",

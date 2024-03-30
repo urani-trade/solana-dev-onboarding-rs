@@ -5,7 +5,7 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-epplex_program = "CVDULabQV9WSVkyYnSCegKtEKmk1GLCW6nKjfWnU7BHG"
+nft = "CVDULabQV9WSVkyYnSCegKtEKmk1GLCW6nKjfWnU7BHG"
 
 [registry]
 url = "https://api.apr.dev"

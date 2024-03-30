@@ -8,7 +8,7 @@ use ephemeral_context::*;
 declare_id!("CVDULabQV9WSVkyYnSCegKtEKmk1GLCW6nKjfWnU7BHG");
 
 #[program]
-pub mod epplex_program {
+pub mod nft {
     use super::*;
 
     pub fn create_rule(

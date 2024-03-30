@@ -1,12 +1,12 @@
 [package]
-name = "epplex-program"
+name = "epplex-nft"
 version = "0.1.0"
 description = "Created with Anchor"
 edition = "2021"
 
 [lib]
+name = "nft"
 crate-type = ["cdylib", "lib"]
-name = "epplex_program"
 
 [features]
 no-entrypoint = []

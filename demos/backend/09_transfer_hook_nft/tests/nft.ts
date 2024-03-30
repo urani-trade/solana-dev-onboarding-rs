@@ -1,12 +1,11 @@
 import * as anchor from "@coral-xyz/anchor";
-import { IDL, EpplexProgram } from "../target/types/epplex_program";
+import { IDL, EpplexProgram } from "../target/types/nft";
 import {
   PublicKey,
   SystemProgram,
   SYSVAR_RENT_PUBKEY,
   Keypair,
 } from "@solana/web3.js";
-
 import {  
   getAssociatedTokenAddressSync,
   TOKEN_2022_PROGRAM_ID
@@ -14,7 +13,7 @@ import {
 import { ASSOCIATED_PROGRAM_ID } from "@coral-xyz/anchor/dist/cjs/utils/token";
 
 
-describe("epplex-program", () => {
+describe("nft", () => {
   const wallet = anchor.Wallet.local();
   anchor.setProvider(anchor.AnchorProvider.env());
   const provider = anchor.getProvider();
