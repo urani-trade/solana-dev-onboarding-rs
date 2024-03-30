@@ -7,10 +7,10 @@
 
 <br>
 
-* In this demo, we build a more advanced Transfer Hook program that requires the sender to pay a wSOL fee for every token transfer.
+* In this demo, we build a more advanced transfer hook program that requires the sender to pay a wSOL fee for every token transfer.
 
 
-* The wSOL transfers will be executed using a delegate that is a PDA derived from the Transfer Hook program (as the signature from the initial sender of the token transfer instruction is not accessible in the Transfer Hook program).
+* The wSOL transfers is executed using a delegate that is a PDA derived from the Transfer Hook program (as the signature from the initial sender of the token transfer instruction is not accessible in the Transfer Hook program).
     
 
 <br>
@@ -679,6 +679,18 @@ describe("transfer_hooks_with_w_soi", () => {
 anchor build
 anchor test --detach
 ```
+
+<br>
+
+* Find the `programId`, and replace it inside `Anchor.toml`, `test/transfer_hooks.js`, and `programs/src/lib.rs`:
+
+<br>
+
+```
+anchor keys list  
+```
+
+<br>
 
 <br>
 

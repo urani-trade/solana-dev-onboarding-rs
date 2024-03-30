@@ -7,7 +7,7 @@
 
 <br>
 
-* This demo shows you how to increase a counter every time a token is transferred.
+* This demo demonstrate how to increase a counter every time a token is transferred.
 
 <br>
 
@@ -18,9 +18,9 @@
 <br>
 
 
-* Additional logic to this transfer hook that needs an additional account should be added to the ExtraAccountMetaList account.
+* Any additional logic to a transfer hook needs additional accounts, that should be added to the `ExtraAccountMetaList` account.
 
-* In this case, we have a PDA saving the amount how often the token has been transferred by this code added to the  `initialize_extra_account_meta_list` instruction:
+* In this demo, we create a PDA saving how often the token has been transferred by this code, which should be added to the `initialize_extra_account_meta_list` instruction:
 
 <br>
 
@@ -38,22 +38,23 @@ let account_metas = vec![
 
 <br>
 
-* This account needs to be created when we initialize the new mint account and we need to pass it in every time we transfer the token.
+* This account needs to be created when we initialize the new Mint Acount and we need to pass it in every time we transfer the token.
 
 <br>
 
 ```rust
 #[derive(Accounts)]
 pub struct InitializeExtraAccountMetaList<'info> {
+    
     #[account(mut)]
     payer: Signer<'info>,
 
-    /// CHECK: ExtraAccountMetaList Account, must use these seeds
     #[account(
         mut,
         seeds = [b"extra-account-metas", mint.key().as_ref()],
         bump
     )]
+
     pub extra_account_meta_list: AccountInfo<'info>,
     pub mint: InterfaceAccount<'info, Mint>,
     #[account(
@@ -73,19 +74,22 @@ pub struct InitializeExtraAccountMetaList<'info> {
 
 #[derive(Accounts)]
 pub struct TransferHook<'info> {
+    
     #[account(
         token::mint = mint,
         token::authority = owner,
     )]
+    
     pub source_token: InterfaceAccount<'info, TokenAccount>,
     pub mint: InterfaceAccount<'info, Mint>,
+    
     #[account(
         token::mint = mint,
     )]
+    
     pub destination_token: InterfaceAccount<'info, TokenAccount>,
-    /// CHECK: source token account owner, can be SystemAccount or PDA owned by another program
+
     pub owner: UncheckedAccount<'info>,
-    /// CHECK: ExtraAccountMetaList Account,
     #[account(
         seeds = [b"extra-account-metas", mint.key().as_ref()],
         bump
@@ -97,7 +101,7 @@ pub struct TransferHook<'info> {
         bump
     )]
     
-    // Thus is the extra account for the counter
+    // this is the extra account for the counter
     pub counter_account: Account<'info, CounterAccount>,
 }
 ```
@@ -105,7 +109,7 @@ pub struct TransferHook<'info> {
 <br>
 
 
-* We then create an account holding an `u64` counter variable:
+* Note that this is the account holding the `u64` counter variable:
 
 <br>
 
@@ -130,10 +134,16 @@ pub struct CounterAccount {
 <br>
 
 ```rust
-pub fn transfer_hook(ctx: Context<TransferHook>, amount: u64) -> Result<()> {
+pub fn transfer_hook(
+    ctx: Context<TransferHook>, 
+    amount: u64
+    ) -> Result<()> {
 
     ctx.accounts.counter_account.counter.checked_add(1).unwrap();
-    msg!("This token has been transferred {0} times", ctx.accounts.counter_account.counter);
+    msg!(
+        "This token has been transferred {0} times", 
+        ctx.accounts.counter_account.counter
+    );
 
     Ok(())
 }
@@ -147,7 +157,7 @@ pub fn transfer_hook(ctx: Context<TransferHook>, amount: u64) -> Result<()> {
 
 <br>
 
-* In the client, these accounts are added automatically by the helper function `createTransferCheckedWithTransferHookInstruction`:
+* In the client, these accounts are added automatically by the helper function `createTransferCheckedWithTransferHookInstructio()`:
 
 <br>
 
@@ -187,7 +197,7 @@ anchor test --detach
 
 <br>
 
-* Check the [Solana Explore](https://explorer.solana.com/?cluster=devnet) (`localhost`) to see the log for the message `("This token has been transferred {0} times")`.
+* Check the [Solana Explore](https://explorer.solana.com/?cluster=devnet) (`localhost`) to see the log for the message `("This token has been transferred X times")`.
 
 <br>
 

@@ -14,11 +14,6 @@ use spl_transfer_hook_interface::instruction::{ExecuteInstruction, TransferHookI
 
 declare_id!("6G2DEXFp5sBkxvWop8X4k3gkKmYAcNTc8yfC5yTLFxR8");
 
-#[error_code]
-pub enum MyError {
-    #[msg("The amount is too big")]
-    AmountTooBig,
-}
 
 #[program]
 pub mod transfer_hooks_counter {
