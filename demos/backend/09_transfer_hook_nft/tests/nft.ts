@@ -1,5 +1,5 @@
 import * as anchor from "@coral-xyz/anchor";
-import { IDL, NFT } from "../target/types/nft";
+import { IDL, Nft } from "../target/types/nft";
 import {
   PublicKey,
   SystemProgram,
@@ -14,18 +14,13 @@ import { ASSOCIATED_PROGRAM_ID } from "@coral-xyz/anchor/dist/cjs/utils/token";
 
 
 describe("nft", () => {
+
   const wallet = anchor.Wallet.local();
   anchor.setProvider(anchor.AnchorProvider.env());
   const provider = anchor.getProvider();
   const connection = provider.connection;
   const programId = new PublicKey("CVDULabQV9WSVkyYnSCegKtEKmk1GLCW6nKjfWnU7BHG");
-
-  const program = new anchor.Program<NFT>(IDL, programId, provider);
-
-  // Helpers
-  function wait(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-  }
+  const program = new anchor.Program<Nft>(IDL, programId, provider);
 
   const confirm = async (signature: string): Promise<string> => {
     const block = await connection.getLatestBlockhash();
@@ -37,40 +32,38 @@ describe("nft", () => {
   }
 
   const log = async(signature: string): Promise<string> => {
-    console.log(`Your transaction signature: https://explorer.solana.com/transaction/${signature}?cluster=custom&customUrl=${connection.rpcEndpoint}`);
-    return signature;
+   return signature;
   }
 
   const seed =  new anchor.BN(Math.floor(Math.random() * 100000))
   const ruleCreator = wallet.publicKey;
-  const renewalPrice = new anchor.BN(1000); // In Lamports
+  const renewalPrice = new anchor.BN(1000); 
   const treasury = Keypair.generate().publicKey;
   const rule = PublicKey.findProgramAddressSync([Buffer.from("nft_rule"), seed.toArrayLike(Buffer, "le", 8)], program.programId)[0];
-
   const endingTime = new anchor.BN(Date.now() + 7 * 24 * 3600);
-  const name = "Epplex Membership";
-  const symbol = "EPPLEX";
-  const uri = "https://epplex.io/membership";
+  const name = "Membership";
+  const symbol = "URANI";
+  const uri = "https://urani.ag";
   const membership = Keypair.generate();
   const membershipAta = getAssociatedTokenAddressSync(membership.publicKey, wallet.publicKey, false, TOKEN_2022_PROGRAM_ID);
   const data = PublicKey.findProgramAddressSync([Buffer.from("nft_data"), membership.publicKey.toBuffer()], program.programId)[0];
   const auth = PublicKey.findProgramAddressSync([Buffer.from("nft_auth")], program.programId)[0];
 
-  it("Creates a new Rule", async () => {
+  it("Creating a new rule", async () => {
     await program.methods
     .createRule(seed, ruleCreator, renewalPrice, treasury)
     .accounts({rule})
     .signers([wallet.payer]).rpc().then(confirm).then(log);
   });
 
-  it("Modify the Rule", async () => {
+  it("Modifying the rule", async () => {
     await program.methods
     .modifyRule(seed, ruleCreator, renewalPrice, treasury)
     .accounts({rule})
     .signers([wallet.payer]).rpc().then(confirm).then(log);
   });
 
-  it("Create a new Membership NFT", async () => {
+  it("Create a new Membership", async () => {
     await program.methods
     .createMembership(endingTime, name, symbol, uri)
     .accounts({
@@ -112,6 +105,5 @@ describe("nft", () => {
     })
     .signers([wallet.payer]).rpc().then(confirm).then(log);
   });
-
 
 });
