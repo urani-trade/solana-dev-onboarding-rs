@@ -197,7 +197,7 @@ anchor test --detach
 
 <br>
 
-* Check the [Solana Explore](https://explorer.solana.com/?cluster=devnet) (`localhost`) to see the log for the message `("This token has been transferred X times")`.
+* Check the [Solana Explorer](https://explorer.solana.com/?cluster=devnet) (`localhost`) to see the log for the message `("This token has been transferred X times")`.
 
 <br>
 

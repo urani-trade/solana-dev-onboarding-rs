@@ -3,7 +3,7 @@ mod errors;
 mod instructions;
 mod state;
 
-declare_id!("CVDULabQV9WSVkyYnSCegKtEKmk1GLCW6nKjfWnU7BHG");
+declare_id!("HPPjTJWwTHTGxgoaqNaWGFQTbqkg25NuSctdkpGNdUL5");
 
 #[program]
 pub mod nft {

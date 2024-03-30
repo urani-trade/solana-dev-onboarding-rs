@@ -19,7 +19,7 @@ describe("nft", () => {
   anchor.setProvider(anchor.AnchorProvider.env());
   const provider = anchor.getProvider();
   const connection = provider.connection;
-  const programId = new PublicKey("CVDULabQV9WSVkyYnSCegKtEKmk1GLCW6nKjfWnU7BHG");
+  const programId = new PublicKey("HPPjTJWwTHTGxgoaqNaWGFQTbqkg25NuSctdkpGNdUL5");
   const program = new anchor.Program<Nft>(IDL, programId, provider);
 
   const confirm = async (signature: string): Promise<string> => {
