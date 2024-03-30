@@ -12,7 +12,7 @@ use spl_tlv_account_resolution::{
 use spl_transfer_hook_interface::instruction::{ExecuteInstruction, TransferHookInstruction};
 
 
-declare_id!("2fqi6BRCRdWcQzXDe6ox4ZxANPiwvwZueeT8FQtm3TQM");
+declare_id!("9C2a1SB4cvSWQaYfV4cAHY6QkoGqHSoLZ4UdEQZqh2Jq");
 
 
 #[program]
@@ -72,7 +72,7 @@ pub mod transfer_hooks_counter {
         Ok(())
     }
 
-    pub fn transfer_hook(ctx: Context<TransferHook>, amount: u64) -> Result<()> {
+    pub fn transfer_hook(ctx: Context<TransferHook>, _amount: u64) -> Result<()> {
 
         ctx.accounts.counter_account.counter.checked_add(1).unwrap();
         msg!("This token has been transferred {0} times", ctx.accounts.counter_account.counter);
@@ -161,5 +161,5 @@ pub struct TransferHook<'info> {
 
 #[account]
 pub struct CounterAccount {
-    counter: u64,
+    counter: u8,
 }
