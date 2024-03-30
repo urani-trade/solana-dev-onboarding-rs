@@ -20,14 +20,14 @@ pub struct ManageTime<'info> {
     pub membership: UncheckedAccount<'info>,
     
     #[account(
-        seeds = [b"ephemeral_rule", rule.seed.to_le_bytes().as_ref()],
+        seeds = [b"nft_rule", rule.seed.to_le_bytes().as_ref()],
         bump,
         has_one = treasury
     )]
     pub rule: Account<'info, NftRule>,
     #[account(
         mut,
-        seeds = [b"ephemeral_data", membership.key().as_ref()],
+        seeds = [b"nft_data", membership.key().as_ref()],
         bump,
         has_one = rule
     )]

@@ -13,7 +13,7 @@ pub struct ManageRule<'info> {
         init_if_needed,
         payer = signer,
         space = NftRule::INIT_SPACE,
-        seeds = [b"ephemeral_rule", seed.to_le_bytes().as_ref()],
+        seeds = [b"nft_rule", seed.to_le_bytes().as_ref()],
         bump,
     )]
     pub rule: Account<'info, NftRule>,

@@ -53,7 +53,7 @@ pub struct CreateMembership<'info> {
     pub membership_ata: UncheckedAccount<'info>,
     
     #[account(
-        seeds = [b"ephemeral_rule", rule.seed.to_le_bytes().as_ref()],
+        seeds = [b"nft_rule", rule.seed.to_le_bytes().as_ref()],
         bump,
     )]
     pub rule: Account<'info, NftRule>,
@@ -61,7 +61,7 @@ pub struct CreateMembership<'info> {
         init,
         payer = payer,
         space = NftData::INIT_SPACE,
-        seeds = [b"ephemeral_data", membership.key().as_ref()],
+        seeds = [b"nft_data", membership.key().as_ref()],
         bump,
     )]
     pub data: Account<'info, NftData>,
@@ -69,7 +69,7 @@ pub struct CreateMembership<'info> {
     /// CHECK:
     #[account(
         mut,
-        seeds = [b"ephemeral_auth"],
+        seeds = [b"nft_auth"],
         bump
     )]
     pub auth: UncheckedAccount<'info>,
@@ -92,7 +92,7 @@ impl<'info> CreateMembership<'info> {
         bumps: CreateMembershipBumps,    
     ) -> Result<()> {
 
-        // Step 0: Populate the EphemeralData account so we can reference it to use it.
+        // Step 0: Populate the Data account so we can reference it to use it.
         self.data.set_inner(
             NftData {
                 mint: self.membership.key(),
@@ -205,7 +205,7 @@ impl<'info> CreateMembership<'info> {
         )?;
 
         let seeds: &[&[u8]; 2] = &[
-            b"ephemeral_auth",
+            b"nft_auth",
             &[bumps.auth],
         ];
         let signer_seeds = &[&seeds[..]];

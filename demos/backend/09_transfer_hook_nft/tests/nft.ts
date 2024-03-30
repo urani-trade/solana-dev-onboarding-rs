@@ -45,7 +45,7 @@ describe("nft", () => {
   const ruleCreator = wallet.publicKey;
   const renewalPrice = new anchor.BN(1000); // In Lamports
   const treasury = Keypair.generate().publicKey;
-  const rule = PublicKey.findProgramAddressSync([Buffer.from("ephemeral_rule"), seed.toArrayLike(Buffer, "le", 8)], program.programId)[0];
+  const rule = PublicKey.findProgramAddressSync([Buffer.from("nft_rule"), seed.toArrayLike(Buffer, "le", 8)], program.programId)[0];
 
   const endingTime = new anchor.BN(Date.now() + 7 * 24 * 3600);
   const name = "Epplex Membership";
@@ -53,8 +53,8 @@ describe("nft", () => {
   const uri = "https://epplex.io/membership";
   const membership = Keypair.generate();
   const membershipAta = getAssociatedTokenAddressSync(membership.publicKey, wallet.publicKey, false, TOKEN_2022_PROGRAM_ID);
-  const data = PublicKey.findProgramAddressSync([Buffer.from("ephemeral_data"), membership.publicKey.toBuffer()], program.programId)[0];
-  const auth = PublicKey.findProgramAddressSync([Buffer.from("ephemeral_auth")], program.programId)[0];
+  const data = PublicKey.findProgramAddressSync([Buffer.from("nft_data"), membership.publicKey.toBuffer()], program.programId)[0];
+  const auth = PublicKey.findProgramAddressSync([Buffer.from("nft_auth")], program.programId)[0];
 
   it("Creates a new Rule", async () => {
     await program.methods

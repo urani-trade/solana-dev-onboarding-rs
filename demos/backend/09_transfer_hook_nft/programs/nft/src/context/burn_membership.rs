@@ -21,21 +21,21 @@ pub struct BurnMembership<'info> {
     pub membership_ata: UncheckedAccount<'info>,
 
     #[account(
-        seeds = [b"ephemeral_rule", rule.seed.to_le_bytes().as_ref()],
+        seeds = [b"nft_rule", rule.seed.to_le_bytes().as_ref()],
         bump,
     )]
     pub rule: Account<'info, NftRule>,
     #[account(
         mut,
         close = epplex,
-        seeds = [b"ephemeral_data", membership.key().as_ref()],
+        seeds = [b"nft_data", membership.key().as_ref()],
         bump,
     )]
     pub data: Account<'info, NftData>,
 
     /// CHECK:
     #[account(
-        seeds = [b"ephemeral_auth"],
+        seeds = [b"nft_auth"],
         bump
     )]
     pub auth: UncheckedAccount<'info>,
@@ -54,7 +54,7 @@ impl<'info> BurnMembership<'info> {
         require!(self.data.expiry_time + 14 * 3600 < Clock::get()?.unix_timestamp || self.burner.key() == self.rule.rule_creator, NftError::NotExpired);
 
         let seeds: &[&[u8]; 2] = &[
-            b"ephemeral_auth",
+            b"nft_auth",
             &[bumps.auth],
         ];
         let signer_seeds = &[&seeds[..]];
