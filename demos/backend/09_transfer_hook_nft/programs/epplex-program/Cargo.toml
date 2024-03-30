@@ -1,0 +1,25 @@
+[package]
+name = "epplex-program"
+version = "0.1.0"
+description = "Created with Anchor"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "epplex_program"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = { git = "https://github.com/bridgesplit/anchor.git", features = ["interface-instructions", "init-if-needed"]}
+anchor-spl = { git = "https://github.com/bridgesplit/anchor.git", features = ["token_2022_extensions", "token_2022"]}
+spl-token-2022 = {version = "1.0.0", features = ["no-entrypoint"] }
+solana-program = "=1.17"
+spl-token-metadata-interface = "0.2.0"
+spl-pod = "0.1.0"
+ahash = "=0.8.6"
