@@ -50,7 +50,7 @@ impl<'info> BurnMembership<'info> {
         bumps: BurnMembershipBumps,
     ) -> Result<()> {
 
-        require!(self.data.expiry_time + 14 * 3600 < Clock::get()?.unix_timestamp || self.burner.key() == self.rule.rule_creator, EphemeralError::NotExpired);
+        require!(self.data.expiry_time + 14 * 3600 < Clock::get()?.unix_timestamp || self.burner.key() == self.rule.rule_creator, NftError::NotExpired);
 
         let seeds: &[&[u8]; 2] = &[
             b"ephemeral_auth",

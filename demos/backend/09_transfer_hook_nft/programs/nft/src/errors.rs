@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 
 #[error_code]
-pub enum EphemeralError {
+pub enum NftError {
     #[msg("You don't have the authority to perform this action")]
     EscalatedAuthority,
     #[msg("Overflow")]

@@ -885,19 +885,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "epplex-nft"
-version = "0.1.0"
-dependencies = [
- "ahash 0.8.6",
- "anchor-lang",
- "anchor-spl",
- "solana-program",
- "spl-pod",
- "spl-token-2022 1.0.0",
- "spl-token-metadata-interface",
-]
-
-[[package]]
 name = "equivalent"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1226,6 +1213,19 @@ dependencies = [
  "keccak",
  "rand_core 0.6.4",
  "zeroize",
+]
+
+[[package]]
+name = "nft"
+version = "0.1.0"
+dependencies = [
+ "ahash 0.8.6",
+ "anchor-lang",
+ "anchor-spl",
+ "solana-program",
+ "spl-pod",
+ "spl-token-2022 1.0.0",
+ "spl-token-metadata-interface",
 ]
 
 [[package]]

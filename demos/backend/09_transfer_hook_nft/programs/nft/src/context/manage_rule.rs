@@ -49,7 +49,7 @@ impl<'info> ManageRule<'info> {
         treasury: Pubkey,
     ) -> Result<()> {
 
-        require!(self.rule.rule_creator == self.signer.key(), EphemeralError::EscalatedAuthority);
+        require!(self.rule.rule_creator == self.signer.key(), NftError::EscalatedAuthority);
 
         self.rule.rule_creator = rule_creator;
         self.rule.renewal_price = renewal_price;

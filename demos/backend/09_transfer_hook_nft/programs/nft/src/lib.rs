@@ -7,6 +7,7 @@ mod context;
 use context::*;
 declare_id!("CVDULabQV9WSVkyYnSCegKtEKmk1GLCW6nKjfWnU7BHG");
 
+
 #[program]
 pub mod nft {
     use super::*;
