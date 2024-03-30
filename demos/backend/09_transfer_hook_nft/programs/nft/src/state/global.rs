@@ -7,16 +7,17 @@ pub struct NftData {
     pub expiry_time: i64,
 }
 
-impl Space for NftData {
-    const INIT_SPACE: usize = 8 + 32 + 32 + 8;
-}
-
 #[account]
 pub struct NftRule {
     pub seed: u64,
     pub rule_creator: Pubkey,
     pub renewal_price: u64,
     pub treasury: Pubkey,
+}
+
+
+impl Space for NftData {
+    const INIT_SPACE: usize = 8 + 32 + 32 + 8;
 }
 
 impl Space for NftRule {
