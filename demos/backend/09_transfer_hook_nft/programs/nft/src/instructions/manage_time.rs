@@ -42,13 +42,13 @@ impl<'info> ManageTime<'info> {
         time: u64, // Time in hours
     ) -> Result<()> {
 
-        let mut cost = time * self.rule.renewal_price;
+        let mut cost = time * self.rule.price;
         let time: u64 = time.checked_mul(3600).ok_or(NftError::Overflow)?;
 
         if self.data.expiry_time < Clock::get()?.unix_timestamp {
             let flat_fee: u64 = 20;
-            cost = cost.checked_add(flat_fee.checked_mul(self.rule.renewal_price).ok_or(NftError::Overflow)?).ok_or(NftError::Overflow)?;
-        } else if self.payer.key() == self.rule.rule_creator {
+            cost = cost.checked_add(flat_fee.checked_mul(self.rule.price).ok_or(NftError::Overflow)?).ok_or(NftError::Overflow)?;
+        } else if self.payer.key() == self.rule.creator {
             cost = 0;
         }
 
@@ -73,7 +73,7 @@ impl<'info> ManageTime<'info> {
     ) -> Result<()> {
 
         require!(self.data.expiry_time > Clock::get()?.unix_timestamp, NftError::AlreadyExpired);
-        require!(self.payer.key() == self.rule.rule_creator, NftError::EscalatedAuthority);
+        require!(self.payer.key() == self.rule.creator, NftError::NotAuthorized);
 
         let time: u64 = time.checked_mul(3600).ok_or(NftError::Overflow)?;
 

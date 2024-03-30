@@ -9,6 +9,6 @@ pub enum NftError {
     #[msg("Overflow")]
     Overflow,
     #[msg("Not Authorized")]
-    EscalatedAuthority,
+    NotAuthorized,
 }
 

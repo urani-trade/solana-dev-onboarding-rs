@@ -10,8 +10,8 @@ pub struct NftData {
 #[account]
 pub struct NftRule {
     pub seed: u64,
-    pub rule_creator: Pubkey,
-    pub renewal_price: u64,
+    pub creator: Pubkey,
+    pub price: u64,
     pub treasury: Pubkey,
 }
 

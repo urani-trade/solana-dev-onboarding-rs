@@ -17,7 +17,6 @@ pub struct ManageRule<'info> {
         bump,
     )]
     pub rule: Account<'info, NftRule>,
-    
     pub system_program: Program<'info, System>,
 }
 
@@ -25,16 +24,16 @@ impl<'info> ManageRule<'info> {
     pub fn create_rule(
         &mut self,    
         seed: u64,    
-        rule_creator: Pubkey,
-        renewal_price: u64,
+        creator: Pubkey,
+        price: u64,
         treasury: Pubkey,
     ) -> Result<()> {
 
         self.rule.set_inner(
             NftRule {
                 seed,
-                rule_creator,
-                renewal_price,
+                creator,
+                price,
                 treasury,
             }
         );
@@ -43,17 +42,17 @@ impl<'info> ManageRule<'info> {
     }
 
     pub fn modify_rule(
-        &mut self, 
-        _seed: u64,       
-        rule_creator: Pubkey,
-        renewal_price: u64,
+        &mut self,     
+        _seed: u64,
+        creator: Pubkey,
+        price: u64,
         treasury: Pubkey,
     ) -> Result<()> {
 
-        require!(self.rule.rule_creator == self.signer.key(), NftError::EscalatedAuthority);
+        require!(self.rule.creator == self.signer.key(), NftError::NotAuthorized);
 
-        self.rule.rule_creator = rule_creator;
-        self.rule.renewal_price = renewal_price;
+        self.rule.creator = creator;
+        self.rule.price = price;
         self.rule.treasury = treasury;
         
         Ok(())

@@ -13,21 +13,21 @@ pub mod nft {
     pub fn create_rule(
         ctx: Context<ManageRule>,
         seed: u64,
-        rule_creator: Pubkey,
-        renewal_price: u64,
+        creator: Pubkey,
+        price: u64,
         treasury: Pubkey,
     ) -> Result<()> {
-        ctx.accounts.create_rule(seed, rule_creator, renewal_price, treasury)
+        ctx.accounts.create_rule(seed, creator, price, treasury)
     }
 
     pub fn modify_rule(
         ctx: Context<ManageRule>,
-        seed: u64,
-        rule_creator: Pubkey,
-        renewal_price: u64,
+        _seed: u64,
+        creator: Pubkey,
+        price: u64,
         treasury: Pubkey,
     ) -> Result<()> {
-        ctx.accounts.modify_rule(seed, rule_creator, renewal_price, treasury)
+        ctx.accounts.modify_rule(_seed, creator, price, treasury)
     }
 
     pub fn create_membership(

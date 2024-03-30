@@ -30,9 +30,9 @@ use crate::state::*;
 pub struct CreateMembership<'info> {
     #[account(
         mut,
-        constraint = rule_creator.key() == rule.rule_creator,
+        constraint = creator.key() == rule.creator,
     )]
-    pub rule_creator: Signer<'info>,
+    pub creator: Signer<'info>,
 
     #[account(mut)]
     pub payer: Signer<'info>,
