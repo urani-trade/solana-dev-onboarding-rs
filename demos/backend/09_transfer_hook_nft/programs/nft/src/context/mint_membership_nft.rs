@@ -22,7 +22,8 @@ pub use spl_token_metadata_interface::{
     state::{TokenMetadata},
     instruction::{initialize as initialize_metadata_account},
 };
-pub use crate::{state::*};
+
+use crate::state::*;
 
 
 #[derive(Accounts)]

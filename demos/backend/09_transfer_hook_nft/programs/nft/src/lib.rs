@@ -1,12 +1,16 @@
 use anchor_lang::prelude::*;
 
-mod state;
 mod errors;
 mod context;
 
+pub use state::*;
 use context::*;
-declare_id!("CVDULabQV9WSVkyYnSCegKtEKmk1GLCW6nKjfWnU7BHG");
 
+pub mod state;
+
+
+
+declare_id!("CVDULabQV9WSVkyYnSCegKtEKmk1GLCW6nKjfWnU7BHG");
 
 #[program]
 pub mod nft {

@@ -2,7 +2,8 @@ pub use anchor_lang::prelude::*;
 
 use anchor_spl::token_2022::{burn, Burn, Token2022};
 
-pub use crate::{state::*, errors::*};
+use crate::state::*;
+pub use crate::{errors::*};
 
 #[derive(Accounts)]
 pub struct BurnMembership<'info> {
