@@ -10,6 +10,9 @@ declare_id!("CVDULabQV9WSVkyYnSCegKtEKmk1GLCW6nKjfWnU7BHG");
 pub mod nft {
     use super::*;
 
+    ////////////
+    // rules.rs
+    ////////////
     pub fn create_rule(
         ctx: Context<ManageRule>,
         seed: u64,
@@ -30,6 +33,9 @@ pub mod nft {
         ctx.accounts.modify_rule(_seed, creator, price, treasury)
     }
 
+    /////////////////
+    // membership.rs
+    /////////////////
     pub fn create_membership(
         ctx: Context<CreateMembership>,
         time: i64,
@@ -40,6 +46,16 @@ pub mod nft {
         ctx.accounts.create(time, name, symbol, uri, ctx.bumps)
     }
 
+    pub fn burn_membership(
+        ctx: Context<BurnMembership>,
+    ) -> Result<()> {
+        ctx.accounts.burn(ctx.bumps)
+    }
+
+
+    /////////////////
+    // time.rs
+    /////////////////
     pub fn add_time(
         ctx: Context<ManageTime>,
         time: u64,
@@ -52,12 +68,6 @@ pub mod nft {
         time: u64,
     ) -> Result<()> {
         ctx.accounts.remove(time)
-    }
-
-    pub fn burn_membership(
-        ctx: Context<BurnMembership>,
-    ) -> Result<()> {
-        ctx.accounts.burn(ctx.bumps)
     }
 
 }

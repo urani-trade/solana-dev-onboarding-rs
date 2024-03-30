@@ -3,9 +3,7 @@ pub use anchor_lang::{
     prelude::*
 };
 
-use crate::state::*;
-
-pub use crate::{errors::*};
+use crate::{errors::*, state::*};
 
 #[derive(Accounts)]
 pub struct ManageTime<'info> {
@@ -45,14 +43,14 @@ impl<'info> ManageTime<'info> {
         let mut cost = time * self.rule.price;
         let time: u64 = time.checked_mul(3600).ok_or(NftError::Overflow)?;
 
-        if self.data.expiry_time < Clock::get()?.unix_timestamp {
+        if self.data.expiry < Clock::get()?.unix_timestamp {
             let flat_fee: u64 = 20;
             cost = cost.checked_add(flat_fee.checked_mul(self.rule.price).ok_or(NftError::Overflow)?).ok_or(NftError::Overflow)?;
         } else if self.payer.key() == self.rule.creator {
             cost = 0;
         }
 
-        self.data.expiry_time = self.data.expiry_time.checked_add(time as i64).ok_or(NftError::Overflow)?;
+        self.data.expiry = self.data.expiry.checked_add(time as i64).ok_or(NftError::Overflow)?;
 
         transfer(
             CpiContext::new(
@@ -72,12 +70,12 @@ impl<'info> ManageTime<'info> {
         time: u64, // Time in hours
     ) -> Result<()> {
 
-        require!(self.data.expiry_time > Clock::get()?.unix_timestamp, NftError::AlreadyExpired);
+        require!(self.data.expiry > Clock::get()?.unix_timestamp, NftError::AlreadyExpired);
         require!(self.payer.key() == self.rule.creator, NftError::NotAuthorized);
 
         let time: u64 = time.checked_mul(3600).ok_or(NftError::Overflow)?;
 
-        self.data.expiry_time = self.data.expiry_time.checked_sub(time as i64).ok_or(NftError::Overflow)?;
+        self.data.expiry = self.data.expiry.checked_sub(time as i64).ok_or(NftError::Overflow)?;
 
         Ok(())
     }

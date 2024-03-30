@@ -97,7 +97,7 @@ impl<'info> CreateMembership<'info> {
             NftData {
                 mint: self.membership.key(),
                 rule: self.rule.key(),
-                expiry_time: Clock::get()?.unix_timestamp + time,
+                expiry: Clock::get()?.unix_timestamp + time,
             }
         );
 

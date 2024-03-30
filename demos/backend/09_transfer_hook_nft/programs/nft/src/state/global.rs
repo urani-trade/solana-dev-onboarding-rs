@@ -4,7 +4,7 @@ use anchor_lang::prelude::*;
 pub struct NftData {
     pub mint: Pubkey,
     pub rule: Pubkey,
-    pub expiry_time: i64,
+    pub expiry: i64,
 }
 
 #[account]
