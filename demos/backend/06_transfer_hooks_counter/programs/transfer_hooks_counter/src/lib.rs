@@ -80,7 +80,7 @@ pub mod transfer_hooks_counter {
     pub fn transfer_hook(ctx: Context<TransferHook>, amount: u64) -> Result<()> {
 
         ctx.accounts.counter_account.counter.checked_add(1).unwrap();
-        msg!("This token has been transfered {0} times", ctx.accounts.counter_account.counter);
+        msg!("This token has been transferred {0} times", ctx.accounts.counter_account.counter);
        
         Ok(())
     }
