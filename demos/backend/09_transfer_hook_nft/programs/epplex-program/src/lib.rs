@@ -2,9 +2,9 @@ use anchor_lang::prelude::*;
 
 mod state;
 mod errors;
-mod ephemeral_context;
+mod context;
 
-use ephemeral_context::*;
+use context::*;
 declare_id!("CVDULabQV9WSVkyYnSCegKtEKmk1GLCW6nKjfWnU7BHG");
 
 #[program]

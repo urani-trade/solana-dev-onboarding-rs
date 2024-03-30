@@ -1,6 +1,6 @@
 pub use anchor_lang::prelude::*;
 
-use anchor_spl::token_2022::{burn, Burn, close_account, CloseAccount, Token2022};
+use anchor_spl::token_2022::{burn, Burn, Token2022};
 
 pub use crate::{state::*, errors::*};
 

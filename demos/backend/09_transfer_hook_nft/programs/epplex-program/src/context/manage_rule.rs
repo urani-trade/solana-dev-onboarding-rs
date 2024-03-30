@@ -43,7 +43,7 @@ impl<'info> ManageRule<'info> {
 
     pub fn modify_rule(
         &mut self, 
-        seed: u64,       
+        _seed: u64,       
         rule_creator: Pubkey,
         renewal_price: u64,
         treasury: Pubkey,

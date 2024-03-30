@@ -9,7 +9,7 @@ pub use anchor_lang::{
 pub use anchor_spl::{
     token_2022::{Token2022, spl_token_2022::instruction::AuthorityType},
     associated_token::{Create, create, AssociatedToken},
-    token_interface::{MintTo, mint_to, SetAuthority, set_authority},
+    token_interface::{MintTo, mint_to, set_authority},
 };
 
 pub use spl_token_2022::{
@@ -22,11 +22,11 @@ pub use spl_token_2022::{
 };
 
 pub use spl_token_metadata_interface::{
-    state::{TokenMetadata, Field},
-    instruction::{initialize as initialize_metadata_account, update_field as update_metadata_account},
+    state::{TokenMetadata},
+    instruction::{initialize as initialize_metadata_account},
 };
 
-pub use crate::{state::*, errors::*};
+pub use crate::{state::*};
 
 #[derive(Accounts)]
 pub struct CreateMembership<'info> {
