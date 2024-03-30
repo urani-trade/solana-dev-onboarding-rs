@@ -1,4 +1,4 @@
-# 🛹 Token Extensions [UNDER CONSTRUCTION]
+# 🛹 Token Extensions 
 
 <br>
 
@@ -41,6 +41,16 @@ spl-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb create-token 
     - Metadata:	`--enable-metadata`
     - Metadata Pointer:	`--metadata-address <accountId>`
     - Confidential Transfers:	`--enable-confidential-transfers auto`
+
+<br>
+
+---
+
+### Demo
+
+<br>
+
+* [Demo 9: Token Extensions for Membership NFT](demos/backend/09_transfer_extensions)
 
 <br>
 

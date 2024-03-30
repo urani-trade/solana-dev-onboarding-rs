@@ -384,7 +384,7 @@ anchor build
 
 <br>
 
-* Find the `programId`, and replace it inside `Anchor.toml`, `test/transfer_hooks.js`, and `programs/src/lib.rs`:
+* Find the `programId`, and replace it inside `Anchor.toml`, `test/transfer_hooks_extension.js`, and `programs/src/lib.rs`:
 
 <br>
 

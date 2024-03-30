@@ -59,6 +59,7 @@ Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
 * **[Demo 6: Transfer Hook with a Counter](demos/backend/06_transfer_hooks_counter)**
 * **[Demo 7: Transfer Hook for Vesting](demos/backend/07_transfer_hooks_vesting)**
 * **[Demo 8: Transfer Hooks with wSOL fee](demos/backend/08_transfer_hooks_with_wSOL)**
+* **[Demo 9: Token Extensions for Membership NFT](demos/backend/09_transfer_extensions)**
 
 <br>
 

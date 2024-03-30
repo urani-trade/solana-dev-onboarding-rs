@@ -689,7 +689,7 @@ anchor test --detach
 
 <br>
 
-* Find the `programId`, and replace it inside `Anchor.toml`, `test/transfer_hooks.js`, and `programs/src/lib.rs`:
+* Find the `programId`, and replace it inside `Anchor.toml`, `test/transfer-hooks-with-w-soi.ts`, and `programs/src/lib.rs`:
 
 <br>
 
@@ -697,7 +697,6 @@ anchor test --detach
 anchor keys list  
 ```
 
-<br>
 
 <br>
 
