@@ -38,7 +38,6 @@ pub struct CreateMembership<'info> {
     pub payer: Signer<'info>,
 
     #[account(mut)]
-    /// CHECK
     pub membership: Signer<'info>,
     #[account(
         mut,
