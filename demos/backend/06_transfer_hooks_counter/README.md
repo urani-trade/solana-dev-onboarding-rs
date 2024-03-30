@@ -194,4 +194,4 @@ anchor test
 
 <br>
 
-* [Transfers Hook, by Solana Lbas](https://solana.com/developers/guides/token-extensions/transfer-hook)
+* [Transfers Hook, by Solana Labs](https://solana.com/developers/guides/token-extensions/transfer-hook)
