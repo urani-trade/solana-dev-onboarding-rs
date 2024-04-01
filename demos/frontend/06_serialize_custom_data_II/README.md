@@ -12,13 +12,21 @@
 
 <br>
 
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/162904807/2b4594ac-ffee-49db-bcb0-510936a405f2" width="50%" align="center" style="padding:1px;border:1px solid black;"/>
+</p>
+
+
+<br>
+
+
 ---
 
 ### Setup
 
 <br>
 
-* Run `npm install` from the root of the project.
+* Run `npm install --force` from the root of the project.
 * Install [Phantom Wallet](https://phantom.app/).
 
 
@@ -105,7 +113,6 @@ export class StudentIntro {
 <br>
 
 ```
-npm install
 npm run dev
 ```
 

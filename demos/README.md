@@ -10,6 +10,8 @@
 
 #### ➡️ [Frontend demos](frontend)
 
+#### ➡️ [Neodyme scaffold](neyodyme_layout)
+
 <br>
 
 ---
@@ -24,6 +26,6 @@
 
 * Run:
 
-```
+```shell
 solana-install update
 ```

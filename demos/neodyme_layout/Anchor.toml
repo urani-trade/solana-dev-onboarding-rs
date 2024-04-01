@@ -5,7 +5,7 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-connecting = "2AArskN4sVJCaa3eLsLnsFBNZeJQ7fRVjKNTeSVr7TNB"
+neodyme_scafold = ""
 
 [registry]
 url = "https://api.apr.dev"

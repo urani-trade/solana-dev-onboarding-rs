@@ -9,6 +9,14 @@
 
 * In this demo, we will use [@solana/wallet-adapter-base and @solana/wallet-adapter-react.-Adapter](https://github.com/anza-xyz/wallet-adapter) to send transactions to another account.
 
+<br>
+
+
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/162904807/8d9a1ac9-5672-40ac-9523-104e74f0fa82" width="50%" align="center" style="padding:1px;border:1px solid black;"/>
+</p>
+
+
 
 <br>
 
@@ -18,7 +26,7 @@
 
 <br>
 
-* Run `npm install` from the root of the project.
+* Run `npm install --force` from the root of the project.
 * Install [Phantom Wallet](https://phantom.app/).
 * Create two test accounts, and airdrop some SOL to the first account.
 
@@ -280,7 +288,6 @@ export const BalanceDisplay: FC = () => {
 <br>
 
 ```
-npm install
 npm run dev
 ```
 
