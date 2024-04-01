@@ -18,7 +18,7 @@
 
 <br>
 
-* Run `npm install` from the root of the project.
+* Run `npm install --force` from the root of the project.
 * Install [Phantom Wallet](https://phantom.app/).
 * Create two test accounts, and airdrop some SOL to the first account.
 
@@ -280,7 +280,6 @@ export const BalanceDisplay: FC = () => {
 <br>
 
 ```
-npm install
 npm run dev
 ```
 

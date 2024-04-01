@@ -13,29 +13,17 @@
 
 ---
 
-### Setup
-
-<br>
-
-* Run `npm install` from the root of the project.
-* Install [Phantom Wallet](https://phantom.app/).
-
-
-<br>
-
----
-
-
 ### Running
 
 <br>
 
+* Run `npm install --force` from the root of the project.
+* Install [Phantom Wallet](https://phantom.app/).
 * Change the settings of your Phantom wallet to "devnet" and then run:
 
 <br>
 
 ```
-npm install
 npm run dev
 ```
 
