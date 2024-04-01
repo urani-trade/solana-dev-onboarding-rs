@@ -8,7 +8,21 @@
 <br>
 
 * In this demo, we run a simple transfer hook (`transfer_hook()`) that prints a message on every token transfer. 
-  - We recommend you look at the code and absorb the structure and the main concepts. We will leave deeper explanations for the following demos.
+
+<br>
+
+```rust
+pub fn transfer_hook(_ctx: Context<TransferHook>, _amount: u64) -> Result<()> {
+  
+  msg!("Hello Transfer Hook!");
+
+  Ok(())
+}
+```
+
+<br>
+
+* We recommend you look at the code and absorb the structure and the main concepts. We will leave deeper explanations for the following demos.
 
 * This program will only include 3 instructions:
   - `initialize_extra_account_meta_list()`: creates an account that stores a list of extra accounts required by the `transfer_hook instruction`. 

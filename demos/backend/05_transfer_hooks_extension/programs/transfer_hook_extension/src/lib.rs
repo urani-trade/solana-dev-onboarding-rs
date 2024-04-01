@@ -79,7 +79,6 @@ pub mod transfer_hook {
         match instruction {
             TransferHookInstruction::Execute { amount } => {
                 let amount_bytes = amount.to_le_bytes();
-
                 __private::__global::transfer_hook(program_id, accounts, &amount_bytes)
             }
             _ => return Err(ProgramError::InvalidInstructionData.into()),
@@ -106,6 +105,7 @@ pub struct InitializeExtraAccountMetaList<'info> {
     pub system_program: Program<'info, System>,
 }
 
+
 // Order of accounts matters for this struct.
 // The first 4 accounts are the accounts required for token transfer (source, mint, destination, owner)
 // Remaining accounts are the extra accounts required from the ExtraAccountMetaList account
@@ -131,3 +131,4 @@ pub struct TransferHook<'info> {
     )]
     pub extra_account_meta_list: UncheckedAccount<'info>,
 }
+

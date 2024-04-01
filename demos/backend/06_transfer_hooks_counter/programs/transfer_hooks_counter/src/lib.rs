@@ -23,7 +23,7 @@ pub mod transfer_hooks_counter {
         ctx: Context<InitializeExtraAccountMetaList>,
     ) -> Result<()> {
 
-        // If the trasnfer hook needs additional accounts, they need to be
+        // If the transfer hook needs additional accounts, they need to be
         // added to ExtraAccountMeta. In this case, we want a PDA that
         // saves the amount how often the token has been tranferred.
         let account_metas = vec![
@@ -36,9 +36,7 @@ pub mod transfer_hooks_counter {
             )?,
         ];
 
-        // calculate account size
         let account_size = ExtraAccountMetaList::size_of(account_metas.len())? as u64;
-        // calculate minimum required lamports
         let lamports = Rent::get()?.minimum_balance(account_size as usize);
 
         let mint = ctx.accounts.mint.key();
@@ -48,7 +46,6 @@ pub mod transfer_hooks_counter {
             &[ctx.bumps.extra_account_meta_list],
         ]];
 
-        // create ExtraAccountMetaList account
         create_account(
             CpiContext::new(
                 ctx.accounts.system_program.to_account_info(),
@@ -63,7 +60,6 @@ pub mod transfer_hooks_counter {
             ctx.program_id,
         )?;
 
-        // initialize ExtraAccountMetaList account with extra accounts
         ExtraAccountMetaList::init::<ExecuteInstruction>(
             &mut ctx.accounts.extra_account_meta_list.try_borrow_mut_data()?,
             &account_metas,
@@ -76,11 +72,9 @@ pub mod transfer_hooks_counter {
 
         ctx.accounts.counter_account.counter.checked_add(1).unwrap();
         msg!("This token has been transferred {0} times", ctx.accounts.counter_account.counter);
-       
         Ok(())
     }
 
-    // fallback instruction handler as workaround to anchor instruction discriminator check
     pub fn fallback<'info>(
         program_id: &Pubkey,
         accounts: &'info [AccountInfo<'info>],
@@ -88,19 +82,16 @@ pub mod transfer_hooks_counter {
     ) -> Result<()> {
         let instruction = TransferHookInstruction::unpack(data)?;
 
-        // match instruction discriminator to transfer hook interface execute instruction  
-        // token2022 program CPIs this instruction on token transfer
         match instruction {
             TransferHookInstruction::Execute { amount } => {
                 let amount_bytes = amount.to_le_bytes();
-
-                // invoke custom transfer hook instruction on our program
                 __private::__global::transfer_hook(program_id, accounts, &amount_bytes)
             }
             _ => return Err(ProgramError::InvalidInstructionData.into()),
         }
     }
 }
+
 
 #[derive(Accounts)]
 pub struct InitializeExtraAccountMetaList<'info> {
