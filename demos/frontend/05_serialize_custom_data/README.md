@@ -12,6 +12,15 @@
 
 <br>
 
+
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/162904807/5d096931-e3af-4285-813b-6c589e0583a4" width="50%" align="center" style="padding:1px;border:1px solid black;"/>
+</p>
+
+
+
+<br>
+
 ---
 
 ### Setup
