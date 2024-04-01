@@ -7,7 +7,19 @@
 
 <br>
 
-* This demo demonstrate how to increase a counter every time a token is transferred.
+* This demo demonstrate how to use `transfer_hook` to increase a counter every time a token is transferred.
+
+<br>
+
+```rust
+pub fn transfer_hook(ctx: Context<TransferHook>, _amount: u64) -> Result<()> {
+
+    ctx.accounts.counter_account.counter.checked_add(1).unwrap();
+    msg!("Token has been transferred {0} times", ctx.accounts.counter_account.counter);
+       
+    Ok(())
+}
+```
 
 <br>
 

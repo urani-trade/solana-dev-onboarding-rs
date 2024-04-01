@@ -31,9 +31,7 @@ pub mod transfer_hooks_with_w_soi {
       // index 4 is address of ExtraAccountMetaList account
       // The `addExtraAccountsToInstruction` JS helper function resolving incorrectly
       let account_metas = vec![
-          // index 5, wrapped SOL mint
           ExtraAccountMeta::new_with_pubkey(&ctx.accounts.wsol_mint.key(), false, false)?,
-          // index 6, token program
           ExtraAccountMeta::new_with_pubkey(&ctx.accounts.token_program.key(), false, false)?,
           // index 7, associated token program
           ExtraAccountMeta::new_with_pubkey(
@@ -46,36 +44,34 @@ pub mod transfer_hooks_with_w_soi {
               &[Seed::Literal {
                   bytes: "delegate".as_bytes().to_vec(),
               }],
-              false, // is_signer
-              true,  // is_writable
+              false, 
+              true,  
           )?,
           // index 9, delegate wrapped SOL token account
           ExtraAccountMeta::new_external_pda_with_seeds(
-              7, // associated token program index
+              7, 
               &[
                   Seed::AccountKey { index: 8 }, // owner index (delegate PDA)
                   Seed::AccountKey { index: 6 }, // token program index
                   Seed::AccountKey { index: 5 }, // wsol mint index
               ],
-              false, // is_signer
-              true,  // is_writable
+              false, 
+              true,  
           )?,
           // index 10, sender wrapped SOL token account
           ExtraAccountMeta::new_external_pda_with_seeds(
-              7, // associated token program index
+              7, 
               &[
                   Seed::AccountKey { index: 3 }, // owner index
                   Seed::AccountKey { index: 6 }, // token program index
                   Seed::AccountKey { index: 5 }, // wsol mint index
               ],
-              false, // is_signer
-              true,  // is_writable
+              false, 
+              true, 
           )?
       ];
 
-      // calculate account size
       let account_size = ExtraAccountMetaList::size_of(account_metas.len())? as u64;
-      // calculate minimum required lamports
       let lamports = Rent::get()?.minimum_balance(account_size as usize);
 
       let mint = ctx.accounts.mint.key();
@@ -85,7 +81,6 @@ pub mod transfer_hooks_with_w_soi {
           &[ctx.bumps.extra_account_meta_list],
       ]];
 
-      // create ExtraAccountMetaList account
       create_account(
           CpiContext::new(
               ctx.accounts.system_program.to_account_info(),
@@ -100,7 +95,6 @@ pub mod transfer_hooks_with_w_soi {
           ctx.program_id,
       )?;
 
-      // initialize ExtraAccountMetaList account with extra accounts
       ExtraAccountMetaList::init::<ExecuteInstruction>(
           &mut ctx.accounts.extra_account_meta_list.try_borrow_mut_data()?,
           &account_metas,
@@ -109,8 +103,6 @@ pub mod transfer_hooks_with_w_soi {
       Ok(())
   }
 
-  // This instruction is invoked via CPI on every token transfer 
-  // to perform a wrapped SOL token transfer using a delegate PDA
   pub fn transfer_hook(ctx: Context<TransferHook>, amount: u64) -> Result<()> {
      let signer_seeds: &[&[&[u8]]] = &[&[b"delegate", &[ctx.bumps.delegate]]];
      msg!("Transfer WSOL using delegate PDA");
@@ -133,7 +125,6 @@ pub mod transfer_hooks_with_w_soi {
       Ok(())
   }
 
-  // fallback instruction handler as workaround to anchor instruction discriminator check
   pub fn fallback<'info>(
       program_id: &Pubkey,
       accounts: &'info [AccountInfo<'info>],
@@ -141,13 +132,10 @@ pub mod transfer_hooks_with_w_soi {
   ) -> Result<()> {
       let instruction = TransferHookInstruction::unpack(data)?;
 
-      // match instruction discriminator to transfer hook interface execute instruction  
-      // token2022 program CPIs this instruction on token transfer
       match instruction {
           TransferHookInstruction::Execute { amount } => {
               let amount_bytes = amount.to_le_bytes();
 
-              // invoke custom transfer hook instruction on our program
               __private::__global::transfer_hook(program_id, accounts, &amount_bytes)
           }
           _ => return Err(ProgramError::InvalidInstructionData.into()),

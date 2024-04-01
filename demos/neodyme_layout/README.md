@@ -14,10 +14,8 @@
 ```shell
 .
 ├── Anchor.toml
-├── Cargo.lock
 ├── Cargo.toml
 ├── README.md
-├── package-lock.json
 ├── package.json
 ├── programs
 │   └── example
@@ -33,8 +31,7 @@
 │               └── mod.rs
 ├── tests
 │   └── example.ts
-├── tsconfig.json
-└── yarn.lock
+└── tsconfig.json
 ```
 
 <br>

@@ -137,36 +137,37 @@ pub mod vesting_template {
         )
     }    
 
-
     pub fn transfer_hook(ctx: Context<TransferHook>, amount: u64) -> Result<()> {
         let info = ctx.accounts.vesting_account.to_account_info();
         let data = info.try_borrow_mut_data()?;
-
-        // Try and Deserialize the Account, if it deserialize then we know that the sender has a vesting account and we should check it.
+        
+        // Try and Deserialize the Account, if it deserialize then we know that 
+        // the sender has a vesting account and we should check it.
         match  VestingAccount::try_deserialize(&mut &data[..]) {
             Ok(vesting_account) => {
                 let mut amount_locked: u64 = 0;
                 let current_time = Clock::get()?.unix_timestamp;
 
-                // Calculate the amount allowed to be transferred
                 for vesting_data in vesting_account.vesting_data.iter() {
                     if vesting_data.time > current_time {
-                        let amount_to_add: u64 = (vesting_data.amount_basis_point as u64).checked_mul(vesting_account.amount).ok_or(VestingErr::Overflow)?.checked_div(10000).ok_or(VestingErr::Overflow)?;
-                        amount_locked = amount_to_add.checked_add(amount).ok_or(VestingErr::Overflow)?;
+                        let amount_to_add: u64 = (vesting_data.amount_basis_point as u64)
+                        .checked_mul(vesting_account.amount).ok_or(VestingErr::Overflow)?
+                        .checked_div(10000).ok_or(VestingErr::Overflow)?;
+                        amount_locked = amount_to_add.checked_add(amount)
+                        .ok_or(VestingErr::Overflow)?;
                     }
                 }
-
                 // Check if the amount locked is less than what will remain after the transfer
-                require!(amount_locked <= ctx.accounts.source_token.amount.checked_sub(amount).ok_or(VestingErr::Overflow)?, VestingErr::LockedAmount);
+                require!(amount_locked <= ctx.accounts
+                    .source_token.amount
+                    .checked_sub(amount)
+                    .ok_or(VestingErr::Overflow)?, VestingErr::LockedAmount);
             },
             Err(_) => {}
         }
-        
         Ok(())
     }
 
-
-    // fallback instruction handler as workaround to anchor instruction discriminator check
     pub fn fallback<'info>(
         program_id: &Pubkey,
         accounts: &'info [AccountInfo<'info>],
@@ -174,13 +175,9 @@ pub mod vesting_template {
     ) -> Result<()> {
         let instruction = TransferHookInstruction::unpack(data)?;
 
-        // match instruction discriminator to transfer hook interface execute instruction
-        // token2022 program CPIs this instruction on token transfer
         match instruction {
             TransferHookInstruction::Execute { amount } => {
                 let amount_bytes = amount.to_le_bytes();
-
-                // invoke custom transfer hook instruction on our program
                 __private::__global::transfer_hook(program_id, accounts, &amount_bytes)
             }
             _ => return Err(ProgramError::InvalidInstructionData.into()),

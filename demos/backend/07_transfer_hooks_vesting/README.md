@@ -7,11 +7,38 @@
 
 <br>
 
-* In this demo, we use transfer hooks to implement a method where users gradually gain token access. 
-  - This method restricts the number of tokens that can be transferred from the owner's associated token account (ATA).
+* In this demo, we use `transfer_hooks` to implement a program where users gradually gain token access (and restricting the number of tokens that can be transferred from the owner's associated token account (ATA)):
 
-* Unlike traditional locking mechanisms, this approach places tokens directly in users' wallets.
 
+<br>
+
+```rust
+pub fn transfer_hook(ctx: Context<TransferHook>, amount: u64) -> Result<()> {
+  
+  let info = ctx.accounts.vesting_account.to_account_info();
+  let data = info.try_borrow_mut_data()?;
+
+  match VestingAccount::try_deserialize(&mut &data[..]) {
+
+    Ok(vesting_account) => {
+      let mut amount_locked: u64 = 0;
+      let current_time = Clock::get()?.unix_timestamp;
+
+        for vesting_data in vesting_account.vesting_data.iter() {
+          if vesting_data.time > current_time {
+            let amount_to_add: u64 = (vesting_data.amount_basis_point as u64).checked_mul(vesting_account.amount).ok_or(VestingErr::Overflow)?.checked_div(10000).ok_or(VestingErr::Overflow)?;
+            amount_locked = amount_to_add.checked_add(amount).ok_or(VestingErr::Overflow)?;
+          }
+        }
+
+      require!(amount_locked <= ctx.accounts.source_token.amount.checked_sub(amount).ok_or(VestingErr::Overflow)?, VestingErr::LockedAmount);
+    },
+    
+    Err(_) => {}
+  }  
+  Ok(())
+}
+```
 
 <br>
 

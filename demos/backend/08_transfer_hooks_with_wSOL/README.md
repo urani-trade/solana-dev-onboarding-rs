@@ -7,11 +7,36 @@
 
 <br>
 
-* In this demo, we build a more advanced transfer hook program that requires the sender to pay a wSOL fee for every token transfer.
+* In this demo, we build a more advanced `transfer_hook` program that requires the sender to pay a wSOL fee for every token transfer.
 
+* The wSOL transfers are executed using a delegate PDA from the transfer hook program (as the signature from the initial sender of the token transfer instruction is not accessible).
 
-* The wSOL transfers are executed using a delegate PDA-derived from the transfer hook program (as the signature from the initial sender of the token transfer instruction is not accessible).
+<br>
+
+```rust
+pub fn transfer_hook(ctx: Context<TransferHook>, amount: u64) -> Result<()> {
     
+    msg!("Transfer WSOL using delegate PDA");
+    let signer_seeds: &[&[&[u8]]] = &[&[b"delegate", &[ctx.bumps.delegate]]];
+
+    transfer_checked(
+      CpiContext::new(
+          ctx.accounts.token_program.to_account_info(),
+            TransferChecked {
+              from: ctx.accounts.sender_wsol_token_account.to_account_info(),
+              mint: ctx.accounts.wsol_mint.to_account_info(),
+              to: ctx.accounts.delegate_wsol_token_account.to_account_info(),
+              authority: ctx.accounts.delegate.to_account_info(),
+            },
+       )
+      .with_signer(signer_seeds),
+      amount,
+      ctx.accounts.wsol_mint.decimals,
+    )?;
+
+  Ok(())
+}
+``` 
 
 <br>
 

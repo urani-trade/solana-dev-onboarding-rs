@@ -16,6 +16,7 @@
     - Track statistics over your token transfers
     - Custom token transfer events
 
+
 <br>
 
 
@@ -25,14 +26,14 @@
 
 <br>
 
-* Whenever the token is transferred, the `Execute` instruction is triggered together with a Transfer Instruction (the custom logic).
+* Whenever the token is transferred, a `Execute` instruction is triggered together with a Transfer Instruction (the custom logic).
 
 * For every token transfer involving tokens from the Mint Account, the Token Extensions program makes a Cross Program Invocation (CPI) to execute an instruction on the Transfer Hook program.
 
 <br>
 
 > [!IMPORTANT]
-> **Mint Accounts**: To create a new token, `create-token()` function is used to initialize a new Mint Account, which contains basic information about the token. This account stores general information about the token and who has permissions over it. There is no data about token holdings of particular individuals (these are stored in Token Accounts).
+> **Mint Accounts**: To create a new token, `create-token()` function is used to initialize a new Mint Account, which contains basic information about the token. This account stores general information about the token and who has permissions over it. Data about token holdings of particular individuals are stored in Token Accounts.
 
 
 <br>
@@ -77,6 +78,36 @@ const [pda] = PublicKey.findProgramAddressSync(
 
 * `UpdateExtraAccountMetaList` is optional and allows an on-chain program to update its list of required accounts for `Execute`. 
 
+<br>
+
+---
+
+### Understanding Transfer Hooks for the Visual Learner
+
+<br>
+
+<p align="center">
+<img src="./images/transfer_hooks_1.png" width="90%" align="center" style="padding:1px;border:1px solid black;"/>
+</p>
+
+<br>
+
+<p align="center">
+<img src="./images/transfer_hooks_2.png" width="90%" align="center" style="padding:1px;border:1px solid black;"/>
+</p>
+
+
+<br>
+
+<p align="center">
+<img src="./images/transfer_hooks_3.png" width="90%" align="center" style="padding:1px;border:1px solid black;"/>
+</p>
+
+<br>
+
+<p align="center">
+<img src="./images/transfer_hooks_4.png" width="90%" align="center" style="padding:1px;border:1px solid black;"/>
+</p>
 
 <br>
 
