@@ -2,7 +2,7 @@
 
 <br>
 
-### Our development resources, aiming to onboard engineers to Solana development. From geeks to geeks.
+### Our *on-going* development resources, aiming to onboard engineers to Solana development. From geeks to geeks (and you are [welcome to contribute](./CONTRIBUTING.md)).
 
 <br>
 
@@ -15,7 +15,7 @@ Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
 - **Massively cheaper**, as transaction fees are a small fraction of a penny.
 - **Massively faster**, as most transactions are completed in a couple of seconds.
 - **Highly decentralized**, having one of the highest Nakamoto coefficients (decentralization score) of any proof-of-stake network.
-- **Fun AF**, with an uncomparable UI/UX and developer experience.
+- **Fun AF**, with an incomparable UI/UX and developer experience.
 
 
 #### Shall we begin?
