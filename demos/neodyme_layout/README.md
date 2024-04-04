@@ -1,4 +1,4 @@
-# 🛹 Neodyme Layout
+# 🛹 Neodyme's Recommended Layout
 
 <br>
 

@@ -7,7 +7,7 @@
 
 <br>
 
-* This demo demonstrate how to use `transfer_hook` to increase a counter every time a token is transferred.
+* This demo demonstrates how to use `transfer_hook` to increase a counter every time a token is transferred.
 
 <br>
 
@@ -50,7 +50,7 @@ let account_metas = vec![
 
 <br>
 
-* This account needs to be created when we initialize the new Mint Acount and we need to pass it in every time we transfer the token.
+* This account needs to be created when we initialize the new Mint Account, and we need to pass it in every time we transfer the token.
 
 <br>
 

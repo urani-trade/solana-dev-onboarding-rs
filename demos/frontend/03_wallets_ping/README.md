@@ -7,7 +7,7 @@
 
 <br>
 
-* In this demo, we will use [@solana/wallet-adapter-base and @solana/wallet-adapter-react.-Adapter](https://github.com/anza-xyz/wallet-adapter) to create the frontend for a transaction approval for last's demo ping program.
+* In this demo, we will use [@solana/wallet-adapter-base and @solana/wallet-adapter-react.-Adapter](https://github.com/anza-xyz/wallet-adapter) to create the frontend for transaction approval for last's demo ping program.
 
 <br>
 

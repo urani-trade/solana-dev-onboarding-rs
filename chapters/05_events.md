@@ -6,7 +6,7 @@
 
 <br>
 
-* Events in Archor provide a mechanism for notifying and communicating between different components of a Solana dapp.
+* Events in Archor provide a mechanism for notifying and communicating between different components of a Solana dApp.
 
 * Events are structured pieces of data holding information about a specific occurrence in a program.
 

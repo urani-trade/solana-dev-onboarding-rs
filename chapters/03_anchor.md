@@ -100,7 +100,7 @@ mod hello_anchor {
     - `Account`: when an instruction is the deserialized data of the account. It's a generic over `T`, created to store data.
 
 * The `#[account]` attribute sets the owner of that data to the `declare_id`.
-    - `Account` verifies that the owner of `my_account` equals to `declare_id`.
+    - `Account` verifies that the owner of `my_account` equals `declare_id`.
 
 <br>
 
@@ -174,7 +174,7 @@ pub enum MyError {
 
 <br>
 
-* CPIs enable the composability of Solana programs, allowing developers to utilize and build on the instruction of existing programs.
+* CPIs enable the composability of Solana programs, allowing developers to use and build on existing programs' instructions.
 
 * To execute CPIs, use `invoke` or `invoke_signed` from the `solana_program` crate:
 
@@ -208,7 +208,7 @@ pub fn invoke_signed(
 
 * CPIs extend the privileges of the caller to the callee. 
 
-* Privilege extension can be dangerous. If a CPI is made by a malicious program, the program has the same privileges as the caller.
+* Privilege extension can be dangerous. If a malicious program creates a CPI, the program has the same privileges as the caller.
 
 * Anchor protects your code from CPIs to malicious programs by the `Program<'info, T>` type check being given to the account is the expected program `T`.
 
@@ -268,7 +268,7 @@ anchor keys list
 
 <br>
 
-* Learn how cross-program instructions work on Anchor through [backend's demo 2](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/02_anchor_cpi).
+* Learn how cross-program instructions work on Anchor through the [backend's demo 2](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/02_anchor_cpi).
 
 <br>
 

@@ -35,7 +35,7 @@ npm install
 
 <br>
 
-* Run the follow to create a new keypair inside the `./anchor/target/deploy` directory:
+* Run the following to create a new key pair inside `./anchor/target/deploy`:
 
 <br>
 

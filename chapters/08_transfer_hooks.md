@@ -26,19 +26,21 @@
 
 <br>
 
-* Whenever the token is transferred, a `Execute` instruction is triggered together with a Transfer Instruction (the custom logic).
+* Whenever the token is transferred, an `Execute` instruction is triggered together with a Transfer Instruction (the custom logic).
 
-* For every token transfer involving tokens from the Mint Account, the Token Extensions program makes a Cross Program Invocation (CPI) to execute an instruction on the Transfer Hook program.
+* For every token transfer involving tokens from the Mint Account, the Token Extensions program invokes a Cross-Program Instruction (CPI) to execute an instruction on the Transfer Hook program.
 
 <br>
 
 > [!IMPORTANT]
-> **Mint Accounts**: To create a new token, `create-token()` function is used to initialize a new Mint Account, which contains basic information about the token. This account stores general information about the token and who has permissions over it. Data about token holdings of particular individuals are stored in Token Accounts.
+> **Mint Accounts**: Mint Accounts: To create a new token, the `create-token()` function is used to initialize a new Mint Account, which contains basic information about the token. This account stores general information about the token and who has permissions over it. Data about particular individuals' token holdings are stored in Token Accounts.
+
 
 
 <br>
 
-* All accounts from the initial transfer are converted to read-only accounts (i.e., the signer privileges of the sender do not extend to the Transfer Hook program). 
+* All accounts from the initial transfer are converted to read-only accounts (i.e., the sender's signer privileges do not extend to the Transfer Hook program).
+
 
 * Extra accounts required by `Execute` are stored in a predefined PDA that must be derived using the following seeds: `extra-account-metas` string, the mint account address, and the transfer hook `_id`:
 

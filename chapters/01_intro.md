@@ -35,7 +35,7 @@
 
 * Each transaction consists of three parts: instructions, an array of accounts to read or write from, and one or more digital signatures.
 
-* An instruction is the smallest execution logic on Solana, and it invokes programs that make calls to update the global state of the network.
+* An instruction is the smallest piece of execution logic on Solana. It invokes programs that make calls to update the network's global state.
 
 * Each transaction consists of one or several instructions that will be processed by the runtime orderly and atomically. If any part of the instructions fails, the entire transaction fails.
 
@@ -47,7 +47,7 @@
 
 
 * A compact-array of digital signatures of the given message:
-    - Each digital signature is the ed25519 binary format and consumes 64 bytes.
+    - Each digital signature is in the ed25519 binary format and consumes 64 bytes.
     - The runtime verifies that the number of signatures matches the number in the first 8 bits of the message header. Each signature is signed by the private key corresponding to the public key at the same index in the message's account addresses array.
 
 * A message containing a header, a compact array of account addresses, a recent blockhash, and a compact array of instructions:
@@ -65,14 +65,14 @@
 
 <br>
 
-* Each instruction specifies a single program and carries a general purpose byte that is passed to the program (along with the accounts).
+* Each instruction specifies a single program and carries a general-purpose byte that is passed to the program (along with the accounts).
 
 * The contents of the instruction data convey what operation the program needs to perform.
 
 * The [Solana Program Library's Token program](https://github.com/solana-labs/solana-program-library/tree/master/token) shows how instruction data can be encoded efficiently for fixed-sized types.
 
-* Since a transaction can contain instructions in any order, programs should be hardened to safely handle any possible instructions sequence. 
-  - For example, to deinitizlize an account, the program shoudl explicitly set the account's data to zero.
+* Since a transaction can contain instructions in any order, programs should be hardened to safely handle any possible instruction sequence. 
+  - For example, to de-initialize an account, the program should explicitly set the account's data to zero.
 
 <br>
 
@@ -101,12 +101,12 @@ Transaction fees are calculated based on two main parts:
 
 * Solana clients use an address (a 256-bit public key) to find an account.
 
-* Accounts can hold arbitrary persistent data and hold ownership metadata for the runtime
+* Accounts can hold arbitrary persistent data and hold ownership metadata for the runtime.
   * The metadata also includes the lifetime info and is expressed by lamports.
 
 * Accounts are referenced by an instruction representing the on-chain state and server as both the inputs and outputs of a program.
 
-* Accounts can be signers if the transaction includes their addresses as a digital signature. 
+* Accounts are referenced by an instruction representing the on-chain state and server as both the program's inputs and outputs.
 
 * Accounts can be treated as read-only by transactions. 
     - This enables parallel account processing between transactions.
@@ -144,10 +144,9 @@ Transaction fees are calculated based on two main parts:
 
 <br>
 
-* Solana Programs are the executable code that interprets the instructions sent inside transactions on the blockchain.
+* Solana Programs are the executable code that interprets the instructions sent inside transactions on the blockchain. 
 
-* They run on top of the Sealevel runtime (Solana's parallel and high-speed processing model).
-Programs are special types of accounts that are marked as "executable".
+* They are accounts that are marked as "executable", running on top of the Sealevel runtime (Solana's parallel and high-speed processing model).
 
 * Programs can own accounts and change the data of the accounts they own. Unlike other blockchains, they can also be upgraded by their owner.
 
@@ -180,7 +179,7 @@ Programs are special types of accounts that are marked as "executable".
 
 * Programs each have access ot their own part of the heap.
 
-* A memory region is "account" (and some programs own thousands of independent account)
+* A memory region is an "account" (and some programs own thousands of independent accounts).
     - Each memory region has a program that manages it (the `owner`).
     
 
@@ -193,9 +192,9 @@ Programs are special types of accounts that are marked as "executable".
 
 <br>
 
-* Cross-program invocation is how Solana's runtime allows programs to call other programs. This is achieved by one program invoking an instruction of the other.
+* Cross-program invocation is how Solana's runtime allows programs to call other programs. This is achieved by one program invoking another's instruction.
 
-* The invoking program, `invoke()`, requires the caller to pass all the accounts required by the instruction being invoked, except for the executbale account (`program_id`).
+* The invoking program, `invoke()`, requires the caller to pass all the accounts required by the instruction being invoked, except for the executable account (`program_id`).
 
 * The invoking program is halted until the invoked program finishes processing the instruction.
 
@@ -207,7 +206,7 @@ Programs are special types of accounts that are marked as "executable".
 
 
 > [!IMPORTANT]
-> When writing CPI, it's important to not pull in the dependent program's entrypoint symbols (because they may conflict with the program's own). To avoid this, programs should define an `no-entrypoint` feature in `Cargo.toml`.
+> When writing CPI, it's important not to pull in the dependent program's entrypoint symbols (because they may conflict with the program's own). To avoid this, programs should define a `no-entrypoint` feature in `Cargo.toml`.
 
 <br>
 
@@ -229,7 +228,7 @@ Programs are special types of accounts that are marked as "executable".
 
 <br>
 
-* A program address does not lie on the ed25519 curve, so it has no valid private key and cannot generate a signature.
+* A program address does not lie on the ed25519 curve, so it does not have a valid private key and cannot generate a signature.
 
 * However, a program address can be used by a program to issue an instruction that includes itself as a signer.
 

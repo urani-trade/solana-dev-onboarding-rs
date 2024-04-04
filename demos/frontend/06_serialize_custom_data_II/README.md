@@ -38,7 +38,7 @@
 
 <br>
 
-* Many components from this demo are similar from the previous.
+* Many components from this demo are similar to the previous.
 
 * However, in this example, we create the instruction buffer layout in `models/StudentIntro.ts`, and the program expects instruction data to contain:
     - `variant` as an unsigned, 8-bit integer representing the instruction to run (should be 0)

@@ -636,7 +636,7 @@ anchor test --detach
 
 <br>
 
-* Logs can be seen at [Solana Explorer](https://explorer.solana.com/?cluster=devnet) (`localhost`).
+* Logs can be seen in [Solana Explorer](https://explorer.solana.com/?cluster=devnet) (`localhost`).
 
 
 <br>
