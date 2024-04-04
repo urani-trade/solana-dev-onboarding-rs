@@ -26,7 +26,7 @@
 
 * A wallet is a software or hardware that stores a secret key to keep it secure and handle secure transaction signing.
 
-* Solana's [@solana/wallet-adapter-base and @solana/wallet-adapter-react.-Adapter](https://github.com/anza-xyz/wallet-adapter) are libraries used to simplify the process of supporting wallet browser extensions.
+* Solana's [@solana/wallet-adapter-base and @solana/wallet-adapter-react.-Adapter](https://github.com/anza-xyz/wallet-adapter) libraries simplify the process of supporting wallet browser extensions.
 
 * `@solana/wallet-adapter-react` allows us to persist and access wallet connection states through hooks and context providers:
     - `useWallet`
@@ -96,8 +96,8 @@
     - The library builds the array of accounts based on that information and handles the logic for including a recent blockhash.
 
 
-* To facilitate this process of serialization, we can use [Binary Object Representation Serializer for Hashin (Borsh)](https://borsh.io/) and the library [@coral-xyz/borsh](https://github.com/coral-xyz).
-    - Borsh can be used in security-critical projects as it prioritizes consistency, safety, speed; and comes with a strict specification.
+* To facilitate this serialization process, we can use the [Binary Object Representation Serializer for Hashin (Borsh)](https://borsh.io/) and the library [@coral-xyz/borsh](https://github.com/coral-xyz).
+    - Borsh can be used in security-critical projects as it prioritizes consistency, safety, and speed and has a strict specification.
 
 <br>
 
@@ -107,7 +107,7 @@
 
 <br>
 
-* Programs store data in PDAs (Program Derived Addresses), which can be thought of as a key-value store, where the address is the key and the data inside the account is the value.
+* Programs store data in PDAs (Program Derived Addresses), which can be thought of as a key-value store. The address is the key, and the data inside the account is the value.
     - Like records in a database, with the address being the primary key used to look up the values inside.
 
 * PDAs do not have a corresponding secret key. 

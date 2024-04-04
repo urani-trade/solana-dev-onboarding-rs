@@ -10,7 +10,7 @@
 
 #### ➡️ [Frontend demos](frontend)
 
-#### ➡️ [Neodyme scaffold](neodyme_layout)
+#### ➡️ [Neodyme's recommended layout](neodyme_layout)
 
 <br>
 

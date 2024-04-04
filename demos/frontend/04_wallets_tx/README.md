@@ -86,7 +86,7 @@ export default Home;
 
 <br>
 
-* Create a bar in the top, with a button to connect to a wallet:
+* Create a bar at the top, with a button to connect to a wallet:
 
 <br>
 

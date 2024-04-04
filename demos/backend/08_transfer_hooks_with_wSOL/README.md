@@ -725,7 +725,7 @@ anchor keys list
 
 <br>
 
-* This test results on three transactions. The last one is the extra transfer, which you can look at the [Solana Explorer](https://explorer.solana.com/?cluster=devnet) (`localhost`).
+* This test results in three transactions. The last one is the extra transfer, which you can see at the [Solana Explorer](https://explorer.solana.com/?cluster=devnet) (`localhost`).
 
 
 <br>

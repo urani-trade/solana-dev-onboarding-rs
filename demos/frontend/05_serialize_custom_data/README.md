@@ -476,7 +476,7 @@ export const MovieList: FC = () => {
 
 <br>
 
-* To check the final dppp, change the settings of your Phantom wallet to "devnet" and then run:
+* To check the final dApp, change the settings of your Phantom wallet to "devnet" and then run:
 
 <br>
 

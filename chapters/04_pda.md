@@ -7,14 +7,14 @@
 
 <br>
 
-* PDAs can be thought a way of mimic-ing web2's databases writing schemmes. For instance, a dApp that needs to update its own data without having a 'client' authorizing those changes.
+* PDAs can be thought of as a way of mimicking Web2's databases by writing schemas. For instance, a dApp that needs to update its own data without having a 'client' authorizing those changes.
 
 * PDAs are addresses with special properties. They are not public keys (so they don't have an associated public key).
 
-* * PDAs provide a mechanism to build hashmap-like structures on-chain, allowing programs to sign instructions.
-    * `findProgramAddress()` will deterministically derive a PDA from a `program_id`` and seeds (collection of bytes)
+* PDAs provide a mechanism to build hashmap-like structures on-chain, allowing programs to sign instructions.
+    * `findProgramAddress()` will deterministically derive a PDA from a `program_id` and seeds (collection of bytes).
     * A bump (one byte) is used to push a potential PDA off the ed25519 elliptic curve.
-    * Programs can sign for their PDAs by providing the seeds and bump to invoke_signed.
+    * Programs can sign for their PDAs by providing the seeds and bump to `invoke_signed`.
 
 * PDAs simplify the programming model and make programs more secure. 
 
@@ -42,7 +42,7 @@
 
 <br>
 
-* PDA are created by hashing a number of seeds the user can choose with the `program_id`.
+* PDAs are created by hashing a number of seeds the user can choose with the `program_id`.
 
 * Seeds can be anything: pubkey, strings, an array of numbers, etc.
 
@@ -90,7 +90,7 @@ fn find_pda(seeds, program_id) {
 
 * PDAs are hashed from a bump, a `program_id`, and several seeds. These seeds can be used to build hashmap-like structures on-chain.
 
-* With PDA, you can create structs that encode the information about a relationship between the user and some data account, so that PDA serves as the address:
+* With PDAs, you can create structs that encode the information about a relationship between the user and some data account, so that PDAs serve as the address:
 
 <br>
 
@@ -124,7 +124,7 @@ pub struct UserStats {
 
 <br>
 
-* A program with global state:
+* A program with a global state:
 
 ```javascript
 const [pda, bump] = await findProgramAddress(Buffer.from("GLOBAL_STATE"), program_id)
@@ -166,9 +166,9 @@ const [pda, bump] = await web3.PublicKey.findProgramAddress(
 
 <br>
 
-* Learn how PDA works on Anchor through [backend's demo 3](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/03_anchor_pda).
-* Learn how PDA and CPI work on Anchor through [backend's demo 4](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/04_pda_and_cpi).
-* Build a frontend dApp that leverages PDA through [frontend's demo 5](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/05_serialize_custom_data) and 
+* Learn how PDA works on Anchor through the [backend's demo 3](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/03_anchor_pda).
+* Learn how PDA and CPI work on Anchor through the [backend's demo 4](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/04_pda_and_cpi).
+* Build a frontend dApp that leverages PDA through the [frontend's demo 5](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/05_serialize_custom_data) and the
 [frontend's demo 6](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/06_serialize_custom_data_II).
 
 

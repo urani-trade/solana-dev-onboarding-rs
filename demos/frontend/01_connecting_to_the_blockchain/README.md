@@ -32,7 +32,7 @@ console.log(`The private key is: `, keypair.secretKey);
 
 <br>
 
-* Take note of your private key and add it to an `.env` file:
+* Take note of your private key and add it to a `.env` file:
 
 <br>
 
@@ -352,7 +352,7 @@ Sent 1000 to 5Tt2B6dy87oUdtmj34B3ypDoYrPh5QBSZUmWDjpZ3sYy with signature xF18Wno
 
 <br>
 
-* Lastly, find your transaction at [Solana's explore](https://explorer.solana.com/) (devnet).
+* Lastly, find your transaction at [Solana's explorer](https://explorer.solana.com/) (devnet).
 
 
 <br>
@@ -395,7 +395,7 @@ const web3 = require("@solana/web3.js");
 // Connect to the cluster
 let connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
-// Generate a new keypair and irdrop SOL for paying transactions
+// Generate a new keypair and airdrop SOL for paying transactions
 let payer = Keypair.generate();
 let airdropSignature = await connection.requestAirdrop(
   payer.publicKey,

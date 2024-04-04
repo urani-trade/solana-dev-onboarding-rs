@@ -22,7 +22,7 @@
 
 <br>
 
-1. Setup the development environment with a local blockchain cluster.
+1. Set up the development environment with a local blockchain cluster.
 
 2. Create a filesystem wallet and airdrop Solana tokens to it.
 
@@ -61,7 +61,7 @@
 <br>
 
 * Install `solana-cli` using [these instructions](https://solana.com/developers/guides/getstarted/setup-local-development). This will provide commands for:
-  - creating and managing file-system Solana wallets/keypars
+  - creating and managing file-system Solana wallets/keypairs
   - connecting to Solana clusters
   - building Solana programs
   - deploying your programs to the blockchain
@@ -268,7 +268,7 @@ solana program extend <PROGRAM_ID> <ADDITIONAL_BYTES>
 
 * [@solana/spl-token](https://www.npmjs.com/package/@solana/spl-token): a library that contains many of the js/ts bindings needed to interact with SPL tokens. You can use this library to mint new tokens, transfer tokens, etc.
 
-* [wallet-adapter](https://github.com/anza-xyz/wallet-adapter): a collection of libraries to help bootstrap wallet collections within Solana (such as Phantom, Solflare, and more).
+* [wallet-adapter](https://github.com/anza-xyz/wallet-adapter): is a collection of libraries that help bootstrap wallet collections within Solana (such as Phantom, Solflare, and more).
 
 
 <br>

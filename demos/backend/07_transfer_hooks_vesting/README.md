@@ -7,7 +7,7 @@
 
 <br>
 
-* In this demo, we use `transfer_hooks` to implement a program where users gradually gain token access (and restricting the number of tokens that can be transferred from the owner's associated token account (ATA)):
+* In this demo, we use `transfer_hooks` to implement a program where users gradually gain token access (and restrict the number of tokens that can be transferred from the owner's associated token account (ATA)):
 
 
 <br>
@@ -290,13 +290,13 @@ ExtraAccountMeta::new_with_seeds(
 
 ---
 
-### The Token Hook Logic
+### The Transfer Hook Logic
 
 <br>
 
 * We first verify the presence of a vesting schedule for the token sender by deserializing `vesting_account`:
-    - if no errors, it confirms the sender’s tokens are subject to a vesting schedule, which must be enforced.
-    - if an error occurs, handle it gracefully without failing the transaction (i.e., the sender doesn't have a vesting schedule and can trade their tokens freely).
+    - If no errors, it confirms the sender’s tokens are subject to a vesting schedule, which must be enforced.
+    - If an error occurs, handle it gracefully without failing the transaction (e.g., the sender doesn't have a vesting schedule and can freely trade their tokens).
 
 <br>
 
