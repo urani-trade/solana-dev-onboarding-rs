@@ -19,7 +19,6 @@ mod puppet_master {
     }
 }
 
-
 #[derive(Accounts)]
 pub struct PullStrings<'info> {
     #[account(mut)]
@@ -28,7 +27,6 @@ pub struct PullStrings<'info> {
     /// CHECK: only used as a signing PDA
     pub authority: UncheckedAccount<'info>,
 }
-
 
 impl<'info> PullStrings<'info> {
     pub fn set_data_ctx(&self) -> CpiContext<'_, '_, '_, 'info, SetData<'info>> {
@@ -40,3 +38,4 @@ impl<'info> PullStrings<'info> {
         CpiContext::new(cpi_program, cpi_accounts)
     }
 }
+

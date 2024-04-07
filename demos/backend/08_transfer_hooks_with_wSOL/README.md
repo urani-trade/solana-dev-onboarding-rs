@@ -764,4 +764,4 @@ anchor keys list
 
 <br>
 
-* [Transfers Hook with wSOI example, by Solana Labs](https://solana.com/developers/guides/token-extensions/transfer-hook#transfer-hook-with-wsol-transfer-fee-advanced-example)
+* [Transfers Hook with wSOL example, by Solana Labs](https://solana.com/developers/guides/token-extensions/transfer-hook#transfer-hook-with-wsol-transfer-fee-advanced-example)
