@@ -1,18 +1,19 @@
 use anchor_lang::{
-  prelude::*,
-  system_program::{create_account, CreateAccount},
-};
+    prelude::*,
+    system_program::{create_account, CreateAccount},
+  };
 use anchor_spl::{
-  associated_token::AssociatedToken,
-  token_interface::{transfer_checked, Mint, TokenAccount, TokenInterface, TransferChecked},
-};
+    token_interface::{transfer_checked, TransferChecked},
+  };
 use spl_tlv_account_resolution::{
-  account::ExtraAccountMeta, seeds::Seed, state::ExtraAccountMetaList,
-};
+    account::ExtraAccountMeta, seeds::Seed, state::ExtraAccountMetaList,
+  };
 use spl_transfer_hook_interface::instruction::{ExecuteInstruction, TransferHookInstruction};
 
-// transfer-hook program that charges a SOL fee on token transfer
-// use a delegate and wrapped SOL because signers from initial transfer are not accessible
+pub use { instructions::*, errors::* };
+mod instructions;
+mod errors;
+mod state;
 
 declare_id!("3VTHXbzY92FgZR7TK58pbEoFnrzrAWLdwj65JiXB2MV1");
 
@@ -22,14 +23,10 @@ pub mod transfer_hooks_with_w_soi {
 
   use super::*;
 
-  // Creates an account that stores a list of extra 
-  // accounts required by the transfer_hook instruction
   pub fn initialize_extra_account_meta_list(
       ctx: Context<InitializeExtraAccountMetaList>,
   ) -> Result<()> {
-      // index 0-3 are the accounts required for token transfer (source, mint, destination, owner)
-      // index 4 is address of ExtraAccountMetaList account
-      // The `addExtraAccountsToInstruction` JS helper function resolving incorrectly
+
       let account_metas = vec![
           ExtraAccountMeta::new_with_pubkey(&ctx.accounts.wsol_mint.key(), false, false)?,
           ExtraAccountMeta::new_with_pubkey(&ctx.accounts.token_program.key(), false, false)?,
@@ -138,73 +135,8 @@ pub mod transfer_hooks_with_w_soi {
 
               __private::__global::transfer_hook(program_id, accounts, &amount_bytes)
           }
-          _ => return Err(ProgramError::InvalidInstructionData.into()),
+          _ => return Err(ThisError::Invalid.into()),
       }
   }
 }
 
-#[derive(Accounts)]
-pub struct InitializeExtraAccountMetaList<'info> {
-  #[account(mut)]
-  payer: Signer<'info>,
-
-  /// CHECK: ExtraAccountMetaList Account, must use these seeds
-  #[account(
-      mut,
-      seeds = [b"extra-account-metas", mint.key().as_ref()], 
-      bump
-  )]
-  pub extra_account_meta_list: AccountInfo<'info>,
-  pub mint: InterfaceAccount<'info, Mint>,
-  pub wsol_mint: InterfaceAccount<'info, Mint>,
-  pub token_program: Interface<'info, TokenInterface>,
-  pub associated_token_program: Program<'info, AssociatedToken>,
-  pub system_program: Program<'info, System>,
-}
-
-// Order of accounts matters for this struct.
-// The first 4 accounts are the accounts required for token transfer (source, mint, destination, owner)
-// Remaining accounts are the extra accounts required from the ExtraAccountMetaList account
-// These accounts are provided via CPI to this program from the token2022 program
-#[derive(Accounts)]
-pub struct TransferHook<'info> {
-  #[account(
-      token::mint = mint, 
-      token::authority = owner,
-  )]
-  pub source_token: InterfaceAccount<'info, TokenAccount>,
-  pub mint: InterfaceAccount<'info, Mint>,
-  #[account(
-      token::mint = mint,
-  )]
-  pub destination_token: InterfaceAccount<'info, TokenAccount>,
-  /// CHECK: source token account owner, can be SystemAccount or PDA owned by another program
-  pub owner: UncheckedAccount<'info>,
-  /// CHECK: ExtraAccountMetaList Account,
-  #[account(
-      seeds = [b"extra-account-metas", mint.key().as_ref()], 
-      bump
-  )]
-  pub extra_account_meta_list: UncheckedAccount<'info>,
-  pub wsol_mint: InterfaceAccount<'info, Mint>,
-  pub token_program: Interface<'info, TokenInterface>,
-  pub associated_token_program: Program<'info, AssociatedToken>,
-  #[account(
-      mut,
-      seeds = [b"delegate"], 
-      bump
-  )]
-  pub delegate: SystemAccount<'info>,
-  #[account(
-      mut,
-      token::mint = wsol_mint, 
-      token::authority = delegate,
-  )]
-  pub delegate_wsol_token_account: InterfaceAccount<'info, TokenAccount>,
-  #[account(
-      mut,
-      token::mint = wsol_mint, 
-      token::authority = owner,
-  )]
-  pub sender_wsol_token_account: InterfaceAccount<'info, TokenAccount>,
-}

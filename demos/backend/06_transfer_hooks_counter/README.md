@@ -23,6 +23,38 @@ pub fn transfer_hook(ctx: Context<TransferHook>, _amount: u64) -> Result<()> {
 
 <br>
 
+
+* Note that we organize the directories and files as recommended by [Neodyme's Secure Scaffold](https://github.com/neodyme-labs/tradeoffer-secure-coding-workshop.git):
+
+<br>
+
+```shell
+.
+├── Anchor.toml
+├── Cargo.toml
+├── README.md
+├── package.json
+├── programs
+│   └── transfer_hooks_counter
+│       ├── Cargo.toml
+│       ├── Xargo.toml
+│       └── src
+│           ├── errors.rs
+│           ├── instructions
+│           │   ├── metalist.rs
+│           │   ├── mod.rs
+│           │   └── transfer_hook.rs
+│           ├── lib.rs
+│           └── state
+│               ├── global.rs
+│               └── mod.rs
+├── tests
+│   └── transfer_hooks_counter.ts
+└── tsconfig.json
+```
+
+<br>
+
 ---
 
 ### Extra Accounts at `ExtraAccountMetaList`
