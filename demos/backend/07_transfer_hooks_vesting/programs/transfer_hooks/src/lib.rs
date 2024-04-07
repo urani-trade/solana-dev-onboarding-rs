@@ -8,10 +8,13 @@ pub use spl_tlv_account_resolution::{
 };
 pub use anchor_spl::token_interface::{ Mint, TokenAccount, TokenInterface };
 pub use spl_transfer_hook_interface::instruction::{ExecuteInstruction, TransferHookInstruction};
-use anchor_spl::token_2022::{
-    mint_to, MintTo,
-    Token2022
-};
+use anchor_spl::token_2022::{mint_to, MintTo};
+
+pub use { instructions::*, errors::*, state::* };
+mod instructions;
+mod errors;
+mod state;
+
 
 declare_id!("2qaMkdHBvzCZsVNwcb5riqq4dm5tbKmph2BuN8u7Mr9Y");
 
@@ -74,13 +77,9 @@ pub mod vesting_template {
             &mut ctx.accounts.extra_account_meta_list.try_borrow_mut_data()?,
             &account_metas,
         )?;
-    
         Ok(())
     }
 
-
-    // Iterate through vesting data, calculate total_basis_points, 
-    // and set the vesting account state
     pub fn create_vesting_account(
             ctx: Context<CreateVestingAccount>, 
             vesting_data: Vec<VestingData>, 
@@ -96,7 +95,6 @@ pub mod vesting_template {
         }
 
         require!(total_basis_points <= 10000, VestingErr::TooMuchBasisPoints);
-
         ctx.accounts.vesting_account.set_inner(
             VestingAccount {
                 amount: amount,
@@ -104,11 +102,8 @@ pub mod vesting_template {
                 vesting_data,
             }
         );
-     
         Ok(())
     }
-
-
 
     pub fn claim_tokens(ctx: Context<ClaimTokens>) -> Result<()> {
         require!(ctx.accounts.vesting_account.claimed == false, VestingErr::AlreadyClaimed);
@@ -141,7 +136,7 @@ pub mod vesting_template {
         let info = ctx.accounts.vesting_account.to_account_info();
         let data = info.try_borrow_mut_data()?;
         
-        // Try and Deserialize the Account, if it deserialize then we know that 
+        // Try Deserialize the Account, if it deserialize then 
         // the sender has a vesting account and we should check it.
         match  VestingAccount::try_deserialize(&mut &data[..]) {
             Ok(vesting_account) => {
@@ -183,141 +178,4 @@ pub mod vesting_template {
             _ => return Err(ProgramError::InvalidInstructionData.into()),
         }
     }
-
-
-}
-
-
-#[derive(Accounts)]
-pub struct InitializeExtraAccountMetaList<'info> {
-    #[account(mut)]
-    payer: Signer<'info>,
-    /// CHECK: ExtraAccountMetaList Account, must use these seeds
-    #[account(
-        mut,
-        seeds = [b"extra-account-metas", mint.key().as_ref()],
-        bump
-    )]
-    pub extra_account_meta_list: AccountInfo<'info>,
-    pub mint: InterfaceAccount<'info, Mint>,
-    pub system_program: Program<'info, System>,
-}
-
-
-#[derive(Accounts)]
-pub struct TransferHook<'info> {
-    #[account(
-        token::mint = mint,
-        token::authority = owner,
-    )]
-    pub source_token: InterfaceAccount<'info, TokenAccount>,
-    pub mint: InterfaceAccount<'info, Mint>,
-    #[account(
-        token::mint = mint,
-    )]
-    pub destination_token: InterfaceAccount<'info, TokenAccount>,
-    /// CHECK: source token account owner, can be SystemAccount or PDA owned by another program
-    pub owner: UncheckedAccount<'info>,
-    /// CHECK: ExtraAccountMetaList Account,
-    #[account(
-        seeds = [b"extra-account-metas", mint.key().as_ref()],
-        bump
-    )]
-    pub extra_account_meta_list: UncheckedAccount<'info>,
-    #[account(
-        mut,
-        seeds = [b"vesting", mint.key().as_ref(), source_token.key().as_ref()],
-        bump
-    )]
-    /// CHECK: Sysvar instruction account
-    pub vesting_account: UncheckedAccount<'info>,
-}
-
-
-#[derive(Accounts)]
-#[instruction(vesting_data: Vec<VestingData>)]
-pub struct CreateVestingAccount<'info> {
-    #[account(mut)]
-    pub admin: Signer<'info>,
-
-    pub mint: InterfaceAccount<'info, Mint>,
-    #[account(token::mint = mint)]
-    pub token: InterfaceAccount<'info, TokenAccount>,
-    
-    #[account(
-        init,
-        payer = admin,
-        space = VestingAccount::INIT_SPACE + vesting_data.len() * 10,
-        seeds = [b"vesting", mint.key().as_ref(), token.key().as_ref()],
-        bump
-    )]
-    pub vesting_account: Account<'info, VestingAccount>,
-
-    pub system_program: Program<'info, System>,
-}
-
-
-#[derive(Accounts)]
-pub struct ClaimTokens<'info> {
-    #[account(mut)]
-    pub user: Signer<'info>,
-
-    #[account(mut)]
-    pub mint: InterfaceAccount<'info, Mint>,
-    #[account(
-        mut,
-        token::mint = mint,
-        token::authority = user,
-    )]
-    pub token: InterfaceAccount<'info, TokenAccount>,
-
-    #[account(
-        seeds = [b"vesting_auth", mint.key().as_ref()],
-        bump
-    )]
-    /// CHECK: This is safe because the seeds are fixed and are just used to mint token.
-    pub mint_auth: UncheckedAccount<'info>,
-    
-    #[account(
-        mut,
-        seeds = [b"vesting", mint.key().as_ref(), token.key().as_ref()],
-        bump
-    )]
-    pub vesting_account: Account<'info, VestingAccount>,
-
-    pub token_program: Program<'info, Token2022>,
-    pub system_program: Program<'info, System>,
-}
-
-
-#[account]
-pub struct VestingAccount {
-    pub amount: u64,
-    pub claimed: bool,
-    pub vesting_data: Vec<VestingData>,
-}
-
-
-impl Space for VestingAccount {
-    const INIT_SPACE: usize = 8 + 8 + 1 + 4;
-}
-
-
-#[derive(AnchorDeserialize, AnchorSerialize, Clone)]
-pub struct VestingData {
-    pub amount_basis_point: u16,
-    pub time: i64,
-}
-
-
-#[error_code]
-pub enum VestingErr {
-    #[msg("Total basis points must be equal or less than 10000")]
-    TooMuchBasisPoints,
-    #[msg("You already claimed your allocation.")]
-    AlreadyClaimed,
-    #[msg("You tried to transfer more than you are allowed")]
-    LockedAmount,
-    #[msg("Overflow")]
-    Overflow,
 }

@@ -1,7 +1,8 @@
 pub use { state::*, instructions::* };
-mod errors;
 mod instructions;
+mod errors;
 mod state;
+
 
 declare_id!("HPPjTJWwTHTGxgoaqNaWGFQTbqkg25NuSctdkpGNdUL5");
 
