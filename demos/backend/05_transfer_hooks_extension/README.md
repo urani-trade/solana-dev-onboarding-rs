@@ -30,7 +30,40 @@ pub fn transfer_hook(_ctx: Context<TransferHook>, _amount: u64) -> Result<()> {
   - `fallback()`: necessary to manually match the instruction discriminator and invoke our custom `transfer_hook()` instruction. 
 
 
+* Finally, note that we organize the directories and files according to [Neodyme's Secure Scaffold](https://github.com/neodyme-labs/tradeoffer-secure-coding-workshop.git):
+
 <br>
+
+```shell
+.
+├── Anchor.toml
+├── Cargo.toml
+├── README.md
+├── package.json
+├── programs
+│   └── transfer_hook_extension
+│       ├── Cargo.toml
+│       ├── Xargo.toml
+│       └── src
+│           ├── errors.rs
+│           ├── instructions
+│           │   ├── metalist.rs
+│           │   ├── mod.rs
+│           │   └── transfer_hook.rs
+│           ├── lib.rs
+│           └── state
+│               ├── global.rs
+│               └── mod.rs
+├── tests
+│   └── transfer_hook_extension.ts
+└── tsconfig.json
+```
+
+<br>
+
+<br>
+
+
 
 ---
 
