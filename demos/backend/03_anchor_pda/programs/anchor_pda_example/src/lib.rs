@@ -1,7 +1,5 @@
 use anchor_lang::{prelude::*};
-
 pub use { state::*, instructions::* };
-
 mod instructions;
 mod state;
 

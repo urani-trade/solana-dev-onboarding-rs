@@ -10,7 +10,6 @@ pub mod puppet {
         Ok(())
     }
 
-
     pub fn set_data(ctx: Context<SetData>, data: u64) -> Result<()> {
         let puppet = &mut ctx.accounts.puppet;
         puppet.data = data;
