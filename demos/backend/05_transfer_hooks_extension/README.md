@@ -59,7 +59,7 @@ pub fn transfer_hook(_ctx: Context<TransferHook>, _amount: u64) -> Result<()> {
 └── tsconfig.json
 ```
 
-<br>
+
 
 <br>
 
@@ -166,7 +166,7 @@ pub struct InitializeExtraAccountMetaList<'info> {
     #[account(mut)]
     payer: Signer<'info>,
 
-    /// CHECK: ExtraAccountMetaList Account, must use these seeds
+    /// CHECK
     #[account(
         mut,
         seeds = [b"extra-account-metas", mint.key().as_ref()], 
@@ -179,10 +179,6 @@ pub struct InitializeExtraAccountMetaList<'info> {
     pub system_program: Program<'info, System>,
 }
 
-// Order of accounts matters for this struct.
-// The first 4 accounts are the accounts required for token transfer (source, mint, destination, owner)
-// Remaining accounts are the extra accounts required from the ExtraAccountMetaList account
-// These accounts are provided via CPI to this program from the token2022 program
 #[derive(Accounts)]
 pub struct TransferHook<'info> {
     #[account(
@@ -195,9 +191,9 @@ pub struct TransferHook<'info> {
         token::mint = mint,
     )]
     pub destination_token: InterfaceAccount<'info, TokenAccount>,
-    /// CHECK: source token account owner, can be SystemAccount or PDA owned by another program
+    /// CHECK
     pub owner: UncheckedAccount<'info>,
-    /// CHECK: ExtraAccountMetaList Account,
+    /// CHECK
     #[account(
         seeds = [b"extra-account-metas", mint.key().as_ref()], 
         bump

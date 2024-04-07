@@ -38,3 +38,16 @@ npm run dev
 * Open your browser at `localhost:3000` and click `Ping`.
 
 * Check the transaction at the [Solana Explorer](https://explorer.solana.com/?cluster=devnet).
+
+
+<br>
+
+
+--- 
+
+### References
+
+<br>
+
+* [Risein Courses](https://www.risein.com/courses/build-on-solana/counter-i-implementing-state-and-instructions)
+
