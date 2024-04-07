@@ -370,7 +370,7 @@ pub struct TransferHook<'info> {
 
 <br>
 
-* Now let's look at test/transfer-hooks-with-w-soi.ts. We start by importing dependencies and retrieving the IDL file:
+* Now let's look at `test/transfer-hooks-with-w-soi.ts`. We start by importing dependencies and retrieving the IDL file:
 
 <br>
 
