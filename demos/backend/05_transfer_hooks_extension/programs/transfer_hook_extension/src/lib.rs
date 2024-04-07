@@ -12,7 +12,7 @@ mod instructions;
 mod errors;
 
 
-declare_id!("7v76bq4YNRgFoQzkWZ8vf1DSJnSYPX4tDCs38rjjd6Qi");
+declare_id!("8SE55kjPh9PGdj4C1frNevip7QMxdwBrWe7n8HLGVwfT");
 
 
 #[program]

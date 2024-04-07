@@ -1,6 +1,5 @@
 use anchor_lang::prelude::*;
 
-
 declare_id!("DJYudpSv3Mf46jse4w5LwfLQNrdtD1aEMzAqp5DJCNhS");
 
 
@@ -10,7 +9,6 @@ pub mod puppet {
     pub fn initialize(_ctx: Context<Initialize>) -> Result<()> {
         Ok(())
     }
-
 
     pub fn set_data(ctx: Context<SetData>, data: u64) -> Result<()> {
         let puppet = &mut ctx.accounts.puppet;

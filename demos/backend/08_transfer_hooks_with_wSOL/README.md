@@ -312,10 +312,7 @@ pub struct InitializeExtraAccountMetaList<'info> {
   pub system_program: Program<'info, System>,
 }
 
-// Order of accounts matters for this struct.
-// The first 4 accounts are the accounts required for token transfer (source, mint, destination, owner)
-// Remaining accounts are the extra accounts required from the ExtraAccountMetaList account
-// These accounts are provided via CPI to this program from the token2022 program
+
 #[derive(Accounts)]
 pub struct TransferHook<'info> {
   #[account(
@@ -328,9 +325,9 @@ pub struct TransferHook<'info> {
       token::mint = mint,
   )]
   pub destination_token: InterfaceAccount<'info, TokenAccount>,
-  /// CHECK: source token account owner, can be SystemAccount or PDA owned by another program
+  /// CHECK
   pub owner: UncheckedAccount<'info>,
-  /// CHECK: ExtraAccountMetaList Account,
+  /// CHECK
   #[account(
       seeds = [b"extra-account-metas", mint.key().as_ref()], 
       bump
@@ -500,9 +497,9 @@ describe("transfer_hooks_with_w_soi", () => {
     true // allowOwnerOffCurve
   );
 
-  // Create the two WSol token accounts as part of setup
+  // Create the two wSOL token accounts as part of setup
   before(async () => {
-    // WSol Token Account for sender
+    // wSOL Token Account for sender
     await getOrCreateAssociatedTokenAccount(
       connection,
       wallet.payer,
@@ -510,7 +507,7 @@ describe("transfer_hooks_with_w_soi", () => {
       wallet.publicKey
     );
 
-    // WSol Token Account for delegate PDA
+    // wSOL Token Account for delegate PDA
     await getOrCreateAssociatedTokenAccount(
       connection,
       wallet.payer,
@@ -582,7 +579,6 @@ describe("transfer_hooks_with_w_soi", () => {
 ```javascript
   // Fund the sender token account with 100 tokens
   it("Create Token Accounts and Mint Tokens", async () => {
-    // 100 tokens
     const amount = 100 * 10 ** decimals;
 
     const transaction = new Transaction().add(
@@ -664,7 +660,6 @@ describe("transfer_hooks_with_w_soi", () => {
 
 ```javascript
   it("Transfer Hook with Extra Account Meta", async () => {
-    // 1 tokens
     const amount = 1 * 10 ** decimals;
     const bigIntAmount = BigInt(amount);
 
@@ -675,7 +670,7 @@ describe("transfer_hooks_with_w_soi", () => {
       lamports: amount,
     });
 
-    // Approve delegate PDA to transfer WSol tokens from sender WSol token account
+    // Approve delegate PDA to transfer WSol tokens from sender wSOL token account
     const approveInstruction = createApproveInstruction(
       senderWSolTokenAccount,
       delegatePDA,
@@ -685,7 +680,7 @@ describe("transfer_hooks_with_w_soi", () => {
       TOKEN_PROGRAM_ID
     );
 
-    // Sync sender WSol token account
+    // Sync sender wSOL token account
     const syncWrappedSolInstruction = createSyncNativeInstruction(
       senderWSolTokenAccount
     );
@@ -769,4 +764,4 @@ anchor keys list
 
 <br>
 
-* [Transfers Hook with wSOI example, by Solana Labs](https://solana.com/developers/guides/token-extensions/transfer-hook#transfer-hook-with-wsol-transfer-fee-advanced-example)
+* [Transfers Hook with wSOL example, by Solana Labs](https://solana.com/developers/guides/token-extensions/transfer-hook#transfer-hook-with-wsol-transfer-fee-advanced-example)
