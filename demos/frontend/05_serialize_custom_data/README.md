@@ -489,3 +489,15 @@ npm run dev
 * Open your browser at `localhost:3000` and submit a movie review.
 
 * Check the transaction at the [Solana Explorer](https://explorer.solana.com/?cluster=devnet).
+
+
+<br>
+
+
+--- 
+
+### References
+
+<br>
+
+* [Soldev Courses](https://www.soldev.app/course)

@@ -677,7 +677,6 @@ describe("vesting_template", () => {
   });
 
   it("Transfer Hook with Extra Account Meta", async () => {
-    // 1 tokens
     const amount = 1 * 10 ** decimals;
 
     // Standard token transfer instruction

@@ -5,7 +5,7 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-game = "DiUrXVjpm8stNeqnzHcssBLTW3uQBC426Bc2j4QoazDT"
+anchor_pda_example = "DiUrXVjpm8stNeqnzHcssBLTW3uQBC426Bc2j4QoazDT"
 
 [registry]
 url = "https://api.apr.dev"
