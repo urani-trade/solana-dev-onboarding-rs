@@ -139,7 +139,6 @@ impl<'info> CreateMembership<'info> {
         )?;
 
         // Initialize Extensions 
-
         invoke(
             &initialize_permanent_delegate(
                 &self.token_2022_program.key(),
@@ -226,7 +225,6 @@ impl<'info> CreateMembership<'info> {
         )?;
 
         // Initialize the ATA & Mint to ATA 
-
         create(
             CpiContext::new(
                 self.associated_token_program.to_account_info(),

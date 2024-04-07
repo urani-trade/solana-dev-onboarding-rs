@@ -8,7 +8,7 @@
 
 * In this demo, we explore some token extensions available at `spl_token_2022` and `spl_token_metadata_interface`.
 
-* In addition, since this demo is larger than the previous, we organize the directories and files as recommended by [Neodyme's Secure Scaffold](https://github.com/neodyme-labs/tradeoffer-secure-coding-workshop.git):
+* We organize the directories and files as recommended by [Neodyme's Secure Scaffold](https://github.com/neodyme-labs/tradeoffer-secure-coding-workshop.git):
 
 <br>
 
