@@ -9,7 +9,7 @@
 
 * In this demo, we build a more advanced `transfer_hook` program that requires the sender to pay a wSOL fee for every token transfer.
 
-* The wSOL transfers are executed using a delegate PDA from the transfer hook program (as the signature from the initial sender of the token transfer instruction is not accessible).
+* The wSOL transfers are executed using a delegate PDA from the transfer hook program (as the signature from the initial sender of the token transfer instruction is not accessible):
 
 <br>
 
@@ -37,6 +37,39 @@ pub fn transfer_hook(ctx: Context<TransferHook>, amount: u64) -> Result<()> {
   Ok(())
 }
 ``` 
+
+<br>
+
+* Note that we organize the directories and files as recommended by [Neodyme's Secure Scaffold](https://github.com/neodyme-labs/tradeoffer-secure-coding-workshop.git):
+
+<br>
+
+```shell
+.
+├── Anchor.toml
+├── Cargo.toml
+├── README.md
+├── package.json
+├── programs
+│   └── transfer-hooks-with-w-soi
+│       ├── Cargo.toml
+│       ├── Xargo.toml
+│       └── src
+│           ├── errors.rs
+│           ├── instructions
+│           │   ├── metalist.rs
+│           │   ├── mod.rs
+│           │   └── transfer_hook.rs
+│           ├── lib.rs
+│           └── state
+│               ├── global.rs
+│               └── mod.rs
+├── tests
+│   └── transfer-hooks-with-w-soi.ts
+└── tsconfig.json
+```
+
+<br>
 
 <br>
 
