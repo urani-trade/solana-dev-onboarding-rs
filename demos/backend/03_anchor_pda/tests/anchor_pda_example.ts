@@ -1,20 +1,19 @@
 import * as anchor from '@coral-xyz/anchor'
 import { Program } from '@coral-xyz/anchor'
 import { PublicKey } from '@solana/web3.js'
-import { Game } from '../target/types/game'
+import { AnchorPdaExample } from '../target/types/anchor_pda_example'
 import { expect } from 'chai'
 
 
-describe('game', async () => {
+describe('anchor_pda_example', async () => {
+
   const provider = anchor.AnchorProvider.env()
   anchor.setProvider(provider)
 
+  const program = anchor.workspace.anchor_pda_example as Program<AnchorPdaExample>
 
-  const program = anchor.workspace.Game as Program<Game>
-
-
-  it('Sets and changes name!', async () => {
-    const [userStatsPDA, _] = await PublicKey.findProgramAddress(
+  it('Setting and changing a name', async () => {
+    const [userStatsPDA, _] = await PublicKey.findProgramAddressSync(
       [
         anchor.utils.bytes.utf8.encode('user-stats'),
         provider.wallet.publicKey.toBuffer(),
@@ -22,32 +21,29 @@ describe('game', async () => {
       program.programId
     )
 
-
     await program.methods
-      .createUserStats('tela')
+      .createUserStats('Toly')
       .accounts({
         user: provider.wallet.publicKey,
         userStats: userStatsPDA,
       })
       .rpc()
 
-
     expect((await program.account.userStats.fetch(userStatsPDA)).name).to.equal(
-      'tela'
+      'Toly'
     )
 
 
     await program.methods
-      .changeUserName('giu')
+      .changeUserName('Austin')
       .accounts({
         user: provider.wallet.publicKey,
         userStats: userStatsPDA,
       })
       .rpc()
 
-
     expect((await program.account.userStats.fetch(userStatsPDA)).name).to.equal(
-      'giu'
+      'Austin'
     )
   })
 })
