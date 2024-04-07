@@ -11,13 +11,19 @@
 
 <br>
 
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/162904807/9acbfb26-4f46-4f48-9a69-19f68dbd9429" width="80%" align="center" style="padding:1px;border:1px solid black;"/>
+</p>
 
 <br>
 
-* While, on `puppet`, only one line is changed, to add `authority` to `PullStrings`:
+* While on `puppet`, only one line is changed, to add `authority` to `PullStrings`:
 
 <br>
 
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/162904807/9da015bf-348c-41b4-a5fc-6c1b2d9414e9" width="60%" align="center" style="padding:1px;border:1px solid black;"/>
+</p>
 
 <br>
 
