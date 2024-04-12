@@ -42,8 +42,8 @@ name = "hello_world"
 crate-type = ["cdylib", "lib"]
 
 [dependencies]
-// add the right version
-solana-program = "=1.1x.x"
+// add the right version given by the cmd $ solana-install list
+solana-program = "=1.x.x"
 ```
 
 
