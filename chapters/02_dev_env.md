@@ -51,7 +51,8 @@
 
 <br>
 
-* Install [Rust](https://rustup.rs/) and [Yarn](https://yarnpkg.com/getting-started/install).
+* Install [Rust](https://rustup.rs/)
+* Install [Yarn](https://yarnpkg.com/getting-started/install).
 
 
 <br>
@@ -74,7 +75,7 @@
 
 <br>
 
-* You can run a full blockchain cluster on your machine with:
+* You can run a full blockchain cluster on your machine and configure solana-cli to use it with these commands:
 
 
 ```

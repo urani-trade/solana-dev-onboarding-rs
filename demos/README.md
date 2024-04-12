@@ -20,7 +20,7 @@
 
 <br>
 
-#### `package solana-program v1.z cannot be built because it requires rustc 1.x or newer, while the currently active rustc version is 1.y-dev`
+#### Error: `package solana-program v1.z cannot be built because it requires rustc 1.x or newer, while the currently active rustc version is 1.y-dev`
 
 <br>
 
@@ -29,3 +29,9 @@
 ```shell
 solana-install update
 ```
+
+* If that doesn't work, explicilty define solana-program's version in your project
+```shell
+cargo update -p solana-program --precise $(solana --version | awk '{print $2}')
+```
+  

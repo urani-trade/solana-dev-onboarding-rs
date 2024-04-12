@@ -37,11 +37,11 @@
 
 * An instruction is the smallest piece of execution logic on Solana. It invokes programs that make calls to update the network's global state.
 
-* Each transaction consists of one or several instructions that will be processed by the runtime orderly and atomically. If any part of the instructions fails, the entire transaction fails.
+* Each transaction consists of one or several instructions that will be processed by the runtime in order and atomically. If any part of the instructions fails, the entire transaction fails.
 
 <br>
 
-#### What is inside a Transaction
+#### What's Inside a Transaction
 
 <br>
 
@@ -57,7 +57,7 @@
     - An instruction contains:
       - an unsigned 8-bit `program_id` (to identify an on-chain program that can interpret the opaque data) -> this specifies a program
       - a compact-array of account address indexes, each a 32-byte of arbitrary data (when the address requires a digital signature, the runtime interprets it as a public key of an ed25519 keypair) -> these are the transaction's accounts passed to the program
-      - a compact-array of opaque 8-bit data and a special multi-byte encoding of 16 buts, compact-u16, for its length -> this is the data
+      - a compact-array of opaque 8-bit data and a special multi-byte encoding of 16 bits, compact-u16, for its length -> this is the data
 
 <br>
 
@@ -128,11 +128,9 @@ Transaction fees are calculated based on two main parts:
 
 * A created account is initialized to be owned by a built-in program (the System program). It includes owner metadata (a `program_id`).
 
-* Accounts are held in validator memory by paying a "rent". Any account that drops to zero lamports is removed. 
-  - Currently, all new accounts are required to be rent-exempt.
-  - An account is considered rent-exempt if it holds at least 2 years' worth of rent (checked every time an account's balance is reduced).
+* Accounts are held in validator memory by paying a "rent". When an account balance drops to zero it is removed. 
+  - Currently, accounts do not have to pay rent, but must hold a minimum balance of 2 years rent in order to be created.
   - Rent can be estimated via the command `solana rent`.
-
 
 <br>
 
