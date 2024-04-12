@@ -29,3 +29,9 @@
 ```shell
 solana-install update
 ```
+
+* If that doesn't work, downgrade the target version of `solana-program` in `Cargo.toml` to what is shown by this command:
+```shell
+cargo-build-sbf --version
+```
+  
