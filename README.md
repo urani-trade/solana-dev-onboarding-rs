@@ -22,7 +22,7 @@ Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
 
 <br>
 
-## 🛹 Embrance the Theory
+## 🛹 Embrace the Theory
 
 <br>
 
