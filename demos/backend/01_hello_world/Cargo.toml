@@ -7,4 +7,4 @@ name = "hello_world"
 crate-type = ["cdylib", "lib"]
 
 [dependencies]
-solana-program = "=1.18.8"
+solana-program = "=1.17"
