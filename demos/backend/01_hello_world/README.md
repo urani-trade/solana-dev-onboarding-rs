@@ -1,8 +1,7 @@
 # 🛹 Demo 1: Hello World 
 
-* -> [I want to create the demo from scratch and learn](#create-the-demo-from-scratch)
-<br>
-* -> [I just want to run the demo](#build-and-deploy-your-program)
+* [-> I want to create the demo from scratch and learn](#create-the-demo-from-scratch)
+* [-> I just want to run the demo](#build-and-deploy-your-program)
 
 <br>
 
@@ -95,7 +94,7 @@ pub fn process_instruction(
 <br>
 
 
-#### Build and Deploy your Program
+### Build and Deploy your Program
 
 * Make sure you have a local cluster running:
 
