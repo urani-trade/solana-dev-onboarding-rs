@@ -110,7 +110,7 @@ solana-test-validator
 cargo build-sbf
 ```
 
-if you get any errors see [troubleshooting](/solana-dev-onboarding-rs/blob/dev/demos/README.md#troubleshooting)
+if you get any errors see [troubleshooting](/demos/README.md#troubleshooting)
 
 <br>
 
