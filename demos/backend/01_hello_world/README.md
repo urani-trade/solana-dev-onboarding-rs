@@ -3,7 +3,7 @@
 
 <br>
 
-* In a separate terminal window, start your local cluster:
+* In a separate terminal window, start your local cluster (if its not already running):
 
 ```shell
 solana-test-validator
