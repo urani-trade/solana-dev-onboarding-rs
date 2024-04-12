@@ -5,7 +5,7 @@
 
 <br>
 
-### Create the demo from scratch
+## Create the demo from scratch
 
 <br>
 
@@ -88,7 +88,7 @@ pub fn process_instruction(
 <br>
 
 
-### Build and Deploy
+## Build and Deploy
 
 #### 1. Make sure you have a local cluster running:
 
