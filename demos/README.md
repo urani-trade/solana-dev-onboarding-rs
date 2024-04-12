@@ -30,8 +30,8 @@
 solana-install update
 ```
 
-* If that doesn't work, downgrade the target version of `solana-program` in `Cargo.toml` to whats given by this command:
+* If that doesn't work, explicilty define solana-program's version in your project
 ```shell
-solana-install list
+cargo update -p solana-program --precise $(solana --version | awk '{print $2}')
 ```
   
