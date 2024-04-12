@@ -110,6 +110,8 @@ solana-test-validator
 cargo build-sbf
 ```
 
+if you get any errors see [troubleshooting](/solana-dev-onboarding-rs/blob/dev/demos/README.md#troubleshooting)
+
 <br>
 
 * This command will create the compiled program's `.so` file inside a folder called `./target/deploy`:
