@@ -41,7 +41,7 @@
 
 <br>
 
-#### What is inside a Transaction
+#### What's Inside a Transaction
 
 <br>
 
@@ -128,11 +128,9 @@ Transaction fees are calculated based on two main parts:
 
 * A created account is initialized to be owned by a built-in program (the System program). It includes owner metadata (a `program_id`).
 
-* Accounts are held in validator memory by paying a "rent". Any account that drops to zero lamports is removed. 
-  - Currently, all new accounts are required to be rent-exempt.
-  - An account is considered rent-exempt if it holds at least 2 years' worth of rent (checked every time an account's balance is reduced).
+* Accounts are held in validator memory by paying a "rent". When an account balance drops to zero it is removed. 
+  - Currently, accounts do not have to pay rent, but must hold a minimum balance of 2 years rent in order to be created.
   - Rent can be estimated via the command `solana rent`.
-
 
 <br>
 
