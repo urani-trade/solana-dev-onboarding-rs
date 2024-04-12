@@ -20,7 +20,7 @@
 
 <br>
 
-#### `package solana-program v1.z cannot be built because it requires rustc 1.x or newer, while the currently active rustc version is 1.y-dev`
+#### Error: `package solana-program v1.z cannot be built because it requires rustc 1.x or newer, while the currently active rustc version is 1.y-dev`
 
 <br>
 
@@ -30,8 +30,8 @@
 solana-install update
 ```
 
-* If that doesn't work, downgrade the target version of `solana-program` in `Cargo.toml` to what is shown by this command:
+* If that doesn't work, downgrade the target version of `solana-program` in `Cargo.toml` to whats given by this command:
 ```shell
-cargo-build-sbf --version
+solana-install list
 ```
   
