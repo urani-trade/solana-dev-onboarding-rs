@@ -104,7 +104,7 @@ solana-test-validator
 
 <br>
 
-* Build this hello world program by running the following command from the `/01_hello_world` directory:
+* Build by running the following command from the `/01_hello_world` directory:
 
 ```
 cargo build-sbf
