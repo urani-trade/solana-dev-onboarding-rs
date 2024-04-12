@@ -37,7 +37,7 @@
 
 * An instruction is the smallest piece of execution logic on Solana. It invokes programs that make calls to update the network's global state.
 
-* Each transaction consists of one or several instructions that will be processed by the runtime orderly and atomically. If any part of the instructions fails, the entire transaction fails.
+* Each transaction consists of one or several instructions that will be processed by the runtime in order and atomically. If any part of the instructions fails, the entire transaction fails.
 
 <br>
 
@@ -57,7 +57,7 @@
     - An instruction contains:
       - an unsigned 8-bit `program_id` (to identify an on-chain program that can interpret the opaque data) -> this specifies a program
       - a compact-array of account address indexes, each a 32-byte of arbitrary data (when the address requires a digital signature, the runtime interprets it as a public key of an ed25519 keypair) -> these are the transaction's accounts passed to the program
-      - a compact-array of opaque 8-bit data and a special multi-byte encoding of 16 buts, compact-u16, for its length -> this is the data
+      - a compact-array of opaque 8-bit data and a special multi-byte encoding of 16 bits, compact-u16, for its length -> this is the data
 
 <br>
 
