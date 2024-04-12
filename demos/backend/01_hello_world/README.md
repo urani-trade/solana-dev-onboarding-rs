@@ -1,7 +1,8 @@
 # 🛹 Demo 1: Hello World 
 
--> [I want to build from scratch and learn](#create-the-demo-from-scratch)
--> [I just want to run the demo](#build-and-deploy-your-program)
+* -> [I want to create the demo from scratch and learn](#create-the-demo-from-scratch)
+<br>
+( -> [I just want to run the demo](#build-and-deploy-your-program)
 
 <br>
 
