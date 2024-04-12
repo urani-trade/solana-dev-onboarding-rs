@@ -75,7 +75,7 @@
 
 <br>
 
-* You can run a full blockchain cluster on your machine with:
+* You can run a full blockchain cluster on your machine and configure solana-cli to use it with these commands:
 
 
 ```
