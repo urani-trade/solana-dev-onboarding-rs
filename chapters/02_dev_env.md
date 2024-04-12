@@ -51,7 +51,8 @@
 
 <br>
 
-* Install [Rust](https://rustup.rs/) and [Yarn](https://yarnpkg.com/getting-started/install).
+* Install [Rust](https://rustup.rs/)
+* Install [Yarn](https://yarnpkg.com/getting-started/install).
 
 
 <br>
