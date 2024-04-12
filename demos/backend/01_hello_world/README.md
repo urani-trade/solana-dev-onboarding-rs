@@ -1,17 +1,15 @@
 # 🛹 Demo 1: Hello World 
 
+-> [I want to build from scratch and learn](#create-the-demo-from-scratch)
+-> [I just want to run the demo](#build-and-deploy-your-program)
 
 <br>
 
-* In a separate terminal window, start your local cluster (if its not already running):
-
-```shell
-solana-test-validator
-```
+### Create the demo from scratch
 
 <br>
 
-* Either use this directory or initialize a new Rust library via Cargo:
+* initialize a new Rust library via Cargo:
 
 ```shell 
 cargo init hello_world --lib
@@ -98,9 +96,15 @@ pub fn process_instruction(
 
 #### Build and Deploy your Program
 
+* Make sure you have a local cluster running:
+
+```shell
+solana-test-validator
+```
+
 <br>
 
-* Let's build this hello world program, by running the following command from the root of the project:
+* Let's build this hello world program, by running the following command from the root of the project (the `/01_hello_world` directory:
 
 ```
 cargo build-sbf
