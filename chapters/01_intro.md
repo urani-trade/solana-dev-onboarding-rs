@@ -69,6 +69,9 @@
 
 * Turbine is a multi-layer propagation protocol: nodes in the network are divided into small partitions (neighborhoods), sharing received data (the data unit is called a **shred**, and a block contains several shreds).
 
+* Propagation is prioritized according to the node's stake (through a stake-weighted selection algorithm so that validators with the most stake will be closer to the leader).
+
+
 <br>
 
 
@@ -90,10 +93,9 @@
 <br>
 
 * Solana's parallelized transaction processing engine is scaled horizontally across GPUs and SSDs and processes as many transactions as available cores.
+    - However, Sealevel still needs to be optimized for GPU offloading; it only accelerates PoH and signature verification.
 
-* Sealevel works by sorting millions of pending transactions and scheduling all the non-overlapping transactions in parallel.
-
-* However, Sealevel is not yet optimized for GPU offloading; it is only used to accelerate PoH and signature verification.
+* In Solana, each transaction describes all the states required to read and write so Sealevel can sort millions of pending transactions and choose non-overlapping instructions to be executed in parallel.
 
 * While Ethereum uses the EVM (Ethereum Virtual Machine) and other blockchains use WASM (Web Assembly), Solana uses a VM called Berkeley Packet Filter (BPF):
   - BPF bytecode is designed for high-performance packet filters and can be used for non-networking purposes.
@@ -104,7 +106,7 @@
 
 <br>
 
-* The **Transaction Processing Unit (TPU)** works as a pipelining processor, CPU-optimized, so that nodes can validate and execute all the transactions before new blocks arrive.
+* The **Transaction Processing Unit (TPU)** works as a pipelining processor, CPU-optimized, so that nodes can validate and execute all the transactions before new blocks arrive. 
 
 * The stages of TPU are:
   1. **Fetch stage**: data fetch in kernel space via network card.
