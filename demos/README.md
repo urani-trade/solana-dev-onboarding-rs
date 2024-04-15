@@ -2,7 +2,7 @@
 
 <br>
 
-## Demos
+### Demos
 
 <br>
 
@@ -16,11 +16,11 @@
 
 ---
 
-## Troubleshooting
+### Troubleshooting
 
 <br>
 
-#### Error: `package solana-program v1.z cannot be built because it requires rustc 1.x or newer, while the currently active rustc version is 1.y-dev`
+#### ❌ Error: `package solana-program v1.z cannot be built because it requires rustc 1.x or newer, while the currently active rustc version is 1.y-dev`
 
 <br>
 
