@@ -2,7 +2,7 @@
 
 <br>
 
-### Our *on-going* development resources, aiming to onboard engineers to Solana development. From geeks to geeks (and you are [welcome to contribute](./CONTRIBUTING.md)).
+### Our *on-going* development resources, aiming to onboard engineers to Solana development. From geeks to geeks (and you are [welcome to contribute](./CONTRIBUTING)).
 
 <br>
 
@@ -29,14 +29,15 @@ Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
 * **[1. Solana Blockchain Overview](chapters/01_intro.md)**
 * **[2. Setup Your Dev Environment](chapters/02_dev_env.md)**
 * **[3. Mastering Anchor and CPI](chapters/03_anchor.md)**
-* **[4. Program Derived Addresses](chapters/04_pda.md)**
-* **[5. Events and Communication](chapters/05_events.md)**
-* **[6. Mastering Solana Frontend](chapters/06_frontend.md)**
-* **[7. Mastering Token Extensions](chapters/07_token_extensions.md)**
-* **[8. Mastering Transfer Hooks](chapters/08_transfer_hooks.md)**
-* **[9. Mastering Security on Solana](chapters/09_security.md)**
-* **[10. Mastering Mobile Development](chapters/10_mobile.md)**
-* **[11. Additional Resources](chapters/11_additional_resources.md)**
+* **[4. Mastering SPL Tokens](chapters/04_spl_tokens.md)**
+* **[5. Program Derived Addresses](chapters/05_pda.md)**
+* **[6. Events and Communication](chapters/06_events.md)**
+* **[7. Mastering Solana Frontend](chapters/07_frontend.md)**
+* **[8. Mastering Token Extensions](chapters/08_token_extensions.md)**
+* **[9. Mastering Transfer Hooks](chapters/09_transfer_hooks.md)**
+* **[10. Mastering Security on Solana](chapters/10_security.md)**
+* **[11. Mastering Mobile Development](chapters/11_mobile.md)**
+* **[12. Additional Resources](chapters/12_additional_resources.md)**
 
 
 
