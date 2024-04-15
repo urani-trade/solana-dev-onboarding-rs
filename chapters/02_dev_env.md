@@ -261,7 +261,7 @@ solana program extend <PROGRAM_ID> <ADDITIONAL_BYTES>
 
 ---
 
-### Useful Solana Dev Libraries
+### Useful Solana Dev Resources
 
 <br>
 
@@ -271,6 +271,8 @@ solana program extend <PROGRAM_ID> <ADDITIONAL_BYTES>
 
 * [wallet-adapter](https://github.com/anza-xyz/wallet-adapter): is a collection of libraries that help bootstrap wallet collections within Solana (such as Phantom, Solflare, and more).
 
+
+* [vscode's rust analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer): support for the Rust such as code completion, references, workspace symbol search, semantic syntax highlighting, etc.
 
 <br>
 
