@@ -131,7 +131,7 @@ const [pda] = PublicKey.findProgramAddressSync(
 
 ---
 
-### References
+### Resources
 
 <br>
 

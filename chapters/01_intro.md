@@ -385,7 +385,7 @@ Transaction fees are calculated based on two main parts:
 
 ----
 
-### ➡️ References
+### Resources
 
 <br>
 

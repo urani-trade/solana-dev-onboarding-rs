@@ -1,4 +1,4 @@
-# 🛹 Security on Solana [UNDER CONSTRUCTION]
+# 🛹 Security on Solana 
 
 <br>
 
@@ -11,7 +11,7 @@
 
 ---
 
-### References
+### Resources
 
 <br>
 

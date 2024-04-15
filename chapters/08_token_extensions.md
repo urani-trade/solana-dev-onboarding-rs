@@ -57,7 +57,7 @@ spl-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb create-token 
 
 ---
 
-### References
+### Resources
 
 <br>
 

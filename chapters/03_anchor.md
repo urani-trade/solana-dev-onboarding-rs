@@ -274,7 +274,7 @@ anchor keys list
 
 ---
 
-### References
+### Resources
 
 <br>
 
