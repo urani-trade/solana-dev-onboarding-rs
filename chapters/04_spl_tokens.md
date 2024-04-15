@@ -210,7 +210,7 @@ const transactionSignature = await transfer(
 
 ---
 
-### References
+### Resources
 
 <br>
 

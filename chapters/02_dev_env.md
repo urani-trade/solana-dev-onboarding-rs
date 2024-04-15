@@ -291,7 +291,7 @@ solana program extend <PROGRAM_ID> <ADDITIONAL_BYTES>
 
 ---
 
-### References
+### Resources
 
 <br>
 

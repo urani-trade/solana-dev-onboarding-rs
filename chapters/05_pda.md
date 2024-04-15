@@ -177,7 +177,7 @@ const [pda, bump] = await web3.PublicKey.findProgramAddress(
 
 ---
 
-### References
+### Resources
 
 <br>
 

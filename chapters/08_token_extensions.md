@@ -13,6 +13,7 @@
 
 * For every token transfer involving tokens from the Mint Account, the Token Extensions program invokes a Cross-Program Instruction (CPI) to execute an instruction on the Transfer Hook program.
 
+
 <br>
 
 ---
@@ -21,7 +22,7 @@
 
 <br>
 
-*  You can use the [Solana Tool Suite]() to create tokens with a CLI:
+*  You can use the [Solana Tool Suite](https://docs.solanalabs.com/cli/install) (see [chapter 4)](04_spl_tokens.md) to create tokens with a CLI:
 
 <br>
 
@@ -56,7 +57,7 @@ spl-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb create-token 
 
 ---
 
-### References
+### Resources
 
 <br>
 
