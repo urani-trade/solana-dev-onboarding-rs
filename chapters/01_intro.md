@@ -7,17 +7,133 @@
 
 <br>
 
-* The Solana network can be thought of as one massive global computer. Anyone can store and execute code for a fee.
-
-* To interact with these programs, you send a transaction from a Solana client, a collection of instructions for the blockchain to execute.
-
-* The executable code to perform these actions in the network is called programs, and programs can call each other through cross-program invocation (which makes the Solana blockchain highly composable).
+* The Solana network can be thought of as one massive global computer where anyone can store and execute code for a fee. 
+  - More formally, it's a single-chain blockchain using an adapted **PBFT consensus** called **Tower BFT** with **Proof-of-Stake** as a Sybil protection.
+  - Leaders are known one epoch in advance (an epoch is a series of 432k slots, i.e., the time period for block making).
+  - In addition, **Proof-of-History** is a novel clock mechanism for distributed systems, where time can be kept between computers that don't trust each other.
 
 * Like in Linux, everything is a file; in Solana, everything is an account. Addresses in the network are represented by the public keys from asymmetric cryptography (on an ed25519 curve).
 
+* The executable code to perform these actions in the network is called programs, and programs can call each other through **cross-program invocation (CPI)**, making the Solana blockchain highly composable.
+  - To interact with programs, users can send a transaction from a Solana client, a collection of instructions for the blockchain to execute.
+
 * SOL is Solana's native token, used to pay transaction fees, pay rent for accounts, and more. Each SOL is made from 1 billion Lamports.
 
-* Everything else is built around these ideas.
+* Everything else is built around these ideas...
+
+<br>
+
+----
+
+### ➡️ How the Solana Blockchain Works
+
+<br>
+
+
+#### Proof-of History (Virtual Clocks)
+
+<br>
+
+* Solana solves the complex problem of distributed systems' agreeing on time by leveraging PoH to synchronize local virtual clocks on all nodes.
+
+* PoH ensures that the timestamp in any message can be trusted, avoiding timeouts in the consensus protocol.
+
+* PoH is based on **Verifiable Delay Function (VDF)**, and Solana uses a recursive pre-image resistant SHA256 VDF. For every block created, the VDF with all new messages is computed.  
+
+* PoH is difficult to produce but easy to verify:
+
+  1. **Evaluation phase (leader):** computation on only one CPU core, taking the total number of hashes over the hashes per second for one core.
+
+  2. **Verification phase (voters):** the blocks can be checked parallelly, taking the total number of hashes over the number of hashes per second and the number of cores.
+
+
+<br>
+
+
+#### Tower BFT
+
+<br>
+
+* Tower BFT (TBFT), Solana's consensus algorithm, is a custom implementation of the Practical Byzantine Fault Tolerance (PBFT), which rounds and is divided into pre-prepare, prepare, and commit.
+
+* View-changes happen when a leader appears to have failed and another node attempts to take its place (by initiating an election process).
+
+<br>
+
+
+#### Turbine
+
+<br>
+
+* Turbine is Solana's innovative block propagation protocol, which reduces the time needed for block propagation (and message complexity).
+
+* Turbine is a multi-layer propagation protocol: nodes in the network are divided into small partitions (neighborhoods), sharing received data (the data unit is called a **shred**, and a block contains several shreds).
+
+<br>
+
+
+
+#### Gulf Stream
+
+<br>
+
+* Solana's mempool-less solution for forwarding and storing transactions before processing.
+
+* The leader, which needs to be known one full epoch in advance, receives and processes the transactions immediately.
+
+<br>
+
+
+
+#### Sealevel
+
+<br>
+
+* Solana's parallelized transaction processing engine is scaled horizontally across GPUs and SSDs and processes as many transactions as available cores.
+
+* Sealevel works by sorting millions of pending transactions and scheduling all the non-overlapping transactions in parallel.
+
+* However, Sealevel is not yet optimized for GPU offloading; it is only used to accelerate PoH and signature verification.
+
+* While Ethereum uses the EVM (Ethereum Virtual Machine) and other blockchains use WASM (Web Assembly), Solana uses a VM called Berkeley Packet Filter (BPF):
+  - BPF bytecode is designed for high-performance packet filters and can be used for non-networking purposes.
+
+<br>
+
+#### Pipelining
+
+<br>
+
+* The **Transaction Processing Unit (TPU)** works as a pipelining processor, CPU-optimized, so that nodes can validate and execute all the transactions before new blocks arrive.
+
+* The stages of TPU are:
+  1. **Fetch stage**: data fetch in kernel space via network card.
+  2. **SigVerify stage**: signature verification using GPU.
+  3. **Banking state**: change of the state using CPU (and PoH service).
+  4. **Broadcast state**: write to disk in kernel space and send out via network card.
+
+<br>
+
+#### Cloudbreak
+
+<br>
+
+* While Ethereum and Bitcoin use LevelDB for local databases that store blockchain and state, it does not support parallel reads and writes.
+
+* Cloudbreak is Solana's database system, which uses memory-mapped files.
+
+* Cloudbreak is ideal for hardware setups such as RAID 0 with fast NVMe SSDs.
+
+* Benchmarks show that even with 10 million accounts, Cloudbreak achieves reads and writes around 1 million with a single SSD.
+
+<br>
+
+#### Archivers
+
+<br>
+
+* This is a potential implementation for distributed ledger storage, where the data from validators can be offloaded to these specialized network nodes (being split into many small pieces and replicated).
+
 
 <br>
 
@@ -278,4 +394,4 @@ Transaction fees are calculated based on two main parts:
 * [Wallets Explained](https://solana.com/developers/guides/intro/wallets-explained)
 * [Terminology](https://solana.com/docs/terminology#instruction) and [FAQ](https://solana.com/docs/programs/faq)
 * [Solana Beta StackExchange](https://solana.stackexchange.com/)
-* [Introduction to Solana and Blockchain, by Ackee](https://www.youtube.com/watch?v=okqyfP_h_54)
+* [Ackee's School of Solana](https://www.youtube.com/watch?v=okqyfP_h_54&list=PLzUrW5H8-hDev3XOSY-Wqzb6O2wwn3I43)

@@ -10,7 +10,7 @@
 
 #### ➡️ [Frontend demos](frontend)
 
-#### ➡️ [Neodyme's recommended layout](neodyme_layout)
+#### ➡️ [Neodyme's layout](neodyme_layout)
 
 <br>
 
@@ -20,7 +20,7 @@
 
 <br>
 
-#### Error: `package solana-program v1.z cannot be built because it requires rustc 1.x or newer, while the currently active rustc version is 1.y-dev`
+#### ❌ Error: `package solana-program v1.z cannot be built because it requires rustc 1.x or newer, while the currently active rustc version is 1.y-dev`
 
 <br>
 
