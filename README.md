@@ -14,7 +14,7 @@ Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
 
 - **Massively cheaper**, as transaction fees are a small fraction of a penny.
 - **Massively faster**, as most transactions are completed in a couple of seconds.
-- **Highly decentralized**, having one of the highest Nakamoto coefficients (decentralization score) of any proof-of-stake network.
+- **Highly decentralized**, having one of the [highest Nakamoto coefficients](https://nakaflow.io/) of any proof-of-stake network.
 - **Fun AF**, with an incomparable UI/UX and developer experience.
 
 

@@ -278,3 +278,4 @@ Transaction fees are calculated based on two main parts:
 * [Wallets Explained](https://solana.com/developers/guides/intro/wallets-explained)
 * [Terminology](https://solana.com/docs/terminology#instruction) and [FAQ](https://solana.com/docs/programs/faq)
 * [Solana Beta StackExchange](https://solana.stackexchange.com/)
+* [Introduction to Solana and Blockchain, by Ackee](https://www.youtube.com/watch?v=okqyfP_h_54)

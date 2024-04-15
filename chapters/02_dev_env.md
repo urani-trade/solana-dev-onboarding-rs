@@ -78,7 +78,7 @@
 * You can run a full blockchain cluster on your machine and configure solana-cli to use it with these commands:
 
 
-```
+```shell
 solana-test-validator
 solana config set --url localhost
 ```
@@ -94,7 +94,7 @@ solana config set --url localhost
 
 * To create a simple file system wallet (at `~/.config/solana/id.json`) to use during local developments, type:
 
-```
+```shell
 solana-keygen new
 ```
 
@@ -108,7 +108,7 @@ solana config get -k ~/.config/solana/id.json
 
 * Aidrop testing Solana tokens:
 
-```
+```shell
 solana airdrop 10
 solana balance
 ```
@@ -129,6 +129,18 @@ solana balance
 
 * The Solana Labs organization operates a public RPC endpoint for each Cluster. Each of these public endpoints is subject to rate limits.
 
+* You can check your local config with:
+
+```shell
+solana config get
+
+Config File: ~/.config/solana/cli/config.yml
+RPC URL: http://localhost:8899
+WebSocket URL: ws://localhost:8900/ (computed)
+Keypair Path: ~/.config/solana/id.json 
+Commitment: confirmed
+```
+
 <br>
 
 
@@ -144,7 +156,7 @@ solana balance
 
 * From the CLI, one can connect with:
 
-```
+```shell
 solana config set --url https://api.devnet.solana.com
 ```
 
@@ -157,14 +169,13 @@ solana config set --url https://api.devnet.solana.com
 
 * Testnet serves as Solana's core contributors stress test.
 
-
 * Gossip endpoint at `entrypoint.testnet.solana.com:8001`.
 
 * Devnet endpoint: `https://api.testnet.solana.com`.
 
 * From the CLI, one can connect with:
 
-```
+```shell
 solana config set --url https://api.testnet.solana.com
 ```
 
@@ -177,14 +188,13 @@ solana config set --url https://api.testnet.solana.com
 
 * Solana's permissionless, persistent cluster.
 
-
 * Gossip endpoint at `entrypoint.mainnet-beta.solana.com:8001`.
 
 * Devnet endpoint: `https://api.mainnet-beta.solana.com`.
 
 * From the CLI, one can connect with:
 
-```
+```shell
 solana config set --url https://api.mainnet-beta.solana.com
 ```
 
@@ -222,7 +232,7 @@ solana config set --url https://api.mainnet-beta.solana.com
 
 * Showing a program account:
 
-```
+```shell
 solana program show <ACCOUNT_ADDRESS>
 ```
 
@@ -230,7 +240,7 @@ solana program show <ACCOUNT_ADDRESS>
 
 * Getting information about any transaction:
 
-```
+```shell
 solana confirm -v <TRANSACTION_HASH>
 ```
 
@@ -238,7 +248,7 @@ solana confirm -v <TRANSACTION_HASH>
 
 * Getting the public key:
 
-```
+```shell
 solana-keygen pubkey
 ```
 
@@ -246,13 +256,13 @@ solana-keygen pubkey
 
 * Redeploy a Solana Program: 
   
-```
+```shell
 solana program deploy <PROGRAM_FILEPATH>
 ```
 
 * If a program has been deployed, and redeployment goes beyond the `max_len` of the account, it's possible to extend the program to fit the larger redeployment:
 
-```
+```shell
 solana program extend <PROGRAM_ID> <ADDITIONAL_BYTES>
 ```
 
@@ -261,7 +271,7 @@ solana program extend <PROGRAM_ID> <ADDITIONAL_BYTES>
 
 ---
 
-### Useful Solana Dev Libraries
+### Useful Solana Dev Resources
 
 <br>
 
@@ -271,6 +281,8 @@ solana program extend <PROGRAM_ID> <ADDITIONAL_BYTES>
 
 * [wallet-adapter](https://github.com/anza-xyz/wallet-adapter): is a collection of libraries that help bootstrap wallet collections within Solana (such as Phantom, Solflare, and more).
 
+
+* [vscode's rust analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer): support for the Rust such as code completion, references, workspace symbol search, semantic syntax highlighting, etc.
 
 <br>
 
