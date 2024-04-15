@@ -29,3 +29,4 @@ jobs:
 
       - name: validate URLs
         run: awesome_bot README.md --allow-redirect --request-delay 0.4
+
