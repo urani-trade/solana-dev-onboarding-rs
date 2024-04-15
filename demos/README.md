@@ -2,7 +2,7 @@
 
 <br>
 
-### Demos
+## Demos
 
 <br>
 
@@ -10,13 +10,13 @@
 
 #### ➡️ [Frontend demos](frontend)
 
-#### ➡️ [Neodyme's recommended layout](neodyme_layout)
+#### ➡️ [Neodyme's layout](neodyme_layout)
 
 <br>
 
 ---
 
-### Troubleshooting
+## Troubleshooting
 
 <br>
 
