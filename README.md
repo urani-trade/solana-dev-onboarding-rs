@@ -2,7 +2,7 @@
 
 <br>
 
-### Our *on-going* development resources, aiming to onboard engineers to Solana development. From geeks to geeks (and you are [welcome to contribute](./CONTRIBUTING)).
+### Our *on-going* development resources, aiming to onboard engineers to Solana development. From geeks to geeks (and you are [welcome to contribute](./CONTRIBUTING.md)).
 
 <br>
 
