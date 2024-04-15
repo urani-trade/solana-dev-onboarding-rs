@@ -1,0 +1,35 @@
+name: Backend demos
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  CARGO_TERM_COLOR: always
+  SOLANA_VERSION: v1.18.8
+  ANCHOR_VERSION: 0.29.0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.14.2
+          cache: "npm"
+      - run: cd ./demos/backend/05_transfer_hooks_extension
+      - run: npm install
+      - run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+        shell: bash
+      - run: echo "/home/runner/.cargo/bin" >> $GITHUB_PATH
+        shell: bash
+      - run: curl -sSfL https://release.solana.com/$SOLANA_VERSION/install | sh
+        shell: bash
+      - run: echo "/home/runner/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
+        shell: bash
+      - run: npm i -g @project-serum/anchor-cli@$ANCHOR_VERSION ts-mocha typescript
+      - run: anchor test
