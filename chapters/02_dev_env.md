@@ -282,7 +282,9 @@ solana program extend <PROGRAM_ID> <ADDITIONAL_BYTES>
 * [wallet-adapter](https://github.com/anza-xyz/wallet-adapter): is a collection of libraries that help bootstrap wallet collections within Solana (such as Phantom, Solflare, and more).
 
 
-* [vscode's rust analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer): support for the Rust such as code completion, references, workspace symbol search, semantic syntax highlighting, etc.
+* [VSCode's rust analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer): support for the Rust such as code completion, references, workspace symbol search, semantic syntax highlighting, etc.
+
+* [Seahorse's examples](https://github.com/ameliatastic/seahorse-lang/tree/main/examples): Seahorse's compiler generates intermediate Rust artifacts and uses Anchor for the heavy lifting.
 
 <br>
 
