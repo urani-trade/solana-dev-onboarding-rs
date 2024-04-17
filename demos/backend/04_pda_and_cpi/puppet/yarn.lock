@@ -57,9 +57,9 @@
     buffer "~6.0.3"
 
 "@solana/web3.js@^1.68.0":
-  version "1.91.2"
-  resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-1.91.2.tgz#a5cb46a90076faaa284856e24464cac2b68fdc0c"
-  integrity sha512-WXPl5VXtfNKWM2RkGj7mvX6dKcZURDKe1lWBFAt/RqDBI9Rjr9hr7Y+U+yz2+TyViMmoinfJVlkS4gk2FPDG/g==
+  version "1.91.6"
+  resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-1.91.6.tgz#c090661c344cbc61e6cdeb0da67d3ea80d5848e1"
+  integrity sha512-dm20nN6HQvXToo+kM51nxHdtaa2wMSRdeK37p+WIWESfeiVHqV8XbV4XnWupq6ngt5vIckhGFG7ZnTBxUgLzDA==
   dependencies:
     "@babel/runtime" "^7.23.4"
     "@noble/curves" "^1.2.0"
