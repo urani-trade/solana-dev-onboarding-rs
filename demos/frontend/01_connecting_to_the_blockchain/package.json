@@ -6,7 +6,7 @@
     "dependencies": {
         "@coral-xyz/anchor": "^0.29.0",
         "@solana-developers/helpers": "^2.2.0",
-        "@solana/web3.js": "^1.91.2",
+        "@solana/web3.js": "^1.91.3",
         "esrun": "^3.2.26"
     },
     "devDependencies": {
