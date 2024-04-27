@@ -751,7 +751,8 @@ anchor build
 
 <br>
 
-* Find the `programId`, and replace it inside `Anchor.toml`, `test/transfer_hooks.js`, and `programs/src/lib.rs`:
+* Find the `programId`: this should be inside of `Anchor.toml`, `test/transfer-hooks-with-w-soi.ts`, and `programs/src/lib.rs` (updating the `programId` after initialization of new Anchor projects is no longer necessary with new Anchor versions).
+
 
 <br>
 
