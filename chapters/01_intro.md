@@ -14,8 +14,18 @@
 
 * Like in Linux, everything is a file; in Solana, everything is an account. Addresses in the network are represented by the public keys from asymmetric cryptography (on an ed25519 curve).
 
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/1130416/d4143062-c841-4bc6-8db7-aab169b6a444" width="50%" align="center" style="padding:1px;"/>
+</p>
+
+
 * The executable code to perform these actions in the network is called programs, and programs can call each other through **cross-program invocation (CPI)**, making the Solana blockchain highly composable.
   - To interact with programs, users can send a transaction from a Solana client, a collection of instructions for the blockchain to execute.
+ 
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/1130416/e5b49c05-8149-48ba-99ad-10adbcb2c6d2" width="50%" align="center" style="padding:1px;"/>
+</p>
+
 
 * SOL is Solana's native token, used to pay transaction fees, pay rent for accounts, and more. Each SOL is made from 1 billion Lamports.
 
@@ -145,6 +155,15 @@
 
 <br>
 
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/1130416/d8b531f7-babe-4584-bea6-f6dd140281d6" width="45%" align="center" style="padding:1px;"/>
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/1130416/02fa71b5-ca0f-40aa-a7d9-1e3d8e306ef1" width="45%" align="center" style="padding:1px;"/>
+</p>
+
+
+
+<br>
+
 * A transaction is the unit of activity on the Solana blockchain. It is a signed data structure containing instructions for the network to perform a particular operation.
 
 * Transactions create, update, or delete data on-chain, but you can read data without a transaction.
@@ -157,12 +176,20 @@
 
 * Each transaction consists of one or several instructions that will be processed by the runtime in order and atomically. If any part of the instructions fails, the entire transaction fails.
 
+
 <br>
+
 
 #### What's Inside a Transaction
 
 <br>
 
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/1130416/239bafd5-5052-492f-9824-7f6f38a53d52" width="45%" align="center" style="padding:1px;"/>
+</p>
+
+
+<br>
 
 * A compact-array of digital signatures of the given message:
     - Each digital signature is in the ed25519 binary format and consumes 64 bytes.
@@ -212,6 +239,14 @@ Transaction fees are calculated based on two main parts:
 
 ### ➡️ Accounts
 
+<br>
+
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/1130416/8e9d9ef9-f8b7-40d8-a93d-3a566268d096" width="45%" align="center" style="padding:1px;"/>
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/1130416/b5a65e0e-f4f6-4e7a-8b3f-31e41b01cdae" width="45%" align="center" style="padding:1px;"/>
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/1130416/acdae9da-2439-4d17-8931-e8bc83d27bdc" width="45%" align="center" style="padding:1px;"/>
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/1130416/2262c5bc-34a0-49cb-8816-1d2ae6bdb456" width="45%" align="center" style="padding:1px;"/>
+</p>
 
 <br>
 
@@ -242,6 +277,13 @@ Transaction fees are calculated based on two main parts:
 
 <br>
 
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/1130416/87fddfe2-2f5a-4c2a-986a-7b05c46f9f6b" width="45%" align="center" style="padding:1px;"/>
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/1130416/61a20614-ef33-4508-ba95-9ad8784ac132" width="45%" align="center" style="padding:1px;"/>
+</p>
+
+<br>
+
 * To create an account, a client generates a keypair and registers its public key.
 
 * A created account is initialized to be owned by a built-in program (the System program). It includes owner metadata (a `program_id`).
@@ -251,7 +293,6 @@ Transaction fees are calculated based on two main parts:
   - Rent can be estimated via the command `solana rent`.
 
 <br>
-
 
 
 ---
