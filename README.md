@@ -6,6 +6,14 @@
 
 <br>
 
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/1130416/171ad0f3-c0ab-4a3f-85ab-e5c89fd58af8" width="60%" align="center" style="padding:1px;border:1px solid black;"/>
+</p>
+
+
+
+<br>
+
 ## 🛹 Why Solana?
 
 <br>
