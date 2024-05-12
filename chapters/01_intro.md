@@ -110,6 +110,7 @@
 * While Ethereum uses the EVM (Ethereum Virtual Machine) and other blockchains use WASM (Web Assembly), Solana uses a VM called Berkeley Packet Filter (BPF):
   - BPF bytecode is designed for high-performance packet filters and can be used for non-networking purposes.
 
+
 <br>
 
 #### Pipelining
@@ -321,8 +322,12 @@ Transaction fees are calculated based on two main parts:
   - **Chain Programs**: written by users and deployed directly to the blockchain for anyone to interact and execute. 
       * The Solana Labs also keep a library of them, the [Solana Program Library](https://spl.solana.com/), a collection of on-chain programs targeting the Sealevel parallel runtime.
 
+<br>
 
 
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/1130416/e6c1347f-de7f-4f24-9f59-17121ebdb4a9" width="80%" align="center" style="padding:1px;"/>
+</p>
 
 <br>
 
