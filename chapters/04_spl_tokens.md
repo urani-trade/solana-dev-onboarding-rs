@@ -13,6 +13,11 @@
     * **Token Accounts** are used to hold tokens of a particular token mint.
     * They both require allocating rent in SOL.
 
+<br>
+
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/162904807/dcf8a262-08f1-4804-9514-a126d156d55b" width="80%" align="center" style="padding:1px;border:1px solid black;"/>
+</p>
 
 <br>
 
