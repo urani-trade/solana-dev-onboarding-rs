@@ -2,8 +2,7 @@
 
 <br>
 
-### Our *on-going* development resources, aiming to onboard engineers to Solana development. From geeks to geeks (and you are [welcome to contribute](./CONTRIBUTING.md)).
-
+### Our *on-going* development resources, aiming to onboard engineers to Solana development.
 <br>
 
 <p align="center">
@@ -84,3 +83,13 @@ Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
 * **[Demo 6: Serializing Custom Data with PDA II](demos/frontend/06_serialize_custom_data_II)**
 * **[Demo 7: Example with create-dapp-cli](demos/frontend/07_create_dapp_cli)**
 
+<br>
+
+
+---
+
+## Contributing
+
+<br>
+
+#### You are welcome to contribute. See the guidelines [here](./CONTRIBUTING.md).
