@@ -220,3 +220,4 @@ const transactionSignature = await transfer(
 <br>
 
 * [Create Tokens With The Token Program, by soldev](https://www.soldev.app/course/token-program)
+* [SPL Tokens on Solana, by Ackee Blockchain Security](https://www.youtube.com/watch?v=iwa8SPuAjIk)
