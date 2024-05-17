@@ -62,10 +62,14 @@ spl-token --program-id TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb create-token 
 <br>
 
 
-* [Token Extensions on Solana Developer Guides](https://www.youtube.com/playlist?list=PLilwLeBwGuK6imBuGLSLmzMEyj6yVHGDO)
-* [How to use the Mint Close Authority extension](https://solana.com/developers/guides/token-extensions/mint-close-authority)
-* [How to use the Transfer Fee extension](https://solana.com/developers/guides/token-extensions/transfer-fee)
-* [How to use the Permanent Delegate extension](https://solana.com/developers/guides/token-extensions/interest-bearing-tokens)
-* [How to use the Metadata Pointer extension](https://solana.com/developers/guides/token-extensions/metadata-pointer)
-* [How to use the Non-transferable extension](https://solana.com/developers/guides/token-extensions/non-transferable)
-* [Token-2022 Program official docs](https://spl.solana.com/token-2022)
+* [Token Extensions on Solana Developer Guides (Youtube)](https://www.youtube.com/playlist?list=PLilwLeBwGuK6imBuGLSLmzMEyj6yVHGDO)
+* [How to use the Mint Close Authority extension, by Solana Foundation](https://solana.com/developers/guides/token-extensions/mint-close-authority)
+* [How to use the Transfer Fee extension, by Solana Foundation](https://solana.com/developers/guides/token-extensions/transfer-fee)
+* [How to use the Permanent Delegate extension, by Solana Foundation](https://solana.com/developers/guides/token-extensions/interest-bearing-tokens)
+* [How to use the Metadata Pointer extension, by Solana Foundation](https://solana.com/developers/guides/token-extensions/metadata-pointer)
+* [How to use the Non-transferable extension, by Solana Foundation](https://solana.com/developers/guides/token-extensions/non-transferable)
+* [How to create soulbound tokens, by Solana Foundation](https://solana.com/developers/guides/token-extensions/non-transferable)
+* [How to use the Interest-Bearing extension, by Solana Foundation](https://solana.com/developers/guides/token-extensions/interest-bearing-tokens)
+* [How to use the Required Memo token extension, by Solana Foundation](https://solana.com/developers/guides/token-extensions/required-memo)
+* [How to use the Default Account State extension, by Solana Foundation](https://solana.com/developers/guides/token-extensions/default-account-state)
+* [Token-2022 Program official docs, by Solana Foundation](https://spl.solana.com/token-2022)
