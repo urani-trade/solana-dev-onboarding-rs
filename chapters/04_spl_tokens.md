@@ -220,3 +220,4 @@ const transactionSignature = await transfer(
 <br>
 
 * [Create Tokens With The Token Program, by soldev](https://www.soldev.app/course/token-program)
+* [How to use the Permanent Delegate extension](https://solana.com/developers/guides/token-extensions/permanent-delegate)
