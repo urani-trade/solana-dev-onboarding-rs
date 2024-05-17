@@ -157,6 +157,12 @@ const [pda, bump] = await web3.PublicKey.findProgramAddress(
 );
 ```
 
+<br>
+
+> :bulb: **Tip:**  If `find_program_address` has to take a long time to find a valid address (i.e., it as a high bump) the compute unit usage might be high. Finding the PDAs after initialization can be optimized by saving the bump into an account.
+
+
+
 
 <br>
 
