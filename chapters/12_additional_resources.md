@@ -108,3 +108,12 @@ solana config set --url <RPC url>
 <br>
 
 * [Solana Developer Forums](https://forum.solana.com/)
+
+<br>
+
+#### Useful Tricks
+
+<br>
+
+* [Optimizing a Solana Program](https://solana.com/developers/guides/advanced/how-to-optimize-compute)
+
