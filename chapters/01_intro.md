@@ -109,6 +109,14 @@
 
 * While Ethereum uses the EVM (Ethereum Virtual Machine) and other blockchains use WASM (Web Assembly), Solana uses a VM called Berkeley Packet Filter (BPF):
   - BPF bytecode is designed for high-performance packet filters and can be used for non-networking purposes.
+ 
+* Every account in Sealevel has a specified owner (the default is `System Program`):
+
+<br>
+
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/162904807/aeb54a42-1ed4-4754-856e-fc8366a3222b" width="90%" align="center" style="padding:1px;"/>
+</p>
 
 
 <br>
