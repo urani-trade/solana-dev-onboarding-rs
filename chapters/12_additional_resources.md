@@ -83,9 +83,12 @@ solana config set --url <RPC url>
 
 <br>
 
-#### Useful Tricks
+#### Production Code
 
 <br>
 
 * [Optimizing a Solana Program](https://solana.com/developers/guides/advanced/how-to-optimize-compute)
+* [A Guide to Testing on Solana](https://www.helius.dev/blog/a-guide-to-testing-solana-programs)
+* [Ligthouse, The Solana Assertion Protocol](https://github.com/Jac0xb/lighthouse)
+* [Halborn's Solana Test Framework](https://github.com/halbornteam/solana-test-framework)
 
