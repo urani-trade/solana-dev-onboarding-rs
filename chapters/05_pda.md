@@ -177,6 +177,13 @@ const [pda, bump] = await web3.PublicKey.findProgramAddress(
 * Build a frontend dApp that leverages PDA through the [frontend's demo 5](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/05_serialize_custom_data) and the
 [frontend's demo 6](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/06_serialize_custom_data_II).
 
+<br>
+
+<p align="center">
+<img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/162904807/584add01-93ff-4bce-99cf-fba6bbe1f477" width="60%" align="center" style="padding:1px;border:1px solid black;"/>
+</p>
+
+
 
 <br>
 
