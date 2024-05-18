@@ -11,7 +11,7 @@
 #### Missing Address Check
 
 * Make sure that an account has the expected address (pubkey).
-* For example, by verifying that an `admin` account is associated with the config account using the constraint `has_one = admin`.
+* For example, verifying that an `admin` account is associated with the config account using the constraint `has_one = admin`.
 
 <br>
 
@@ -34,6 +34,7 @@
 * For example, if the main program invokes an external program to transfer funds from a user account to a pool account and the program does not verify the address of the external program, an arbitrary code execution can happen.
 * To mitigate, replace the `AccountInfo<'info>` type (which is unverified) with Anchor's `Program<'info, T>` type.
 * Note that Anchor supports `System`, `Token`, and `AssociatedToken` programs, but other programs must have the CPI modules generated.
+* To learn more, check out [soldev.app's lesson on Arbitrary CPI](https://www.soldev.app/course/arbitrary-cpi).
 
 <br>
 
@@ -41,23 +42,25 @@
 
 * Beware of arithmetics and precision issues.
 * Validate account data and instruction parameters.
-* Make sure instructions are exectured in the correct order.
-* Make sure to prevent uninteded behavior when passing duplicated accounts.
-
+* Make sure instructions are executed in the correct order.
+* Make sure to prevent unintended behavior when passing duplicated accounts.
  
 <br>
 
 #### Reinitialization and Revival Attacks
 
-* Make sure to not re-initialize an already initalized account.
-* Mare sure to not re-use an already closed account.
+* Make sure not to re-initialize an already-initialized account.
+* Make sure to refrain from re-using an already closed account.
+* To learn more, check out [soldev.app's lesson on Reinitialization Attacks](https://www.soldev.app/course/reinitialization-attacks).
+
 
 <br>
 
 #### PDAs
 
 * Use canonical bump to avoid multiple valid PDAs (never let the user define an arbitrary bump).
-* Do not share global PDA authorities, instead use account specifi PDAs.
+* Do not share global PDA authorities; instead, use account-specific PDAs.
+* To learn more, check out [soldev.app's lesson on Bump Seed Canonicalization](https://www.soldev.app/course/bump-seed-canonicalization).
 
 <br>
 
