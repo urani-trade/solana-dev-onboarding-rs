@@ -46,6 +46,7 @@
 
 * [dApp Scaffold](https://github.com/solana-labs/dapp-scaffold)
 * [Create Solana dApp](https://github.com/solana-developers/create-solana-dapp)
+* [Seahorse (Solana programs in Python)](https://www.seahorse.dev/)
 
 <br>
 
