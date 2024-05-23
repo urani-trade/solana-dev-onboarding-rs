@@ -2,30 +2,13 @@
 
 <br>
 
-### Our *on-going* development resources, aiming to onboard engineers to Solana development.
-<br>
-
 <p align="center">
 <img src="https://github.com/urani-labs/solana-dev-onboarding-rs/assets/1130416/171ad0f3-c0ab-4a3f-85ab-e5c89fd58af8" width="60%" align="center" style="padding:1px;border:1px solid black;"/>
 </p>
 
-
-
 <br>
 
-## 🛹 Why Solana?
-
-<br>
-
-Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
-
-- **Massively cheaper**, as transaction fees are a small fraction of a penny.
-- **Massively faster**, as most transactions are completed in a couple of seconds (while Ethereum currently records about 30 TPS, Solana boasts 4000 TPS). 
-- **Highly decentralized**, having one of the [highest Nakamoto coefficients](https://nakaflow.io/) of any proof-of-stake network.
-- **Fun AF**, with an incomparable UI/UX and developer experience.
-
-
-#### Shall we begin?
+### Our *on-going* development resources, aiming to onboard engineers to Solana development. Shall we begin?
 
 <br>
 
@@ -51,7 +34,7 @@ Compared to older platforms like Bitcoin and EVM-based protocols, Solana is:
 <br>
 
 
-## 🛹 Achieve Mastery with our Demos
+## 🛹 Aim for Mastery
 
 <br>
 
