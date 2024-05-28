@@ -1,4 +1,4 @@
-# 🛹 Demo 7: Transfer Hooks for Vesting
+# 🛹 Demo 8: Transfer Hooks for Vesting
 
 <br>
 

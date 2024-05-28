@@ -1,4 +1,4 @@
-# 🛹 Demo 6: Transfer Hooks with a Counter
+# 🛹 Demo 7: Transfer Hooks with a Counter
 
 <br>
 

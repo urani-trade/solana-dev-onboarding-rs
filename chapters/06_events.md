@@ -109,7 +109,7 @@ anchor-lang = { version = "0.29.0", features = ["event-cpi"] }
 
 <br>
 
-* Then, add `#[event_cpi]` to accounts struct:
+* Then, add `#[event_cpi]` to accounts `struct`:
 
 <br>
 
