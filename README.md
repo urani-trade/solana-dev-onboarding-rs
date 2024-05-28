@@ -49,7 +49,7 @@
 * **[Demo 5: Build a Twitter PDA scheme](demos/backend/05_pda_by_ackee)**
 * **[Demo 6: Transfer Hook Hello World](demos/backend/06_transfer_hooks_extension)**
 * **[Demo 7: Transfer Hook with a Counter](demos/backend/07_transfer_hooks_counter)**
-* **[Demo 9: Transfer Hook for Vesting](demos/backend/08_transfer_hooks_vesting)**
+* **[Demo 8: Transfer Hook for Vesting](demos/backend/08_transfer_hooks_vesting)**
 * **[Demo 9: Transfer Hooks with wSOL fee](demos/backend/09_transfer_hooks_with_wSOL)**
 * **[Demo 10: Token Extensions for Membership NFT](demos/backend/10_token_extensions)**
 
