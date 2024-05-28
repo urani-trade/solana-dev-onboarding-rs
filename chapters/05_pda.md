@@ -174,6 +174,7 @@ const [pda, bump] = await web3.PublicKey.findProgramAddress(
 
 * Learn how PDA works on Anchor through the [backend's demo 3](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/03_anchor_pda).
 * Learn how PDA and CPI work on Anchor through the [backend's demo 4](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/04_pda_and_cpi).
+* Build a Twitter PDA scheme through the [backend's demo 5](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/05_pda_by_ackee).
 * Build a frontend dApp that leverages PDA through the [frontend's demo 5](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/05_serialize_custom_data) and the
 [frontend's demo 6](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/frontend/06_serialize_custom_data_II).
 

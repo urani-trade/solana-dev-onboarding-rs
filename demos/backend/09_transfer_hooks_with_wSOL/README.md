@@ -1,4 +1,4 @@
-# 🛹 Demo 8: Transfer Hooks with wSOL Transfer fee
+# 🛹 Demo 9: Transfer Hooks with wSOL Transfer fee
 
 <br>
 

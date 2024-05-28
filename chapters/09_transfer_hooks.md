@@ -120,10 +120,10 @@ const [pda] = PublicKey.findProgramAddressSync(
 <br>
 
 
-* [Backend's Demo 5: Transfer Hook Hello World](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/05_transfer_hooks_extension)
-* [Backend's Demo 6: Transfer Hook with a Counter](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/06_transfer_hooks_counter)
-* [Backend's Demo 7: Transfer Hook for Vesting](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/07_transfer_hooks_vesting)
-* [Backend's Demo 8: Transfer Hooks with wSOL fee](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/08_transfer_hooks_with_wSOL)
+* [Backend's Demo 6: Transfer Hook Hello World](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/06_transfer_hooks_extension)
+* [Backend's Demo 7: Transfer Hook with a Counter](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/07_transfer_hooks_counter)
+* [Backend's Demo 8: Transfer Hook for Vesting](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/08_transfer_hooks_vesting)
+* [Backend's Demo 9: Transfer Hooks with wSOL fee](https://github.com/urani-labs/solana-dev-onboarding-rs/tree/main/demos/backend/09_transfer_hooks_with_wSOL)
 
 
 <br>

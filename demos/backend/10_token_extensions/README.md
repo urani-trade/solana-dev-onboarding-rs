@@ -1,4 +1,4 @@
-# 🛹 Demo 9: Token Extensions for Membership NFT
+# 🛹 Demo 10: Token Extensions for Membership NFT
 <br>
 
 

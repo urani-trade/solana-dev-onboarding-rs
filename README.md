@@ -46,11 +46,12 @@
 * **[Demo 2. Anchor and CPI](demos/backend/02_anchor_cpi)**
 * **[Demo 3. Program Derived Addresses](demos/backend/03_anchor_pda)**
 * **[Demo 4: PDA and CPI on Anchor](demos/backend/04_pda_and_cpi)**
-* **[Demo 5: Transfer Hook Hello World](demos/backend/05_transfer_hooks_extension)**
-* **[Demo 6: Transfer Hook with a Counter](demos/backend/06_transfer_hooks_counter)**
-* **[Demo 7: Transfer Hook for Vesting](demos/backend/07_transfer_hooks_vesting)**
-* **[Demo 8: Transfer Hooks with wSOL fee](demos/backend/08_transfer_hooks_with_wSOL)**
-* **[Demo 9: Token Extensions for Membership NFT](demos/backend/09_token_extensions)**
+
+* **[Demo 6: Transfer Hook Hello World](demos/backend/06_transfer_hooks_extension)**
+* **[Demo 7: Transfer Hook with a Counter](demos/backend/07_transfer_hooks_counter)**
+* **[Demo 9: Transfer Hook for Vesting](demos/backend/08_transfer_hooks_vesting)**
+* **[Demo 9: Transfer Hooks with wSOL fee](demos/backend/09_transfer_hooks_with_wSOL)**
+* **[Demo 10: Token Extensions for Membership NFT](demos/backend/10_token_extensions)**
 
 <br>
 
