@@ -73,3 +73,4 @@
 * [Neodyme's Secure Scaffold](https://github.com/neodyme-labs/tradeoffer-secure-coding-workshop.git)
 * [Ackee's Trdelník for Fuzzing](https://github.com/Ackee-Blockchain/trident)
 * [Ackee's Writing Secure Solana Programs](https://www.youtube.com/watch?v=Qkf9QwSfHAM)
+* [Fuzz Testing Solana Programs with Trident](https://www.youtube.com/watch?v=5Lq8iEbMFbs)
