@@ -6,7 +6,7 @@
 
 <br>
 
-* Events in Archor provide a mechanism for notifying and communicating between different components of a Solana dApp.
+* Events in Anchor provide a mechanism for notifying and communicating between different components of a Solana dApp.
 
 * Events are structured pieces of data holding information about a specific occurrence in a program.
 
@@ -66,7 +66,7 @@ emit!(TransferEvent {
 
 <br>
 
-* Anyone can subscribe to events emitted by your program, through the [@coral-xyz/archor](@coral-xyz/anchor) library:
+* Anyone can subscribe to events emitted by your program, through the [@coral-xyz/anchor](@coral-xyz/anchor) library:
 
 <br>
 
@@ -99,7 +99,7 @@ program.removeEventListener(subscriptionId);
 * Unlike logs, RPC providers store instruction data without truncation.
     - CPI events make use of this by executing a self-invoke with the event data to store the event(s) in the instruction.
 
-* To use CPI vents, you can enable `event-cpi`:
+* To use CPI events, you can enable `event-cpi`:
 
 <br>
 
