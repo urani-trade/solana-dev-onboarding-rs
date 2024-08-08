@@ -75,7 +75,7 @@ const [pda] = PublicKey.findProgramAddressSync(
             - 4 `[]`: Source token account authority
             - 5 `[]`: Validation account
 
-* `InitializeExtraAccountMetaList` is optional and intializes the validation account to store a list of extra required `AccountMeta` configurations for the `Execute` instruction.
+* `InitializeExtraAccountMetaList` is optional and initializes the validation account to store a list of extra required `AccountMeta` configurations for the `Execute` instruction.
     - The validation account is a PDA off of the transfer hook program, derived with the following seeds: `"extra-account-metas" + <mint-address>`.
 
 * `UpdateExtraAccountMetaList` is optional and allows an on-chain program to update its list of required accounts for `Execute`. 

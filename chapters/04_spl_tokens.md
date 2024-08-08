@@ -163,7 +163,7 @@ const tokenMint = await createMint(
 
 ---
 
-### Transfering Tokens
+### Transferring Tokens
 
 <br>
 
