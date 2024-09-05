@@ -6,11 +6,11 @@
 
 <br>
 
-#### ➡️ [Backend demos](backend)
+#### 👉🏼 [Backend demos](backend)
 
-#### ➡️ [Frontend demos](frontend)
+#### 👉🏼 [Frontend demos](frontend)
 
-#### ➡️ [Neodyme's layout](neodyme_layout)
+#### 👉🏼 [Neodyme's layout](neodyme_layout)
 
 <br>
 
