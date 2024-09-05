@@ -2,6 +2,15 @@
 
 <br>
 
+#### 👉🏼 [Solana security overview](#common-security-exploits)
+
+#### 👉🏼 [Security security resources](#security-security-resources)
+
+
+
+<br>
+
+-----
 
 ## Common Security Exploits
 
@@ -66,7 +75,7 @@
 
 ---
 
-## Resources
+## Security security resources
 
 <br>
 
@@ -74,3 +83,4 @@
 * [Ackee's Trdelník for Fuzzing](https://github.com/Ackee-Blockchain/trident)
 * [Ackee's Writing Secure Solana Programs](https://www.youtube.com/watch?v=Qkf9QwSfHAM)
 * [Fuzz Testing Solana Programs with Trident](https://www.youtube.com/watch?v=5Lq8iEbMFbs)
+* [Solana Anchor Program Fuzzing with Trident I](https://www.youtube.com/watch?v=5JRVnxGW8kc) and [II]()

@@ -1,7 +1,10 @@
 # 🛹 Demo 1: Hello World 
 
-* [-> I want to create the demo from scratch and learn](#create-the-demo-from-scratch)
-* [-> I just want to run the demo](#build-and-deploy-your-program)
+<br>
+
+#### 👉🏼 [Create the demo from scratch](#create-the-demo-from-scratch)
+
+#### 👉🏼 [Just run the demo](#build-and-deploy-your-program)
 
 <br>
 
