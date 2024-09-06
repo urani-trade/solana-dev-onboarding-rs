@@ -72,8 +72,12 @@
 
 ---
 
-## Contributing
+### License and Contributing
 
 <br>
 
-#### You are welcome to contribute. See the guidelines [here](./CONTRIBUTING.md).
+This project is distributed under the **[Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0)**. 
+
+You are welcome to contribute. See the guidelines **[here](docs/CONTRIBUTING.md)**.
+
+<br>
