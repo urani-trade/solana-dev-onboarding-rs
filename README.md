@@ -3,7 +3,7 @@
 <br>
 
 <p align="center">
-<img src=".github/resources/6.webp" width="60%" align="center"/>
+<img src="docs/6.webp" width="60%" align="center"/>
 </p>
 
 <br>
